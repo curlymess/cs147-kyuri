@@ -12,5 +12,5 @@ export default Themes = {
       shadowRadius: 5,
       shadowOffset: { width: -1, height: 5 },
     },
-  },
-};
+  };
+
