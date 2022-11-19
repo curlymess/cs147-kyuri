@@ -14,23 +14,26 @@ export default function Top(props) {
 
     return (
         <View style={styles.container}>
-            <Pressable style={styles.back}>
-                <Ionicons name="arrow-back-outline" size={18} color='white'/>
-                <Text style={styles.backText}>
-                    Back
-                </Text>
-            </Pressable>
+            <View style={styles.row}>
+                <Pressable style={styles.back}>
+                    <Ionicons name="arrow-back-outline" size={18} color='white'/>
+                    <Text style={styles.backText}>
+                        Back
+                    </Text>
+                </Pressable>
+            </View>
             <View style={styles.logoContainter}>
                 <Image style={styles.logo} source={Icons.logo} />
                 <Text style={styles.kyuritxt}>Kyuri</Text>
             </View>
-            
-            <Pressable style={styles.plus}>
-                <Ionicons name="add-circle-outline" size={28} color='white'/>
-            </Pressable>
-            <Pressable>
-                <Ionicons name="search-outline" size={28} color='white'/>
-            </Pressable>
+            <View style={styles.row}>
+                <Pressable style={styles.plus}>
+                    <Ionicons name="add-circle-outline" size={28} color='white'/>
+                </Pressable>
+                <Pressable>
+                    <Ionicons name="search-outline" size={28} color='white'/>
+                </Pressable>
+            </View>
         </View>
     );
 }
@@ -40,6 +43,11 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingTop: 40,
         paddingBottom: 10,
+        flexDirection: 'row',
+        paddingHorizontal: 10,
+    },
+    row: {
+        flex: 1,
         flexDirection: 'row',
     },
     back: {
@@ -55,7 +63,9 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
     },
     logoContainter: {
+        flex: 1,
         flexDirection: 'row',
+        justifyContent: 'center',
     },
     kyuritxt: {
         fontFamily: 'Rosmatika',
