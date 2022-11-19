@@ -1,7 +1,7 @@
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, PlatformColor, Pressable } from 'react-native';
 import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
@@ -19,8 +19,23 @@ function Feed() {
       <Top style={styles.head} />
       <StatusBar style="auto" />
 
-      <View style ={styles.container}>
-        <Text>Feed</Text>
+      <View style={styles.myProfileCard}>
+        <Image source={Icons.tom}/>
+        <View>
+          <Text style={styles.myProfileTxt}>Tom S.</Text>
+          <Text style={styles.myProfileTxt}>@TomShahee</Text>
+        </View>
+        <Pressable style={styles.myprofileBttn}>
+          <Text>My Profile</Text>
+        </Pressable>
+      </View>
+
+      <View>
+
+      </View>
+
+      <View>
+
       </View>
     </View>    
   )
@@ -84,6 +99,14 @@ export default function App() {
         },
         tabBarActiveTintColor: palette.green,
         tabBarInactiveTintColor: palette.darkBrown,
+
+        tabBarActiveBackgroundColor: palette.cream,
+        tabBarInactiveBackgroundColor: palette.cream,
+           style: {
+                 backgroundColor: palette.cream,
+                 paddingBottom: 3
+           }
+
       })}
       >
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
@@ -116,4 +139,22 @@ const styles = StyleSheet.create({
     maxWidth: 30,
     marginRight: 5,
   },
+  myProfileCard: {
+    flex: 1,
+    flexDirection: 'row',
+    maxHeight: 100,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    backgroundColor: palette.darkBrown,
+    justifyContent:'space-around',
+    alignItems: 'center',
+  },
+  myProfileTxt: {
+    color: palette.white,
+  },
+  myprofileBttn: {
+    backgroundColor: palette.green,
+    alignSelf: 'flex-end',
+    paddingBottom: 10,
+  }
 });
