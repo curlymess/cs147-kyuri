@@ -7,6 +7,7 @@ import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
 import {Top} from './app/components';
 import { BrowseScreen } from './app/components';
+import { Post } from './app/components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import 'react-native-gesture-handler';
@@ -15,21 +16,53 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 function Feed() {
+  const feedStyles = StyleSheet.create({
+    myProfileCard: {
+      flex: 1,
+      flexDirection: 'row',
+      maxHeight: 100,
+      marginHorizontal: 10,
+      marginVertical: 10,
+      backgroundColor: palette.darkBrown,
+      justifyContent:'space-around',
+      alignItems: 'center',
+      borderRadius: 8,
+    },
+    myProfileTxt: {
+      color: palette.white,
+    },
+    myprofileBttn: {
+      backgroundColor: palette.green,
+      alignSelf: 'flex-end',
+      paddingBottom: 10,
+      padding: 5,
+      borderRadius: 8,
+    },
+    post: {
+      flex: 1,
+      
+    }
+  });
   return (
     <View style={styles.container}>
       <Top style={styles.head} />
       <StatusBar style="auto" />
 
-      <View style={styles.myProfileCard}>
+      <View style={feedStyles.myProfileCard}>
         <Image source={Icons.tom}/>
         <View>
-          <Text style={styles.myProfileTxt}>Tom S.</Text>
-          <Text style={styles.myProfileTxt}>@TomShahee</Text>
+          <Text style={feedStyles.myProfileTxt}>Tom S.</Text>
+          <Text style={feedStyles.myProfileTxt}>@TomShahee</Text>
         </View>
-        <Pressable style={styles.myprofileBttn}>
+        <Pressable style={feedStyles.myprofileBttn}>
           <Text>My Profile</Text>
         </Pressable>
       </View>
+
+      <Post style={feedStyles.post}/>
+      <Post style={feedStyles.post}/>
+      <Post style={feedStyles.post}/>
+      <Post style={feedStyles.post}/>
 
       <View>
 
@@ -198,22 +231,5 @@ const styles = StyleSheet.create({
     maxWidth: 30,
     marginRight: 5,
   },
-  myProfileCard: {
-    flex: 1,
-    flexDirection: 'row',
-    maxHeight: 100,
-    marginHorizontal: 10,
-    marginVertical: 10,
-    backgroundColor: palette.darkBrown,
-    justifyContent:'space-around',
-    alignItems: 'center',
-  },
-  myProfileTxt: {
-    color: palette.white,
-  },
-  myprofileBttn: {
-    backgroundColor: palette.green,
-    alignSelf: 'flex-end',
-    paddingBottom: 10,
-  }
+  
 });
