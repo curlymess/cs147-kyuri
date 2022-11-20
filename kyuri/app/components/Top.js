@@ -41,10 +41,12 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: palette.green,
         width: '100%',
-        paddingTop: 40,
-        paddingBottom: 10,
+        paddingTop: 50,
+        paddingBottom: 40,
         flexDirection: 'row',
         paddingHorizontal: 10,
+        borderBottomLeftRadius: 12,
+        borderBottomRightRadius: 12,
     },
     row: {
         flex: 1,
@@ -66,11 +68,14 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
+        alignItems: 'center',
     },
     kyuritxt: {
         fontFamily: 'Rosmatika',
         color: palette.white,
         fontSize: 24,
+        marginTop: 4,
+        marginLeft: 4,
     },
     logo: {
         resizeMode: 'contain',
