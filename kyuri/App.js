@@ -63,6 +63,8 @@ function Feed() {
       <Post style={feedStyles.post}/>
       <Post style={feedStyles.post}/>
       <Post style={feedStyles.post}/>
+      <Post style={feedStyles.post}/>
+      <Post style={feedStyles.post}/>
 
       <View>
 
