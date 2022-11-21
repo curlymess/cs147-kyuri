@@ -5,8 +5,12 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 
-const PostDetail = () => 
+const PostDetail = ({navigation, route}) => 
 {
+   console.log(route.params); // issue with passing 
+   const {postAuthor} = route.params;
+   const {postTitle} = route.params;
+   const {blogText} = route.params;
   return (
     
     <View style={styles.container}>
@@ -16,13 +20,14 @@ const PostDetail = () =>
           <View style={styles.headerImg}>
             <Text>Header Image</Text>
           </View>
-          <Text style={styles.title}>Title</Text>
+          <Text style={styles.title}>{postTitle.title}</Text>
           <Text style={styles.tag}>Tags</Text>
 
           <View style={styles.authorProfile}>
             <Text>Author Profile</Text>
+            <Text>{postAuthor.author}</Text>
           </View>
-          <Text style={styles.text}>Blog Text</Text>
+          <Text style={styles.text}>{blogText.postText}</Text>
 
           <View style={styles.comment}>
             <Pressable>

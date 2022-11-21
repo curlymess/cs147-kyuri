@@ -5,21 +5,26 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
 
-const Post = ({ navigation }) => 
+const Post = ({ navigation, title, author, postText }) => 
 {
   return (
 
 <View style={styles.container}>
     <View style={styles.colFlex}>
-        <Pressable style={styles.post} onPress={() => navigation.navigate(PostDetail)}>
+        <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
             <View> 
-                <Text style={styles.title}>Title</Text>
-                <Text style={styles.author}>by Author</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.author}>by {author}</Text>
             </View>
             <Image source={Icons.iris} style={styles.otherProfilePics}/>
         </Pressable>
 
-        <Text style={styles.postText}>While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow for users to...</Text>
+        <View style={styles.container2}>
+            <Text style={styles.postText}>{postText}</Text>
+            <Pressable style={styles.expandButton}>
+                <Text>Expand Post</Text>
+            </Pressable>
+        </View>
     </View>
         
     
@@ -32,8 +37,6 @@ export default Post;
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         backgroundColor: palette.cream,
         marginHorizontal: 10,
         marginVertical: 10,
@@ -45,7 +48,6 @@ const styles = StyleSheet.create({
     },
     post: {
         flexDirection: 'row',
-        alignContent: 'center',
     },
     title: {
         fontSize: 24,
@@ -58,6 +60,16 @@ const styles = StyleSheet.create({
     otherProfilePics: {
         maxHeight: 40,
         resizeMode: 'contain',
+    },
+    container2: {
+        flexDirection: 'row',
+    },
+    postText: {
+        flex: 1,
+    },
+    expandButton: {
+        flex: 1,
+        backgroundColor: palette.green,
     },
 
 });

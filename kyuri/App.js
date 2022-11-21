@@ -65,13 +65,27 @@ function Feed({ navigation }) {
         </Pressable>
       </View> */}
 
-      <ScrollView>
-        <Post style={feedStyles.post} navigation={navigation}/>
-        <Post style={feedStyles.post} navigation={navigation}/>
-        <Post style={feedStyles.post} navigation={navigation}/>
-        <Post style={feedStyles.post} navigation={navigation}/>
-        <Post style={feedStyles.post} navigation={navigation}/>
-        <Post style={feedStyles.post} navigation={navigation}/>
+      <ScrollView> 
+        {/* //current issue is making the author icon show with longer titles and cutting off text that is too long */}
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests!'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'Anyone know a good product?'} author={'Benjamin W.'} postText={'While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow...'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'Skin Update!'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'My New Winter Routine'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'My New Winter Routine 2'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'My New Winter Routine 3'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'My New Winter Routine 4'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        <Post style={feedStyles.post} navigation={navigation}
+          title={'My New Winter Routine 5'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+        
+        
+        
       </ScrollView>
          
 
