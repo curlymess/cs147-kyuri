@@ -4,16 +4,15 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
-import {Top} from '../../app/components';
-import { StatusBar } from 'expo-status-bar';
 
 
 
 export default function BrowseSearchBar() {
-    let [fontsLoaded] = useFonts({
-        Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-      });
-      if (!fontsLoaded) return <AppLoading />;
+  let [fontsLoaded] = useFonts({
+    Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
+    Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
+  });
+  if (!fontsLoaded) return <AppLoading />;
 
     return (
         <View style={browseStyles.container}>
@@ -78,5 +77,6 @@ const browseStyles = StyleSheet.create({
     input: {
       fontSize: 16,
       marginLeft: 10,
+      fontFamily: 'Monda',
     }
 });

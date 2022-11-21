@@ -6,7 +6,6 @@ import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
 import {Top} from './app/components';
-import BrowseSearchBar from './app/components';
 import { Post } from './app/components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import 'react-native-gesture-handler';
@@ -14,6 +13,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
+import BrowseSlider from './app/components/BrowseSlider.js';
+import BrowseContent from './app/components/BrowseContent.js';
+
+
 
 
 function Feed() {
@@ -82,6 +85,9 @@ function Browse() {
     <Top style={styles.head} />
     <StatusBar style="auto"/>
     <BrowseSearchBar></BrowseSearchBar>
+    <BrowseSlider></BrowseSlider>
+    <BrowseContent>
+    </BrowseContent>
   </View>  
   );
 }
