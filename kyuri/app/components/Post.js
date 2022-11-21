@@ -3,20 +3,21 @@ import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import PostDetail from './PostDetail';
 
-const Post = () => 
+const Post = ({ navigation }) => 
 {
   return (
 
 <View style={styles.container}>
     <View style={styles.colFlex}>
-        <View style={styles.post}>
+        <Pressable style={styles.post} onPress={() => navigation.navigate(PostDetail)}>
             <View> 
                 <Text style={styles.title}>Title</Text>
                 <Text style={styles.author}>by Author</Text>
             </View>
             <Image source={Icons.iris} style={styles.otherProfilePics}/>
-        </View>
+        </Pressable>
 
         <Text style={styles.postText}>While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow for users to...</Text>
     </View>
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     otherProfilePics: {
         maxHeight: 40,
         resizeMode: 'contain',
-        justifyContent: 'flex-end',
     },
 
 });

@@ -1,25 +1,27 @@
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import { StyleSheet, Text, View, Image, PlatformColor, Pressable, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, PlatformColor, Pressable, TextInput, ScrollView } from 'react-native';
 import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
-import {Top} from './app/components';
-import { Post } from './app/components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+// Navigation
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// ***** Componets ******* 
+import {Top} from './app/components';
+import { Post } from './app/components';
 //Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
+import PostDetail from './app/components/PostDetail';
 
 
 
-
-function Feed() {
+function Feed({ navigation }) {
   const feedStyles = StyleSheet.create({
     myProfileCard: {
       flex: 1,
@@ -52,7 +54,7 @@ function Feed() {
       <Top style={styles.head} />
       <StatusBar style="auto" />
 
-      <View style={feedStyles.myProfileCard}>
+      {/* <View style={feedStyles.myProfileCard}>
         <Image source={Icons.tom}/>
         <View>
           <Text style={feedStyles.myProfileTxt}>Tom S.</Text>
@@ -61,22 +63,19 @@ function Feed() {
         <Pressable style={feedStyles.myprofileBttn}>
           <Text>My Profile</Text>
         </Pressable>
-      </View>
+      </View> */}
 
-      <Post style={feedStyles.post}/>
-      <Post style={feedStyles.post}/>
-      <Post style={feedStyles.post}/>
-      <Post style={feedStyles.post}/>
-      <Post style={feedStyles.post}/>
-      <Post style={feedStyles.post}/>
+      <ScrollView>
+        <Post style={feedStyles.post} navigation={navigation}/>
+        <Post style={feedStyles.post} navigation={navigation}/>
+        <Post style={feedStyles.post} navigation={navigation}/>
+        <Post style={feedStyles.post} navigation={navigation}/>
+        <Post style={feedStyles.post} navigation={navigation}/>
+        <Post style={feedStyles.post} navigation={navigation}/>
+      </ScrollView>
+         
 
-      <View>
-
-      </View>
-
-      <View>
-
-      </View>
+      
     </View>    
   )
 }
@@ -152,6 +151,7 @@ export default function App() {
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
         <Tab.Screen name="Browse" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
+        <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
       </Tab.Navigator>
 
     </NavigationContainer>
