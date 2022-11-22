@@ -54,17 +54,6 @@ function Feed({ navigation }) {
       <Top style={styles.head} />
       <StatusBar style="auto" />
 
-      {/* <View style={feedStyles.myProfileCard}>
-        <Image source={Icons.tom}/>
-        <View>
-          <Text style={feedStyles.myProfileTxt}>Tom S.</Text>
-          <Text style={feedStyles.myProfileTxt}>@TomShahee</Text>
-        </View>
-        <Pressable style={feedStyles.myprofileBttn}>
-          <Text>My Profile</Text>
-        </Pressable>
-      </View> */}
-
       <ScrollView> 
         {/* //current issue is making the author icon show with longer titles and cutting off text that is too long */}
         <Post style={feedStyles.post} navigation={navigation}
@@ -107,15 +96,103 @@ function Browse() {
   );
 }
 
-function Profile(){
+function Profile( {navigation} ){
+  //issue with content (author, title, posttext) are not showing in postdetails page
+  const author = "author";
+  const title = "title";
+  const postText = "postText";
+  const profileStyles = StyleSheet.create({
+    myProfileCard: {
+      flex: 1,
+      flexDirection: 'row',
+      marginHorizontal: 10,
+      marginVertical: 10,
+      alignItems: 'center',
+      borderRadius: 8,
+      backgroundColor: palette.darkBrown,
+      justifyContent:'space-around',
+      
+    },
+    myProfileTxt: {
+      color: palette.white,
+      fontSize: 12,
+    },
+    myProfileTxtName: {
+      color: palette.white,
+      fontSize: 24,
+    },
+    routineCard: {
+      backgroundColor: palette.cream,
+      flex: 1,
+      marginHorizontal: 10,
+      marginVertical: 10,
+      borderRadius: 8,
+    },
+    postsCard: {
+      flex: 1,
+      marginHorizontal: 10,
+      marginVertical: 10,
+      flexDirection: 'row',
+    },
+    posts: {
+      backgroundColor: palette.cream,
+      borderRadius: 8,
+      justifyContent: 'space-between',
+      marginHorizontal: 5,
+      padding: 5,
+      width: '20%',
+    },
+    heading: {
+      marginLeft: 10,
+    },  
+  });
   return (
     <View style={styles.container}>
       <Top style={styles.head} />
       <StatusBar style="auto" />
 
       <View style ={styles.container}>
-        <Text>Profile</Text>
+        <View style={profileStyles.myProfileCard}>
+          <Image source={Icons.tom}/>
+          <View>
+            <Text style={profileStyles.myProfileTxtName}>Tom S.</Text>
+            <Text style={profileStyles.myProfileTxt}>@TomShahee</Text>
+          </View>
+          <View>
+            <Text style={profileStyles.myProfileTxt}>Age 22</Text>
+            <Text style={profileStyles.myProfileTxt}>Ethnicity W</Text>
+            <Text style={profileStyles.myProfileTxt}>Level Novice</Text>
+          </View>
+        </View>
       </View>
+
+      <View style={profileStyles.routineCard}>
+        <Text>Current Routine:</Text>
+        <Text>Create your first routine!</Text>
+      </View>
+
+      <Text style={profileStyles.heading}>Recently Viewed Posts</Text>
+      <ScrollView style={profileStyles.postsCard}   horizontal={true}>
+
+
+        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
+          <Text style={profileStyles.postType}>Review</Text>
+          <Text style={profileStyles.postTitle}>Zucchini Sunscreen</Text>
+        </Pressable>
+        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
+          <Text style={profileStyles.postType}>Request</Text>
+          <Text style={profileStyles.postTitle}>Help with my routin?</Text>
+        </Pressable>
+        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
+          <Text style={profileStyles.postType}>Request</Text>
+          <Text style={profileStyles.postTitle}>New to the skincare thing</Text>
+        </Pressable>
+        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
+          <Text style={profileStyles.postType}>Post Type</Text>
+          <Text style={profileStyles.postTitle}>Post Title</Text>
+        </Pressable>
+      </ScrollView>
+
     </View>  
     );
 }
