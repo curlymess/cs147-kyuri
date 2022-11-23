@@ -18,6 +18,7 @@ import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
 import PostDetail from './app/components/PostDetail';
+import PostCard from './app/PostCard';
 
 
 
@@ -134,23 +135,6 @@ function Profile( {navigation} ){
       marginVertical: 10,
       flexDirection: 'row',
     },
-    posts: {
-      backgroundColor: palette.cream,
-      borderRadius: 8,
-      justifyContent: 'space-between',
-      marginHorizontal: 5,
-      width: '20%',
-    },
-    postTop: {
-      flex: 1,
-      backgroundColor: palette.lightGreen,
-      borderTopRightRadius: 8,
-      borderTopLeftRadius: 8,
-    },
-    postBottom: {
-      flex: 1,
-      padding: 5,
-    },
     heading: {
       marginLeft: 10,
     },  
@@ -183,35 +167,11 @@ function Profile( {navigation} ){
       <Text style={profileStyles.heading}>Recently Viewed Posts</Text>
       <ScrollView style={profileStyles.postsCard}   horizontal={true}>
 
-        {/* TO DO: make profile post card component */}
-        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
-          <View style={profileStyles.postTop}>
-            <Text>Image placeholder</Text>
-          </View>
-          <View style={profileStyles.postBottom}>
-            <Text style={profileStyles.postType}>Review</Text>
-            <Text style={profileStyles.postTitle}>Zucchini Sunscreen</Text>
-          </View>
-        </Pressable>
-        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
-          <View style={profileStyles.postTop}>
-            <Text>Image placeholder</Text>
-          </View>
-           <View style={profileStyles.postBottom}> 
-            <Text style={profileStyles.postType}>Request</Text>
-            <Text style={profileStyles.postTitle}>Help with my routin?</Text>
-          </View>
-        </Pressable>
-
-        {/* filler to see the scroll function */}
-        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
-          <Text style={profileStyles.postType}>Request</Text>
-          <Text style={profileStyles.postTitle}>New to the skincare thing</Text>
-        </Pressable>
-        <Pressable style={profileStyles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
-          <Text style={profileStyles.postType}>Post Type</Text>
-          <Text style={profileStyles.postTitle}>Post Title</Text>
-        </Pressable>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'Gertrude'} postText={'I am new to this'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
       </ScrollView>
 
     </View>  
