@@ -1,3 +1,4 @@
+import 'react-native-url-polyfill/auto';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
@@ -15,17 +16,14 @@ import {Top} from './app/components';
 import { Post } from './app/components';
 //Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
+import Auth from './app/components/Auth.js';
+
 import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 
 import 'react-native-url-polyfill/auto'
-import { useState, useEffect } from 'react'
-import { supabase } from './lib/supabase'
-import Auth from './app/components/Auth'
-import Account from './app/components/Account'
-import { Session } from '@supabase/supabase-js'
 
 function Feed({ navigation }) {
   const feedStyles = StyleSheet.create({
