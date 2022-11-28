@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
-import { palette } from '../assets/Themes/palette';
-import Icons from '../assets/Icons';
+import { palette } from '../../assets/Themes/palette';
+import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const PostCard = ({ navigation, title, author, postText }) => 

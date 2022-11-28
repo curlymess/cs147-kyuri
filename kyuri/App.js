@@ -18,9 +18,14 @@ import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
 import PostDetail from './app/components/PostDetail';
-import PostCard from './app/PostCard';
+import PostCard from './app/components/PostCard';
 
-
+import 'react-native-url-polyfill/auto'
+import { useState, useEffect } from 'react'
+import { supabase } from './lib/supabase'
+import Auth from './app/components/Auth'
+import Account from './app/components/Account'
+import { Session } from '@supabase/supabase-js'
 
 function Feed({ navigation }) {
   const feedStyles = StyleSheet.create({
@@ -181,14 +186,23 @@ function Profile( {navigation} ){
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Rosmatika: require('./assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-  });
-  if (!fontsLoaded) return <AppLoading />;
-  /* ^Don't mind/edit the code above, it's there to load the font for you! */
+  // const [session, setSession] = useState<Session | null>(null)
 
-  /* insert your code here */
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session)
+  //   })
+
+  //   supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   })
+  // }, [])
   return (
+  //   <View>
+  //   {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
+  // </View>
+
+
     <NavigationContainer>
       <Tab.Navigator initialRouteName={'Feed'}
         screenOptions={({ route }) => ({
@@ -228,6 +242,7 @@ export default function App() {
 
     </NavigationContainer>
 
+
   );
 }
 
@@ -238,12 +253,6 @@ const styles = StyleSheet.create({
   },
   head: {
     flex: 1,
-  },
-  rose: {
-    flex: 1,
-    fontFamily: 'Rosmatika',
-    fontSize: 24,
-    color: palette.white,
   },
   logo: {
     flex: 1,
