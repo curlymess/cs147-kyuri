@@ -22,6 +22,7 @@ import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
+import Routine from './app/components/Routine';
 
 import 'react-native-url-polyfill/auto'
 
