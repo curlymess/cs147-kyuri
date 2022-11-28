@@ -165,6 +165,9 @@ function Profile( {navigation} ){
       <View style={profileStyles.routineCard}>
         <Text>Current Routine:</Text>
         <Text>Create your first routine!</Text>
+        <Pressable onPress={() => navigation.navigate('Routine')}>
+          <Ionicons name={'add-circle-outline'} size={40} color={palette.green} />
+        </Pressable>
       </View>
 
       <Text style={profileStyles.heading}>Recently Viewed Posts</Text>
@@ -236,6 +239,7 @@ export default function App() {
         <Tab.Screen name="Browse" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
+        <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
       </Tab.Navigator>
 
     </NavigationContainer>
