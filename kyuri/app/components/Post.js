@@ -22,7 +22,7 @@ const Post = ({ navigation, title, author, postText }) =>
         <View style={styles.container2}>
             <Text style={styles.postText}>{postText}</Text>
             <Pressable style={styles.expandButton}>
-                <Text>Expand Post</Text>
+                <Text style={styles.expandTxt}>Expand Post</Text>
             </Pressable>
         </View>
     </View>
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
         padding: 10,  
     },
     colFlex: {
+        flex: 1,
         flexDirection: 'column',
     },
     post: {
@@ -65,10 +66,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     postText: {
-        flex: 1,
+        flex: 3,
     },
     expandButton: {
         flex: 1,
+    },
+    expandTxt: {
         backgroundColor: palette.green,
     },
 
