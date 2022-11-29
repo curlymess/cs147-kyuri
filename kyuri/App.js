@@ -17,6 +17,7 @@ import { Post } from './app/components';
 //Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import Auth from './app/components/Auth.js';
+import { useState } from 'react';
 
 import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
@@ -89,13 +90,22 @@ function Feed({ navigation }) {
 }
 
 function Browse() {
+  const [screen1, toggleScreen1] = useState(true);
+  const [screen2, toggleScreen2] = useState(false);
+  const [screen3, toggleScreen3] = useState(false);
   return (
   <View style={styles.container}>
     <Top style={styles.head} />
     <StatusBar style="auto"/>
     <BrowseSearchBar></BrowseSearchBar>
-    <BrowseSlider></BrowseSlider>
-    <BrowseContent>
+    <BrowseSlider 
+      screen1Prop={screen1} screen2Prop={screen2} screen3Prop={screen3}
+      screen1Callback={toggleScreen1} screen2Callback={toggleScreen2} screen3Callback={toggleScreen3} 
+    >
+    </BrowseSlider>
+    <BrowseContent
+      screen1Prop={screen1} screen2Prop={screen2} screen3Prop={screen3}
+    >
     </BrowseContent>
   </View>  
   );

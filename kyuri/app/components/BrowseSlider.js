@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
 
-function SliderPress() {
 
-}
+export default function BrowseSlider(props) {
 
-export default function BrowseSlider() {
+
 
 
     let [fontsLoaded] = useFonts({
@@ -23,21 +21,24 @@ export default function BrowseSlider() {
         <View style={styles.sliderContainer}>
             <View style={styles.wrapper}>
                 <Pressable 
-                    style={styles.button}
+                    style={props.screen1Prop ? styles.currentButton : styles.button}
+                    onPress={() => { props.screen1Callback(true); props.screen2Callback(false); props.screen3Callback(false);}}
                 >
                     <Text style={styles.buttonText}>
                         Products
                     </Text>
                 </Pressable>
                 <Pressable 
-                    style={styles.button}
+                    style={props.screen2Prop ? styles.currentButton : styles.button}
+                    onPress={() => { props.screen1Callback(false); props.screen2Callback(true); props.screen3Callback(false);}}
                 >
                     <Text style={styles.buttonText}>
                         People
                     </Text>
                 </Pressable>
                 <Pressable 
-                    style={styles.button}
+                    style={props.screen3Prop ? styles.currentButton : styles.button}
+                    onPress={() => { props.screen1Callback(false); props.screen2Callback(false); props.screen3Callback(true);}}
                 >
                     <Text style={styles.buttonText}>
                         Posts
