@@ -2,7 +2,7 @@ import 'react-native-url-polyfill/auto';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import { StyleSheet, Text, View, Image, PlatformColor, Pressable, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, PlatformColor, Pressable, SafeAreaView, ScrollView } from 'react-native';
 import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
@@ -200,23 +200,11 @@ function Profile( {navigation} ){
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
-  // const [session, setSession] = useState<Session | null>(null)
-
-  // useEffect(() => {
-  //   supabase.auth.getSession().then(({ data: { session } }) => {
-  //     setSession(session)
-  //   })
-
-  //   supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session)
-  //   })
-  // }, [])
+function NavContainer(){
+  const navstyles = StyleSheet.create({
+    
+  });
   return (
-  //   <View>
-  //   {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
-  // </View>
-
 
     <NavigationContainer>
       <Tab.Navigator initialRouteName={'Feed'}
@@ -257,7 +245,23 @@ export default function App() {
       </Tab.Navigator>
 
     </NavigationContainer>
+  );
+}
 
+
+export default function App() {
+  let contentDisplayed = null;
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  if ( isLoggedIn ){
+    contentDisplayed = <NavContainer/>
+  } else {
+    contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
+  }
+return (
+  <SafeAreaView style={styles.container}>
+   {contentDisplayed}
+  </SafeAreaView>
 
   );
 }

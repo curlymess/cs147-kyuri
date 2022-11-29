@@ -3,7 +3,7 @@ import { Alert, StyleSheet, View } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from 'react-native-elements'
 
-export default function Auth() {
+export default function Auth( {setIsLoggedIn} ) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -14,7 +14,7 @@ export default function Auth() {
       email: email,
       password: password,
     })
-
+    if(!error) setIsLoggedIn(true)
     if (error) Alert.alert(error.message)
     setLoading(false)
   }
@@ -25,7 +25,7 @@ export default function Auth() {
       email: email,
       password: password,
     })
-
+    if(!error) setIsLoggedIn(true)
     if (error) Alert.alert(error.message)
     setLoading(false)
   }
