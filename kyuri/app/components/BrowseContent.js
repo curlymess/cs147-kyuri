@@ -5,6 +5,8 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
+import Pedestal from '../../app/components/Pedestal.js';
+
 import { useState } from 'react';
 
 
@@ -120,9 +122,12 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View>
-                    <Text>
-                        Products
-                    </Text>
+                    <Pedestal
+                        size={56}
+                        url={require('../../assets/Icons/iris.png')}
+                    >
+                    </Pedestal>
+                    
                 </View>
             );
         }
