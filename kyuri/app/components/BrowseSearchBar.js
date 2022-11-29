@@ -7,7 +7,7 @@ import { palette } from '../../assets/Themes/palette';
 
 
 
-export default function BrowseSearchBar() {
+export default function BrowseSearchBar(props) {
   let [fontsLoaded] = useFonts({
     Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
     Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
@@ -25,8 +25,13 @@ export default function BrowseSearchBar() {
               <Pressable style={browseStyles.searchBarButton}>
                 <Ionicons name='search' size={28} color='black'></Ionicons>
               </Pressable>
-              <Pressable style={browseStyles.filterButton}>
-                <Ionicons name='options-outline' size={28} color='black'></Ionicons>
+              <Pressable 
+                style={browseStyles.filterButton}
+                onPress={() => {props.filterCallback(!props.filterProp)}}
+              >
+                <Ionicons 
+                  name='options-outline' size={28} color='black'
+                ></Ionicons>
               </Pressable>
             </View>
           </View>
@@ -74,9 +79,20 @@ const browseStyles = StyleSheet.create({
       borderTopRightRadius: 6,
       borderBottomRightRadius: 6,
     },
+    filterButton: {
+      backgroundColor: palette.cream,
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 44,
+      borderLeftWidth: 3,
+      borderColor: palette.darkBrown,
+      borderTopRightRadius: 6,
+      borderBottomRightRadius: 6,
+    },
     input: {
       fontSize: 16,
       marginLeft: 10,
       fontFamily: 'Monda',
-    }
+    },
 });
