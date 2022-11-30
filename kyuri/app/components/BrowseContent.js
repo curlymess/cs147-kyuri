@@ -5,6 +5,8 @@ import { useFonts } from 'expo-font';
 import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
 import ProductThumbnail from '../../app/components/ProductThumbnail.js';
+import PersonThumbnail from '../../app/components/PersonThumbnail.js';
+
 import AppLoading from 'expo-app-loading';
 
 import { useState } from 'react';
@@ -139,9 +141,10 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View>
-                    <Text>
-                        People
-                    </Text>
+                <View>
+                    <PersonThumbnail>
+                    </PersonThumbnail>                    
+                </View>
                 </View>
             );
         }
