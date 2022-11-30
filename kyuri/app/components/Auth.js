@@ -35,12 +35,12 @@ export default function Auth( {setIsLoggedIn} ) {
     setLoading(false)
   }
 
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={Icons.logo} />
         <Text style={styles.logoTxt}>Kyuri</Text>
@@ -78,8 +78,9 @@ export default function Auth( {setIsLoggedIn} ) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
     padding: 12,
+    backgroundColor: palette.white,
+    height: "100%",
   },
   verticallySpaced: {
     paddingTop: 4,

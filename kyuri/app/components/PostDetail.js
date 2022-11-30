@@ -4,8 +4,9 @@ import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
+import Pedestal from './Pedestal';
 
-const PostDetail = ({navigation, route}) => 
+const PostDetail = ({navigation, route, productImg}) => 
 {
    console.log(route.params); // issue with passing 
    const {postAuthor} = route.params;
@@ -17,24 +18,28 @@ const PostDetail = ({navigation, route}) =>
       <Top style={styles.head} />
 
       <View style={styles.postdetails}>
-          <View style={styles.headerImg}>
-            <Text>Header Image</Text>
+          <View style={styles.titleandimg}>
+            <View style={styles.headerImg}>
+            <Pedestal
+              size={50}
+              url={productImg}
+              >
+            </Pedestal>
+            </View>
+            <Text style={styles.title}>{postTitle.title}</Text>
           </View>
-          <Text style={styles.title}>{postTitle.title}</Text>
           <Text style={styles.tag}>Tags</Text>
 
           <View style={styles.authorProfile}>
-            <Text>{postAuthor.author}</Text>
+            <Text>by {postAuthor.author}</Text>
           </View>
           <Text style={styles.text}>{blogText.postText}</Text>
 
           <View style={styles.comment}>
             <Pressable>
-              <Text>View Comments</Text>
+              <Ionicons name={'chatbubble-ellipses-outline'} size={25} color={palette.green} />
             </Pressable>
-            <Pressable>
-              <Text>CommentBubble</Text>
-            </Pressable>
+            <Text>View Comments</Text>
           </View>
       </View>
       
@@ -55,6 +60,10 @@ const styles = StyleSheet.create({
     head: {
       flex: 1,
     },
+    titleandimg: {
+      padding: 10,
+      flexDirection: 'row',
+    },
     postdetails: {
       flex: 1,
       marginHorizontal: 10,
@@ -63,7 +72,7 @@ const styles = StyleSheet.create({
       flex: 1,
       borderRadius: 8,
       backgroundColor: palette.cream,
-
+      
     },
     title: {
       fontSize: 24,
@@ -78,10 +87,13 @@ const styles = StyleSheet.create({
     },
     text: {
       flex: 8,
+      fontSize: 16,
     },
     comment: {
       flex: 1,
       flexDirection: 'row',
+      alignItems: 'center',
+      padding: 3,
     },
    
 

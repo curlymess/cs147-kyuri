@@ -62,24 +62,21 @@ function Feed({ navigation }) {
       <ScrollView> 
         {/* //current issue is making the author icon show with longer titles and cutting off text that is too long */}
         <Post style={feedStyles.post} navigation={navigation}
-          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests!'}/>
+          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests!'} profileImg={Icons.logo}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'Anyone know a good product?'} author={'Benjamin W.'} postText={'While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow...'}/>
+          title={'Anyone know a good product?'} author={'Benjamin W.'} profileImg={Icons.p1} postText={'While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow...'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'Skin Update!'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+          title={'Skin Update!'} author={'Gertrude A.'} profileImg={Icons.p2} postText={'Perfect for the cold weather :)'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'My New Winter Routine'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+          title={'My New Winter Routine'} author={'Gertrude A.'} profileImg={Icons.p3} postText={'Perfect for the cold weather :)'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'My New Winter Routine 2'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+          title={'My New Winter Routine 2'} author={'Gertrude A.'} profileImg={Icons.p4} postText={'Perfect for the cold weather :)'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'My New Winter Routine 3'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+          title={'My New Winter Routine 3'} author={'Gertrude A.'} profileImg={Icons.p5} postText={'Perfect for the cold weather :)'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'My New Winter Routine 4'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
+          title={'My New Winter Routine 4'} author={'Gertrude A.'} profileImg={Icons.p6} postText={'Perfect for the cold weather :)'}/>
         <Post style={feedStyles.post} navigation={navigation}
-          title={'My New Winter Routine 5'} author={'Gertrude A.'} postText={'Perfect for the cold weather :)'}/>
-        
-        
-        
+          title={'My New Winter Routine 5'} author={'Gertrude A.'} profileImg={Icons.p7} postText={'Perfect for the cold weather :)'}/>
       </ScrollView>
          
 
@@ -163,13 +160,13 @@ function Profile( {navigation} ){
         <View style={profileStyles.myProfileCard}>
           <Image source={Icons.tom}/>
           <View>
-            <Text style={profileStyles.myProfileTxtName}>Tom S.</Text>
-            <Text style={profileStyles.myProfileTxt}>@TomShahee</Text>
+            <Text style={profileStyles.myProfileTxtName}>curr_user</Text>
+            <Text style={profileStyles.myProfileTxt}>@CURRENT_USER</Text>
           </View>
           <View>
-            <Text style={profileStyles.myProfileTxt}>Age 22</Text>
-            <Text style={profileStyles.myProfileTxt}>Ethnicity W</Text>
-            <Text style={profileStyles.myProfileTxt}>Level Novice</Text>
+            <Text style={profileStyles.myProfileTxt}>Age ??</Text>
+            <Text style={profileStyles.myProfileTxt}>Ethnicity ?</Text>
+            <Text style={profileStyles.myProfileTxt}>Level ?????</Text>
           </View>
         </View>
       </View>
@@ -182,14 +179,14 @@ function Profile( {navigation} ){
         </Pressable>
       </View>
 
-      <Text style={profileStyles.heading}>Recently Viewed Posts</Text>
+      <Text style={profileStyles.heading}>My Posts</Text>
       <ScrollView style={profileStyles.postsCard}   horizontal={true}>
 
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'Gertrude'} postText={'I am new to this'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Fran'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'} author={'CURRENT_USER'} profileImg={Icons.p6} productImg={Icons.product1} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
+        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'CURRENT_USER'} profileImg={Icons.p5} productImg={Icons.product2} postText={'I am new to this'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   profileImg={Icons.p1}   productImg={Icons.product3}postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   profileImg={Icons.p2}   productImg={Icons.product4} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   profileImg={Icons.p4}   productImg={Icons.product5} postText={'I love it!'}/>
       </ScrollView>
 
     </View>  

@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
 import Pedestal from './Pedestal';
 
-const Post = ({ navigation, title, author, postText }) => 
+const Post = ({ navigation, title, author, postText, profileImg }) => 
 {
   return (
 
@@ -20,7 +20,7 @@ const Post = ({ navigation, title, author, postText }) =>
             <View style={styles.picCol}>
                 <Pedestal
                     size={50}
-                    url={Icons.iris}>
+                    url={profileImg}>
                 </Pedestal>
             </View>
             
