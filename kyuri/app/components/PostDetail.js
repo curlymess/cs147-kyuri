@@ -24,7 +24,6 @@ const PostDetail = ({navigation, route}) =>
           <Text style={styles.tag}>Tags</Text>
 
           <View style={styles.authorProfile}>
-            <Text>Author Profile</Text>
             <Text>{postAuthor.author}</Text>
           </View>
           <Text style={styles.text}>{blogText.postText}</Text>
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
       backgroundColor: palette.lightGreen
     },
     text: {
-      flex: 1,
+      flex: 8,
     },
     comment: {
       flex: 1,

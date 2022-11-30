@@ -28,7 +28,7 @@ export default function Top(props) {
             </View>
             <View style={styles.row}>
                 <Pressable style={styles.plus}>
-                    <Ionicons name="add-circle-outline" size={28} color='white'/>
+                    <Ionicons name="add-circle-outline" size={33} color='white'/>
                 </Pressable>
             </View>
         </View>
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: palette.green,
         width: '100%',
-        paddingTop: 50,
-        paddingBottom: 40,
+        paddingTop: 20,
+        paddingBottom: 20,
         flexDirection: 'row',
         paddingHorizontal: 10,
         borderBottomLeftRadius: 12,

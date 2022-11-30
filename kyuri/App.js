@@ -223,11 +223,11 @@ function NavContainer(){
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: palette.green,
+        tabBarActiveTintColor: palette.cream,
         tabBarInactiveTintColor: palette.darkBrown,
 
-        tabBarActiveBackgroundColor: palette.cream,
-        tabBarInactiveBackgroundColor: palette.cream,
+        tabBarActiveBackgroundColor: palette.green,
+        tabBarInactiveBackgroundColor: palette.green,
            style: {
                  backgroundColor: palette.cream,
                  paddingBottom: 3
@@ -257,7 +257,7 @@ export default function App() {
     contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
   }
 return (
-  <SafeAreaView style={styles.container}>
+  <SafeAreaView style={styles.greenbg}>
    {contentDisplayed}
   </SafeAreaView>
 
@@ -269,6 +269,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.white,
   },
+  greenbg: {
+    flex: 1,
+    backgroundColor: palette.green,
+  },
+
   head: {
     flex: 1,
   },
