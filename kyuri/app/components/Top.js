@@ -30,9 +30,6 @@ export default function Top(props) {
                 <Pressable style={styles.plus}>
                     <Ionicons name="add-circle-outline" size={28} color='white'/>
                 </Pressable>
-                <Pressable>
-                    <Ionicons name="search-outline" size={28} color='white'/>
-                </Pressable>
             </View>
         </View>
     );
