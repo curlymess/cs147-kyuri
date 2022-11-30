@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, Image } from 'react-native';
+import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, Image, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
 import Pedestal from './Pedestal.js';
+import MedPedestal from './MedPedestal.js';
+
+import { withTheme } from 'react-native-elements';
 
 
 
@@ -12,12 +15,12 @@ export default function ProductThumbnail(props) {
 
     let data = {
         name: 'Cucumber Moisturizer',
-        image: '../../assets/ProductIcons/product5.png',
+        image: require('../../assets/ProductIcons/product5.png'),
         type: 'Moisturizer',
         rating: 4,
         usedBy: [
-            '../../assets/Icons/iris.png',
-            '../../assets/Icons/tom.png',
+            require('../../assets/Icons/iris.png'),
+            require('../../assets/Icons/tom.png'),
         ],
     }
 
@@ -32,6 +35,12 @@ export default function ProductThumbnail(props) {
         <View style={styles.container}>
             <View style={styles.left}>
                 <View style={styles.pedestalWrapper}>
+                    <View style={styles.pedestalWrapperInner}>
+                        <MedPedestal
+                            url={data.image}
+                            light={false}
+                        ></MedPedestal>
+                    </View>
                 </View>
                 <View style={styles.nameWrapper}>
                     <Text style={styles.name}>{data.name}</Text>
@@ -47,7 +56,25 @@ export default function ProductThumbnail(props) {
                         <Ionicons name="star" size={12} color='white'/>
                         <Ionicons name="star" size={12} color='white'/>
                         <Ionicons name="star-outline" size={12} color='white'/>
-
+                    </View>
+                </View>
+                <View style={styles.rightBottom}>
+                    <View style={styles.usedByContainer}>
+                        <Text style={styles.usedBy}>
+                            Used by:
+                        </Text>
+                        <View style={styles.usedByPedestals}>
+                            <FlatList
+                                horizontal={true}
+                                data={data.usedBy}
+                                renderItem={({item}) =>
+                                    <Pedestal
+                                        url={item}
+                                        light={true}
+                                    ></Pedestal>
+                                }
+                            ></FlatList>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -62,24 +89,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 64,
         borderRadius: 12,
-        overflow: 'hidden',
     },
     pedestalWrapper: {
-        width: '40%',
+        width: '50%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     left: {
         width: '45%',
         backgroundColor: palette.cream,
         height: '100%',
         flexDirection: 'row',
+        borderTopLeftRadius: 12,
+        borderBottomLeftRadius: 12,
     },
     right: {
         width: '55%',
         height: '100%',
         backgroundColor: palette.darkBrown,
+        paddingHorizontal: 5,
+        borderTopRightRadius: 12,
+        borderBottomRightRadius: 12,
     },
     nameWrapper: {
-        width: '60%',
+        width: '50%',
         justifyContent: 'center',
     },
     name: {
@@ -88,12 +121,10 @@ const styles = StyleSheet.create({
     rightTop: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 5,
     },
     typeLabel: {
         fontFamily: 'MondaBold',
         color: 'white',
-        
     },
     type: {
         color: 'white',
@@ -105,5 +136,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 'auto',
         marginRight: 5,
+    }, 
+    usedByContainer: {
+        flexDirection: 'row',
+    },
+    rightBottom: {
+
+    },
+    usedBy: {
+        fontFamily: 'MondaBold',
+        color: 'white',
+    },
+    usedByPedestals: {
+        flexDirection: 'row',
+        alignItems: 'center',
+
+    },
+    pedestalWrapperInner: {
+        position: 'relative',
+        bottom: -10,
     }
 });

@@ -4,7 +4,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
-import Pedestal from '../../app/components/Pedestal.js';
 import ProductThumbnail from '../../app/components/ProductThumbnail.js';
 import AppLoading from 'expo-app-loading';
 

@@ -7,7 +7,7 @@ import { palette } from '../../assets/Themes/palette';
 
 
 
-export default function Pedestal(props) {
+export default function MedPedestal(props) {
     let [fontsLoaded] = useFonts({
         Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
         Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
@@ -17,8 +17,8 @@ export default function Pedestal(props) {
 
     return (
         <View style={[styles.container, {
-            width: 46,
-            height: 46,
+            width: 68,
+            height: 68,
         }]}>
             <View style={styles.base}></View>
             <View
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     platform: {
         width: '100%',
         height: 0,
-        borderBottomWidth: '20%',
+        borderBottomWidth: '30%',
         borderBottomColor: palette.darkBrown,
         borderLeftWidth: '5%',
         borderLeftColor: "transparent",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     lightPlatform: {
         width: '100%',
         height: 0,
-        borderBottomWidth: '20%',
+        borderBottomWidth: '30%',
         borderBottomColor: palette.lightBrown,
         borderLeftWidth: '5%',
         borderLeftColor: "transparent",
@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
     base: {
         backgroundColor: palette.green,
         width: '60%',
-        height: '10%',
+        height: '8%',
         position: 'absolute',
-        bottom: 0,
+        bottom: '2%',
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
     }
