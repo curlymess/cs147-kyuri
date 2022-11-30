@@ -84,9 +84,33 @@ export default function BrowseContent(props) {
         Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
         Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
         MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
-      });
-      if (!fontsLoaded) return <AppLoading />;
-    
+    });
+    if (!fontsLoaded) return <AppLoading />;
+
+    let personDataObj = {
+        name: 'Iris B.',
+        username: '@purplelove',
+        image: require('../../assets/Icons/iris.png'),
+        age: '76',
+        level: 'Novice',
+        mutuals: [
+            require('../../assets/Icons/iris.png'),
+            require('../../assets/Icons/tom.png'),
+        ],
+    }
+    let productDataObj = {
+        name: 'Cucumber Moisturizer',
+        image: require('../../assets/ProductIcons/product5.png'),
+        type: 'Moisturizer',
+        rating: 4,
+        usedBy: [
+            require('../../assets/Icons/iris.png'),
+            require('../../assets/Icons/tom.png'),
+        ],
+    }
+
+
+
 
     if (props.screen1Prop) {
         if (props.filterProp) {
@@ -125,7 +149,7 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View style={styles.resultsContainer}>
-                    <ProductThumbnail>
+                    <ProductThumbnail data={productDataObj}>
                     </ProductThumbnail>                    
                 </View>
             );
@@ -139,7 +163,7 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View style={styles.resultsContainer}>
-                    <PersonThumbnail>
+                    <PersonThumbnail data={personDataObj}>
                     </PersonThumbnail>                    
                 </View>
             );

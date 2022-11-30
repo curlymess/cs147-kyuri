@@ -13,17 +13,6 @@ import { withTheme } from 'react-native-elements';
 
 export default function ProductThumbnail(props) {
 
-    let data = {
-        name: 'Cucumber Moisturizer',
-        image: require('../../assets/ProductIcons/product5.png'),
-        type: 'Moisturizer',
-        rating: 4,
-        usedBy: [
-            require('../../assets/Icons/iris.png'),
-            require('../../assets/Icons/tom.png'),
-        ],
-    }
-
     let [fontsLoaded] = useFonts({
         Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
         Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
@@ -37,19 +26,19 @@ export default function ProductThumbnail(props) {
                 <View style={styles.pedestalWrapper}>
                     <View style={styles.pedestalWrapperInner}>
                         <MedPedestal
-                            url={data.image}
+                            url={props.data.image}
                             light={false}
                         ></MedPedestal>
                     </View>
                 </View>
                 <View style={styles.nameWrapper}>
-                    <Text style={styles.name}>{data.name}</Text>
+                    <Text style={styles.name}>{props.data.name}</Text>
                 </View>
             </View>
             <View style={styles.right}>
                 <View style={styles.rightTop}>
                     <Text style={styles.typeLabel}>Type </Text>
-                    <Text style={styles.type}>{data.type}</Text>
+                    <Text style={styles.type}>{props.data.type}</Text>
                     <View style={styles.stars}>
                         <Ionicons name="star" size={12} color='white'/>
                         <Ionicons name="star" size={12} color='white'/>
@@ -66,7 +55,7 @@ export default function ProductThumbnail(props) {
                         <View style={styles.usedByPedestals}>
                             <FlatList
                                 horizontal={true}
-                                data={data.usedBy}
+                                data={props.data.usedBy}
                                 renderItem={({item}) =>
                                     <Pedestal
                                         url={item}

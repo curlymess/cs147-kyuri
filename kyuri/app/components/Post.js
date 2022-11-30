@@ -4,7 +4,7 @@ import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
-import Pedestal from './Pedestal';
+import MedPedestal from './MedPedestal';
 
 const Post = ({ navigation, title, author, postText, profileImg }) => 
 {
@@ -18,10 +18,9 @@ const Post = ({ navigation, title, author, postText, profileImg }) =>
                 <Text style={styles.author}>by {author}</Text>
             </View>
             <View style={styles.picCol}>
-                <Pedestal
-                    size={50}
+                <MedPedestal
                     url={profileImg}>
-                </Pedestal>
+                </MedPedestal>
             </View>
             
         </Pressable>
@@ -30,6 +29,7 @@ const Post = ({ navigation, title, author, postText, profileImg }) =>
             <Text style={styles.postText}>{postText}</Text>
         </View>
     </View>
+    <Text style={styles.feedText}>User posted Time ago...</Text>
         
     
 </View>
@@ -43,9 +43,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: palette.cream,
         marginHorizontal: 10,
-        marginVertical: 10,
+        marginTop: 40,
         borderRadius: 8,
-        padding: 10,  
+        padding: 10,
+        paddingTop: 5,  
     },
     colFlex: {
         flex: 1,
@@ -53,14 +54,20 @@ const styles = StyleSheet.create({
     },
     post: {
         flexDirection: 'row',
+        position: 'relative',
     },
     title: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: '700',
+        fontFamily: 'MondaBold',
+
     },
     author: {
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: '300',
+        fontFamily: 'Monda',
+        position: 'relative',
+        top: -2,
     },
     otherProfilePics: {
         maxHeight: 40,
@@ -72,6 +79,8 @@ const styles = StyleSheet.create({
     },
     postText: {
         flex: 3,
+        marginTop: 10,
+        fontFamily: 'Monda',
     },
     expandButton: {
         flex: 1,
@@ -91,7 +100,17 @@ const styles = StyleSheet.create({
     },
     picCol: {
         flex: 1,
-        padding: 5,
+        position: 'absolute',
+        top: -22,
+        right: 0,
+    },
+    feedText: {
+        position: 'absolute',
+        left: 10,
+        top: -20,
+        fontSize: 12,
+        color: 'darkGrey',
+        fontFamily: 'Monda',
     },
 
 });

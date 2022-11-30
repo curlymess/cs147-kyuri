@@ -13,24 +13,12 @@ import { AuthError } from '@supabase/supabase-js';
 
 
 export default function PersonThumbnail(props) {
-
-    let data = {
-        name: 'Iris B.',
-        username: '@purplelove',
-        image: require('../../assets/Icons/iris.png'),
-        age: '76',
-        level: 'Novice',
-        mutuals: [
-            require('../../assets/Icons/iris.png'),
-            require('../../assets/Icons/tom.png'),
-        ],
-    }
-
     let [fontsLoaded] = useFonts({
         Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
         Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
         MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
     });
+
     if (!fontsLoaded) return <AppLoading />;
 
     return (
@@ -39,22 +27,22 @@ export default function PersonThumbnail(props) {
                 <View style={styles.pedestalWrapper}>
                     <View style={styles.pedestalWrapperInner}>
                         <MedPedestal
-                            url={data.image}
+                            url={props.data.image}
                             light={false}
                         ></MedPedestal>
                     </View>
                 </View>
                 <View style={styles.nameWrapper}>
-                    <Text style={styles.name}>{data.name}</Text>
-                    <Text style={styles.username}>{data.username}</Text>
+                    <Text style={styles.name}>{props.data.name}</Text>
+                    <Text style={styles.username}>{props.data.username}</Text>
                 </View>
             </View>
             <View style={styles.right}>
                 <View style={styles.rightTop}>
                     <Text style={styles.ageLabel}>Age </Text>
-                    <Text style={styles.age}>{data.age}</Text>
+                    <Text style={styles.age}>{props.data.age}</Text>
                     <Text style={styles.levelLabel}>Level </Text>
-                    <Text style={styles.level}>{data.level}</Text>
+                    <Text style={styles.level}>{props.data.level}</Text>
 
                 </View>
                 <View style={styles.rightBottom}>
@@ -65,7 +53,7 @@ export default function PersonThumbnail(props) {
                         <View style={styles.mutualsPedestals}>
                             <FlatList
                                 horizontal={true}
-                                data={data.mutuals}
+                                data={props.data.mutuals}
                                 renderItem={({item}) =>
                                     <Pedestal
                                         url={item}
