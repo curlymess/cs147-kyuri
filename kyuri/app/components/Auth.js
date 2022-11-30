@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, View } from 'react-native'
+import { useFonts } from 'expo-font';
+import { Alert, StyleSheet, View, Text, Image } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from 'react-native-elements'
+import { palette } from '../../assets/Themes/palette'
+import Icons from '../../assets/Icons';
+import { Pressable } from 'react-native';
+
 
 export default function Auth( {setIsLoggedIn} ) {
   const [email, setEmail] = useState('')
@@ -30,8 +35,16 @@ export default function Auth( {setIsLoggedIn} ) {
     setLoading(false)
   }
 
+  let [fontsLoaded] = useFonts({
+    Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
+  });
+
   return (
     <View>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={Icons.logo} />
+        <Text style={styles.logoTxt}>Kyuri</Text>
+      </View>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input
           label="Email"
@@ -53,12 +66,12 @@ export default function Auth( {setIsLoggedIn} ) {
           autoCapitalize={'none'}
         />
       </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Button title="Sign in" disabled={loading} onPress={() => signInWithEmail()} />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Button title="Sign up" disabled={loading} onPress={() => signUpWithEmail()} />
-      </View>
+      <Pressable style={[styles.verticallySpaced, styles.mt20, styles.bttn]} disabled={loading} onPress={() => signInWithEmail()}>
+        <Text style={styles.bttnTxt}>Sign In</Text>
+      </Pressable>
+      <Pressable style={[styles.verticallySpaced, styles.bttn]} disabled={loading} onPress={() => signUpWithEmail()}>
+        <Text style={styles.bttnTxt}>Sign Up</Text>
+      </Pressable>
     </View>
   )
 }
@@ -76,5 +89,34 @@ const styles = StyleSheet.create({
   mt20: {
     marginTop: 20,
   },
+  logoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+      resizeMode: 'contain',
+      maxHeight: 55,
+      maxWidth: 55,
+  },
+  logoTxt: {
+    fontSize: 50,
+    color: palette.green,
+    fontFamily: 'Rosmatika',
+    paddingTop: 10,
+    marginTop: 4,
+    marginLeft: 4,
+  },
+  bttn: {
+    backgroundColor: palette.green,
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  bttnTxt: {
+    padding: 10,
+    color: palette.white,
+    fontSize: 20,
+  },
+
 })
 

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
 import Pedestal from '../../app/components/Pedestal.js';
+import AppLoading from 'expo-app-loading';
 
 import { useState } from 'react';
 

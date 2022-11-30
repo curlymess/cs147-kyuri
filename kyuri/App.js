@@ -1,5 +1,4 @@
 import 'react-native-url-polyfill/auto';
-import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View, Image, PlatformColor, Pressable, SafeAreaView, ScrollView } from 'react-native';
@@ -115,7 +114,6 @@ function Browse() {
 }
 
 function Profile( {navigation} ){
-  //issue with content (author, title, posttext) are not showing in postdetails page
   const author = "author";
   const title = "title";
   const postText = "postText";
