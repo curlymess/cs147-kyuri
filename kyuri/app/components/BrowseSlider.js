@@ -8,9 +8,6 @@ import { palette } from '../../assets/Themes/palette';
 
 export default function BrowseSlider(props) {
 
-
-
-
     let [fontsLoaded] = useFonts({
         Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
         Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
@@ -21,24 +18,24 @@ export default function BrowseSlider(props) {
         <View style={styles.sliderContainer}>
             <View style={styles.wrapper}>
                 <Pressable 
-                    style={props.screen1Prop ? styles.currentButton : styles.button}
-                    onPress={() => { props.screen1Callback(true); props.screen2Callback(false); props.screen3Callback(false);}}
+                    style={props.s1 ? styles.currentButton : styles.button}
+                    onPress={() => { props.c1(true); props.c2(false); props.c3(false);}}
                 >
                     <Text style={styles.buttonText}>
                         Products
                     </Text>
                 </Pressable>
                 <Pressable 
-                    style={props.screen2Prop ? styles.currentButton : styles.button}
-                    onPress={() => { props.screen1Callback(false); props.screen2Callback(true); props.screen3Callback(false);}}
+                    style={props.s2 ? styles.currentButton : styles.button}
+                    onPress={() => { props.c1(false); props.c2(true); props.c3(false);}}
                 >
                     <Text style={styles.buttonText}>
                         People
                     </Text>
                 </Pressable>
                 <Pressable 
-                    style={props.screen3Prop ? styles.currentButton : styles.button}
-                    onPress={() => { props.screen1Callback(false); props.screen2Callback(false); props.screen3Callback(true);}}
+                    style={props.s3 ? styles.currentButton : styles.button}
+                    onPress={() => { props.c1(false); props.c2(false); props.c3(true);}}
                 >
                     <Text style={styles.buttonText}>
                         Posts

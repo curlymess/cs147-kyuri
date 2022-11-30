@@ -15,12 +15,14 @@ export default function Top(props) {
     return (
         <View style={styles.container}>
             <View style={styles.row}>
+                {!props.noBack &&
                 <Pressable style={styles.back}>
                     <Ionicons name="arrow-back-outline" size={18} color='white'/>
                     <Text style={styles.backText}>
                         Back
                     </Text>
                 </Pressable>
+                }              
             </View>
             <View style={styles.logoContainter}>
                 <Image style={styles.logo} source={Icons.logo} />

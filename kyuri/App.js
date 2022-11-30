@@ -18,8 +18,9 @@ import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import Auth from './app/components/Auth.js';
 import { useState } from 'react';
 
-import BrowseSlider from './app/components/BrowseSlider.js';
 import BrowseContent from './app/components/BrowseContent.js';
+import BrowseSlider from './app/components/BrowseSlider.js';
+
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
@@ -56,7 +57,7 @@ function Feed({ navigation }) {
   });
   return (
     <View style={styles.container}>
-      <Top style={styles.head} />
+      <Top style={styles.head} noBack="true"/>
       <StatusBar style="auto" />
 
       <ScrollView> 
@@ -90,19 +91,29 @@ function Browse() {
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
   const [filter, toggleFilter] = useState(false);
-
+  console.log(screen1);
   return (
   <View style={styles.container}>
-    <Top style={styles.head} />
+    <Top style={styles.head} noBack="true"/>
     <StatusBar style="auto"/>
-    <BrowseSearchBar filterProp={filter} filterCallback={toggleFilter}></BrowseSearchBar>
-    <BrowseSlider 
-      screen1Prop={screen1} screen2Prop={screen2} screen3Prop={screen3}
-      screen1Callback={toggleScreen1} screen2Callback={toggleScreen2} screen3Callback={toggleScreen3} 
+    <BrowseSearchBar 
+      filterProp={filter} 
+      filterCallback={toggleFilter}
+    >
+    </BrowseSearchBar>
+    <BrowseSlider
+          s1={screen1} 
+          s2={screen2} 
+          s3={screen3}
+          c1={toggleScreen1} 
+          c2={toggleScreen2} 
+          c3={toggleScreen3} 
     >
     </BrowseSlider>
     <BrowseContent
-      screen1Prop={screen1} screen2Prop={screen2} screen3Prop={screen3}
+      screen1Prop={screen1} 
+      screen2Prop={screen2} 
+      screen3Prop={screen3}
       filterProp={filter} 
     >
     </BrowseContent>

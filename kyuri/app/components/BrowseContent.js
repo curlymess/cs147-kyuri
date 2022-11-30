@@ -6,6 +6,7 @@ import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
 import ProductThumbnail from '../../app/components/ProductThumbnail.js';
 import PersonThumbnail from '../../app/components/PersonThumbnail.js';
+import BrowseSlider from './BrowseSlider.js';
 
 import AppLoading from 'expo-app-loading';
 
@@ -123,7 +124,7 @@ export default function BrowseContent(props) {
             );        
         } else {
             return(
-                <View>
+                <View style={styles.resultsContainer}>
                     <ProductThumbnail>
                     </ProductThumbnail>                    
                 </View>
@@ -133,18 +134,13 @@ export default function BrowseContent(props) {
         if (props.filterProp) {
             return (
                 <View style={styles.filterPageContainer}>
-                    <Text>
-                        People Filter
-                    </Text>
                 </View>
             );        
         } else {
             return(
-                <View>
-                <View>
+                <View style={styles.resultsContainer}>
                     <PersonThumbnail>
                     </PersonThumbnail>                    
-                </View>
                 </View>
             );
         }
@@ -152,20 +148,19 @@ export default function BrowseContent(props) {
         if (props.filterProp) {
             return (
                 <View>
-                    <Text>
-                        Posts Filter
-                    </Text>
                 </View>
             );        
         } else {
             return(
-                <View>
+                <View style={styles.resultsContainer}>
                     <Text>
                         Posts
                     </Text>
                 </View>
             );
         }
+    } else {
+
     }
 }
 const styles = StyleSheet.create({
@@ -190,5 +185,9 @@ const styles = StyleSheet.create({
     outerList: {
         marginHorizontal: 8,
         marginTop: 5, 
+    },
+    resultsContainer: {
+        position: 'relative',
+        top: -15,
     }
 });
