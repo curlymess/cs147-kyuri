@@ -4,6 +4,7 @@ import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
+import Pedestal from './Pedestal';
 
 const Post = ({ navigation, title, author, postText }) => 
 {
@@ -12,18 +13,21 @@ const Post = ({ navigation, title, author, postText }) =>
 <View style={styles.container}>
     <View style={styles.colFlex}>
         <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
-            <View> 
+            <View style={styles.col}> 
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.author}>by {author}</Text>
             </View>
-            <Image source={Icons.iris} style={styles.otherProfilePics}/>
+            <View style={styles.picCol}>
+                <Pedestal
+                    size={50}
+                    url={Icons.iris}>
+                </Pedestal>
+            </View>
+            
         </Pressable>
 
         <View style={styles.container2}>
             <Text style={styles.postText}>{postText}</Text>
-            <Pressable style={styles.expandButton}>
-                <Text style={styles.expandTxt}>Expand Post</Text>
-            </Pressable>
         </View>
     </View>
         
@@ -51,16 +55,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     title: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: '700',
     },
     author: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '300',
     },
     otherProfilePics: {
         maxHeight: 40,
         resizeMode: 'contain',
+        alignSelf: 'center',
     },
     container2: {
         flexDirection: 'row',
@@ -70,9 +75,23 @@ const styles = StyleSheet.create({
     },
     expandButton: {
         flex: 1,
+        borderRadius: 10,
+        backgroundColor: palette.green,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+
+
     },
     expandTxt: {
-        backgroundColor: palette.green,
+        padding: 2,
+        paddingVertical: 5,
+    },
+    col: {
+        flex: 4,
+    },
+    picCol: {
+        flex: 1,
+        padding: 5,
     },
 
 });
