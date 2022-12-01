@@ -12,7 +12,7 @@ const Post = ({ navigation, title, author, postText, profileImg }) =>
 
 <View style={styles.container}>
     <View style={styles.colFlex}>
-        <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText} })}>
+        <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, profileImg: {profileImg} })}>
             <View style={styles.col}> 
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.author}>by {author}</Text>

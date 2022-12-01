@@ -7,13 +7,34 @@ import Top from './Top';
 import Pedestal from './Pedestal';
 import PersonThumbnail from './PersonThumbnail';
 import { Icon } from 'react-native-elements';
-
-const PostDetail = ({navigation, route, productImg}) => 
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+const PostDetail = ({navigation, route}) => 
 {
+    let [fontsLoaded] = useFonts({
+      Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
+      Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
+      MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
+  });
+  if (!fontsLoaded) return <AppLoading />;
+
    console.log(route.params); // issue with passing 
    const {postAuthor} = route.params;
    const {postTitle} = route.params;
    const {blogText} = route.params;
+   const {profileImg} = route.params;
+
+   let personDataObj = {
+    name: 'Iris B.',
+    username: '@purplelove',
+    image: require('../../assets/Icons/iris.png'),
+    age: '76',
+    level: 'Novice',
+    mutuals: [
+        require('../../assets/Icons/iris.png'),
+        require('../../assets/Icons/tom.png'),
+    ],
+}
   return (
     
     <View style={styles.container}>
@@ -44,16 +65,24 @@ const PostDetail = ({navigation, route, productImg}) =>
             </View>
             <Text style={styles.title}>{postTitle.title}</Text>
           <View style={styles.tag}>
-            <View style={styles.blueTag}><Text>placeholder</Text></View>
-            <View style={styles.yellowTag}><Text>placeholder</Text></View>
+            <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>placeholder</Text></View>
+            <View style={styles.blueTag}><Text style={styles.tagTxt}>placeholder</Text></View>
           </View>
-          {/* <PersonThumbnail style={styles.authorProfile} data={personDataObject}></PersonThumbnail> */}
+          <PersonThumbnail 
+            name={personDataObj.name}
+            username={personDataObj.username}
+            image={personDataObj.image}
+            age={personDataObj.age}
+            level={personDataObj.level}
+            mutuals={personDataObj.mutuals}
+          >
+          </PersonThumbnail>
           <Text style={styles.text}>{blogText.postText}</Text>
 
           <View style={styles.comment}>
             <View style={styles.commentTxt}><Text style={styles.whiteTxt}>View Comments</Text></View>
             <Pressable>
-              <Ionicons name={'chatbubble-ellipses-outline'} size={25} color={palette.green} />
+              <Ionicons name={'chatbubble-ellipses-outline'} size={30} color={palette.darkBrown} />
             </Pressable>
           </View>
       </View>
@@ -89,6 +118,7 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: '700',
       margin: 10,
+      fontFamily: 'MondaBold',
     },
     tag: {
       flexDirection: 'row', 
@@ -97,23 +127,35 @@ const styles = StyleSheet.create({
     },
     blueTag: {
       backgroundColor: palette.blue,
-      padding: 10,
-      borderRadius: 15,
+      padding: 5,
+      paddingHorizontal: 15,
+      borderRadius: 20,
       marginRight: 3,
     },
-    yellowTag: {
-      backgroundColor: palette.yellow,
-      padding: 10,
-      borderRadius: 15,
+    creamTag: {
+      backgroundColor: palette.cream,
+      padding: 5,
+      paddingHorizontal: 15,
+      borderRadius: 20,
       marginRight: 3,
+    },
+    tagTxt: {
+      fontSize: 12,
+      color: palette.white,
+      fontFamily: 'MondaBold',
+    },
+    blackTxt: {
+      color: palette.black,
     },
     authorProfile: {
+
     },
     text: {
       fontSize: 16,
       height: '50%',
       margin: 10,
       marginTop: 20,
+      fontFamily: 'Monda',
     },
     comment: {
       flexDirection: 'row',
@@ -123,11 +165,13 @@ const styles = StyleSheet.create({
     commentTxt: {
       backgroundColor: palette.green,
       padding: 5,
-      borderRadius: 10,
+      paddingHorizontal: 15,
+      borderRadius: 20,
       marginRight: 5,
     },
     whiteTxt: {
       color: palette.white,
+      fontFamily: 'Monda',
     },
    
 
