@@ -1,6 +1,5 @@
 import 'react-native-url-polyfill/auto';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View, Image, PlatformColor, Pressable, SafeAreaView, ScrollView } from 'react-native';
 import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
@@ -24,6 +23,9 @@ import BrowseSlider from './app/components/BrowseSlider.js';
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
+
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
@@ -268,6 +270,12 @@ function NavContainer(){
 
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Rosmatika: require('./assets/Fonts/RosmatikaRegular-BWA45.ttf'),
+    Monda: require('./assets/Fonts/Monda-Regular.ttf'),
+    MondaBold: require('./assets/Fonts/Monda-Bold.ttf'),
+});
+
   let contentDisplayed = null;
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -276,6 +284,9 @@ export default function App() {
   } else {
     contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
   }
+
+  if (!fontsLoaded) return <AppLoading />;
+
 return (
   <SafeAreaView style={styles.greenbg}>
    {contentDisplayed}

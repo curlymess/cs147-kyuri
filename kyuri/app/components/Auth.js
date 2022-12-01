@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useFonts } from 'expo-font';
 import { Alert, StyleSheet, View, Text, Image } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from 'react-native-elements'
@@ -34,10 +33,6 @@ export default function Auth( {setIsLoggedIn} ) {
     if (error) Alert.alert(error.message)
     setLoading(false)
   }
-
-  const [fontsLoaded] = useFonts({
-    Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-  });
 
   return (
     <View style={styles.container}>

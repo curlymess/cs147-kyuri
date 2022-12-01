@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, Image, FlatList } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
 import { palette } from '../../assets/Themes/palette';
 import Pedestal from './Pedestal.js';
 import MedPedestal from './MedPedestal.js';
@@ -13,14 +10,6 @@ import { AuthError } from '@supabase/supabase-js';
 
 
 export default function PersonThumbnail(props) {
-    let [fontsLoaded] = useFonts({
-        Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-        Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
-        MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
-    });
-
-    if (!fontsLoaded) return <AppLoading />;
-
     return (
         <View style={styles.container}>
             <View style={styles.left}>

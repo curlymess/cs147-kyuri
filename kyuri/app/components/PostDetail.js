@@ -6,17 +6,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 import Pedestal from './Pedestal';
 import PersonThumbnail from './PersonThumbnail';
-import { Icon } from 'react-native-elements';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+
 const PostDetail = ({navigation, route}) => 
 {
-    let [fontsLoaded] = useFonts({
-      Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-      Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
-      MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
-  });
-  if (!fontsLoaded) return <AppLoading />;
 
    console.log(route.params); // issue with passing 
    const {postAuthor} = route.params;

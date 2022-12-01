@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useFonts } from 'expo-font';
 import { palette } from '../../assets/Themes/palette';
 import Checkbox from '../../app/components/Checkbox.js';
 import ProductThumbnail from '../../app/components/ProductThumbnail.js';
 import PersonThumbnail from '../../app/components/PersonThumbnail.js';
 import BrowseSlider from './BrowseSlider.js';
 
-import AppLoading from 'expo-app-loading';
 
 import { useState } from 'react';
-
-
-
 
 export default function BrowseContent(props) {
     let checkboxes = {list: [
@@ -79,13 +74,6 @@ export default function BrowseContent(props) {
         },
     ]}
     const [checkbs, checkCallb] = useState(checkboxes);
-
-    let [fontsLoaded] = useFonts({
-        Rosmatika: require('../../assets/Fonts/RosmatikaRegular-BWA45.ttf'),
-        Monda: require('../../assets/Fonts/Monda-Regular.ttf'),
-        MondaBold: require('../../assets/Fonts/Monda-Bold.ttf'),
-    });
-    if (!fontsLoaded) return <AppLoading />;
 
     let personDataObj = {
         name: 'Iris B.',

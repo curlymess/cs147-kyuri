@@ -46,5 +46,11 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 5,
       },
+      postTitle: {
+        fontFamily: 'MondaBold',
+      },
+      postType: {
+        fontFamily: 'Monda',
+      },
 
 });
