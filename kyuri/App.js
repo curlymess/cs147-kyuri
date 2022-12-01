@@ -72,7 +72,7 @@ function Feed({ navigation }) {
   });
   return (
     <View style={styles.container}>
-      <Top style={styles.head} noBack="true"/>
+      <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
 
       <ScrollView> 
@@ -178,7 +178,7 @@ function Profile( {navigation} ){
   });
   return (
     <View style={styles.container}>
-      <Top style={styles.head} />
+      <Top style={styles.head} noBack="true"/>
       <StatusBar style="auto" />
 
       <View style ={styles.container}>
@@ -289,7 +289,8 @@ export default function App() {
 
 return (
   <SafeAreaView style={styles.greenbg}>
-   {contentDisplayed}
+   {/* {contentDisplayed} */}
+   <NavContainer/>
   </SafeAreaView>
 
   );

@@ -34,7 +34,7 @@ const PostDetail = ({navigation, route}) =>
   return (
     
     <View style={styles.container}>
-      <Top/>
+      <Top navigation={navigation}/>
 
       <View style={styles.postdetails}>
             <View style={styles.headerImg}>

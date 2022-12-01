@@ -10,7 +10,7 @@ export default function Top(props) {
         <View style={styles.container}>
             <View style={styles.row}>
                 {!props.noBack &&
-                <Pressable style={styles.back}>
+                <Pressable style={styles.back} onPress={() => props.navigation.goBack()}>
                     <Ionicons name="arrow-back-outline" size={18} color='white'/>
                     <Text style={styles.backText}>
                         Back
