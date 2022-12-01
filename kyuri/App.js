@@ -151,20 +151,26 @@ function Profile( {navigation} ){
       justifyContent:'space-around',
       
     },
+    profileTxt: {
+      width: '50%',
+    },
     myProfileTxt: {
       color: palette.white,
       fontSize: 12,
+      fontFamily: 'Monda',
     },
     myProfileTxtName: {
       color: palette.white,
       fontSize: 24,
+      fontFamily: 'MondaBold',
     },
     routineCard: {
       backgroundColor: palette.cream,
-      flex: 1,
       marginHorizontal: 10,
       marginVertical: 10,
       borderRadius: 8,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     postsCard: {
       flex: 1,
@@ -174,7 +180,17 @@ function Profile( {navigation} ){
     },
     heading: {
       marginLeft: 10,
+      fontFamily: 'MondaBold',
     },  
+    routineTxt: {
+      fontFamily: 'MondaBold',
+      fontSize: 18,
+    },
+    viewRoutineTxt: {
+      fontFamily: 'Monda',
+      alignSelf: 'center',
+      color: palette.green,
+    },
   });
   return (
     <View style={styles.container}>
@@ -184,34 +200,35 @@ function Profile( {navigation} ){
       <View style ={styles.container}>
         <View style={profileStyles.myProfileCard}>
           <Image source={Icons.tom}/>
-          <View>
-            <Text style={profileStyles.myProfileTxtName}>curr_user</Text>
-            <Text style={profileStyles.myProfileTxt}>@CURRENT_USER</Text>
-          </View>
-          <View>
-            <Text style={profileStyles.myProfileTxt}>Age ??</Text>
-            <Text style={profileStyles.myProfileTxt}>Ethnicity ?</Text>
-            <Text style={profileStyles.myProfileTxt}>Level ?????</Text>
+          <View style={profileStyles.profileTxt}>
+            <Text style={profileStyles.myProfileTxtName}>Tom S.</Text>
+            <Text style={profileStyles.myProfileTxt}>@TaheeShahee</Text>
+            <Text style={profileStyles.myProfileTxt}>Age 22</Text>
+            <Text style={profileStyles.myProfileTxt}>Ethnicity W</Text>
+            <Text style={profileStyles.myProfileTxt}>Level Novice</Text>
           </View>
         </View>
       </View>
 
       <View style={profileStyles.routineCard}>
-        <Text>Current Routine:</Text>
-        <Text>Create your first routine!</Text>
+        <View>
+          <Text style={profileStyles.routineTxt}>Current Routine:</Text>
+          <Text style={profileStyles.routineTxt}>Create your first routine!</Text>
+        </View>
         <Pressable onPress={() => navigation.navigate('Routine')}>
           <Ionicons name={'add-circle-outline'} size={40} color={palette.green} />
         </Pressable>
       </View>
+      <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
 
       <Text style={profileStyles.heading}>My Posts</Text>
       <ScrollView style={profileStyles.postsCard}   horizontal={true}>
 
-        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'} author={'CURRENT_USER'} userImg={Icons.p1} productImg={Icons.product1} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
-        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'CURRENT_USER'} userImg={Icons.p1} productImg={Icons.product2} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'I am new to this'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   userImg={Icons.p1}   productImg={Icons.product3} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   userImg={Icons.p1}   productImg={Icons.product4} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'CURRENT_USER'}   userImg={Icons.p1}   productImg={Icons.product5} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'} author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
+        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I am new to this'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product3} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product4} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product5} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
       </ScrollView>
 
     </View>  
@@ -315,5 +332,5 @@ const styles = StyleSheet.create({
     maxWidth: 30,
     marginRight: 5,
   },
-  
+
 });
