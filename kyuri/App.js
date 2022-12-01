@@ -74,7 +74,9 @@ function Feed({ navigation }) {
     <View style={styles.container}>
       <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
+      <View style={styles.suggestedProductWrapper}>
 
+      </View>
       <ScrollView> 
         {/* //current issue is making the author icon show with longer titles and cutting off text that is too long */}
         <Post style={feedStyles.post} navigation={navigation} data={personDataObj} title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests!'} userImg={Icons.logo} userAge={'24'} userLevel={'Novice'} username={'@kyuri'}/>
@@ -93,9 +95,7 @@ function Feed({ navigation }) {
         <Post style={feedStyles.post} navigation={navigation}
           title={'My New Winter Routine 5'} author={'Gertrude A.'} userImg={Icons.p7} userAge={'24'} userLevel={'Novice'} username={'@kyuri'} postText={'Perfect for the cold weather :)'}/>
       </ScrollView>
-         
-
-      
+          
     </View>    
   )
 }
@@ -242,7 +242,6 @@ function NavContainer(){
     
   });
   return (
-
     <NavigationContainer>
       <Tab.Navigator initialRouteName={'Feed'}
         screenOptions={({ route }) => ({
@@ -254,7 +253,7 @@ function NavContainer(){
               ? 'home'
               : 'home-outline';
           } else if (route.name === 'Browse') {
-            iconName = focused ? 'file-tray-full' : 'file-tray-full-outline';
+            iconName = focused ? 'search' : 'search-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
           }
@@ -262,8 +261,8 @@ function NavContainer(){
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: palette.cream,
-        tabBarInactiveTintColor: palette.darkBrown,
+        tabBarActiveTintColor: palette.white,
+        tabBarInactiveTintColor: palette.white,
 
         tabBarActiveBackgroundColor: palette.green,
         tabBarInactiveBackgroundColor: palette.green,
