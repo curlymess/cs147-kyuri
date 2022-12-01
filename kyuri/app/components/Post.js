@@ -6,20 +6,21 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
 import MedPedestal from './MedPedestal';
 
-const Post = ({ navigation, title, author, postText, profileImg }) => 
+const Post = ({ navigation, title, author, postText, userImg, userAge, userLevel, username }) => 
 {
+    console.log(username)
   return (
 
 <View style={styles.container}>
     <View style={styles.colFlex}>
-        <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, profileImg: {profileImg} })}>
+        <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username} })}>
             <View style={styles.col}> 
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.author}>by {author}</Text>
             </View>
             <View style={styles.picCol}>
                 <MedPedestal
-                    url={profileImg}>
+                    url={userImg}>
                 </MedPedestal>
             </View>
             

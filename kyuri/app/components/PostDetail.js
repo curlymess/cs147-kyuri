@@ -23,13 +23,17 @@ const PostDetail = ({navigation, route}) =>
    const {postTitle} = route.params;
    const {blogText} = route.params;
    const {profileImg} = route.params;
+   const {age} = route.params;
+   const {level} = route.params;
+   const {username} = route.params;
+   
 
    let personDataObj = {
-    name: 'Iris B.',
-    username: '@purplelove',
-    image: require('../../assets/Icons/iris.png'),
-    age: '76',
-    level: 'Novice',
+    name: postAuthor.author,
+    username: username.username,
+    image: profileImg.userImg,
+    age: age.userAge,
+    level: level.userLevel,
     mutuals: [
         require('../../assets/Icons/iris.png'),
         require('../../assets/Icons/tom.png'),
