@@ -60,7 +60,6 @@ export default function PersonThumbnail(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 10,
         flexDirection: 'row',
         alignItems: 'center',
         height: 64,

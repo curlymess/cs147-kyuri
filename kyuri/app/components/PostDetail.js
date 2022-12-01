@@ -4,7 +4,7 @@ import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
-import Pedestal from './Pedestal';
+import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
 
 const PostDetail = ({navigation, route}) => 
@@ -37,32 +37,36 @@ const PostDetail = ({navigation, route}) =>
       <Top navigation={navigation}/>
 
       <View style={styles.postdetails}>
-            <View style={styles.headerImg}>
-            <Pedestal
-              size={50}
-              url={Icons.product1}
+          <View style={styles.headerImg}>
+            <View style={styles.pedestalWrapper}>
+              <MedPedestal
+                url={Icons.product5}
               >
-            </Pedestal>
-            <Pedestal
-              size={50}
-              url={Icons.product2}
-              >
-            </Pedestal>
-            <Pedestal
-              size={50}
-              url={Icons.product3}
-              >
-            </Pedestal>
-            <Pedestal
-              size={50}
-              url={Icons.product4}
-              >
-            </Pedestal>
+              </MedPedestal>
             </View>
-            <Text style={styles.title}>{postTitle.title}</Text>
+            <View style={styles.pedestalWrapper}>
+              <MedPedestal
+                url={Icons.product2}
+              >
+              </MedPedestal>
+            </View>
+            <View style={styles.pedestalWrapper}>
+              <MedPedestal
+                url={Icons.product3}
+              >
+              </MedPedestal>
+            </View>
+            <View style={styles.pedestalWrapper}>
+              <MedPedestal
+                url={Icons.product4}
+              >
+              </MedPedestal>
+            </View>
+          </View>
+          <Text style={styles.title}>{postTitle.title}</Text>
           <View style={styles.tag}>
-            <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>placeholder</Text></View>
-            <View style={styles.blueTag}><Text style={styles.tagTxt}>placeholder</Text></View>
+            <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>Tag</Text></View>
+            <View style={styles.blueTag}><Text style={styles.tagTxt}>Other-Tag</Text></View>
           </View>
           <PersonThumbnail 
             name={personDataObj.name}
@@ -100,7 +104,8 @@ const styles = StyleSheet.create({
     postdetails: {
       flex: 1,
       marginHorizontal: 10,
-      marginTop: 10,
+      position: 'relative',
+      top: -23,
     },
     headerImg: {
       borderRadius: 8,
@@ -113,30 +118,30 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 24,
       fontWeight: '700',
-      margin: 10,
+      marginTop: 40,
       fontFamily: 'MondaBold',
     },
     tag: {
       flexDirection: 'row', 
-      marginHorizontal: 10,
-      marginBottom: 10,
+      marginBottom: 15,
+      marginTop: 5,
     },
     blueTag: {
       backgroundColor: palette.blue,
-      padding: 5,
+      padding: 3,
       paddingHorizontal: 15,
       borderRadius: 20,
       marginRight: 3,
     },
     creamTag: {
-      backgroundColor: palette.cream,
-      padding: 5,
+      backgroundColor: palette.yellow,
+      padding: 3,
       paddingHorizontal: 15,
       borderRadius: 20,
       marginRight: 3,
     },
     tagTxt: {
-      fontSize: 12,
+      fontSize: 10,
       color: palette.white,
       fontFamily: 'MondaBold',
     },
@@ -147,9 +152,9 @@ const styles = StyleSheet.create({
 
     },
     text: {
-      fontSize: 16,
+      fontSize: 12,
       height: '50%',
-      margin: 10,
+      marginBottom: 10,
       marginTop: 20,
       fontFamily: 'Monda',
     },
@@ -169,6 +174,8 @@ const styles = StyleSheet.create({
       color: palette.white,
       fontFamily: 'Monda',
     },
-   
-
+    pedestalWrapper: {
+      position: 'relative',
+      bottom: -8,
+    }
 });

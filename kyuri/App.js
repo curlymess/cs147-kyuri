@@ -280,7 +280,6 @@ function NavContainer(){
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
       </Tab.Navigator>
-
     </NavigationContainer>
   );
 }

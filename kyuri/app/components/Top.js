@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: palette.green,
         width: '100%',
-        paddingTop: 20,
-        paddingBottom: 20,
+        paddingTop: 10,
+        paddingBottom: 30,
         flexDirection: 'row',
         paddingHorizontal: 10,
         borderBottomLeftRadius: 12,
