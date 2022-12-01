@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import PostDetail from './PostDetail';
 import MedPedestal from './MedPedestal';
 
-const Post = ({ navigation, title, author, postText, userImg, userAge, userLevel, username }) => 
+const Post = ({ navigation, title, author, postText, userImg, userAge, userLevel, username, postTime }) => 
 {
     console.log(username)
   return (
@@ -27,10 +27,10 @@ const Post = ({ navigation, title, author, postText, userImg, userAge, userLevel
         </Pressable>
 
         <View style={styles.container2}>
-            <Text style={styles.postText}>{postText}</Text>
+            <Text style={styles.postText} numberOfLines={1} ellipsizeMode="tail">{postText}</Text>
         </View>
     </View>
-    <Text style={styles.feedText}>User posted Time ago...</Text>
+    <Text style={styles.feedText}>{username} posted {postTime} ago...</Text>
         
     
 </View>
