@@ -91,7 +91,6 @@ function Browse() {
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
   const [filter, toggleFilter] = useState(false);
-  console.log(screen1);
   return (
   <View style={styles.container}>
     <Top style={styles.head} noBack="true"/>

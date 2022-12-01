@@ -27,22 +27,22 @@ export default function PersonThumbnail(props) {
                 <View style={styles.pedestalWrapper}>
                     <View style={styles.pedestalWrapperInner}>
                         <MedPedestal
-                            url={props.data.image}
+                            url={props.image}
                             light={false}
                         ></MedPedestal>
                     </View>
                 </View>
                 <View style={styles.nameWrapper}>
-                    <Text style={styles.name}>{props.data.name}</Text>
-                    <Text style={styles.username}>{props.data.username}</Text>
+                    <Text style={styles.name}>{props.name}</Text>
+                    <Text style={styles.username}>{props.username}</Text>
                 </View>
             </View>
             <View style={styles.right}>
                 <View style={styles.rightTop}>
                     <Text style={styles.ageLabel}>Age </Text>
-                    <Text style={styles.age}>{props.data.age}</Text>
+                    <Text style={styles.age}>{props.age}</Text>
                     <Text style={styles.levelLabel}>Level </Text>
-                    <Text style={styles.level}>{props.data.level}</Text>
+                    <Text style={styles.level}>{props.level}</Text>
 
                 </View>
                 <View style={styles.rightBottom}>
@@ -53,7 +53,7 @@ export default function PersonThumbnail(props) {
                         <View style={styles.mutualsPedestals}>
                             <FlatList
                                 horizontal={true}
-                                data={props.data.mutuals}
+                                data={props.mutuals}
                                 renderItem={({item}) =>
                                     <Pedestal
                                         url={item}

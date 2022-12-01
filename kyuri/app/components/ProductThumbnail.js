@@ -26,19 +26,19 @@ export default function ProductThumbnail(props) {
                 <View style={styles.pedestalWrapper}>
                     <View style={styles.pedestalWrapperInner}>
                         <MedPedestal
-                            url={props.data.image}
+                            url={props.image}
                             light={false}
                         ></MedPedestal>
                     </View>
                 </View>
                 <View style={styles.nameWrapper}>
-                    <Text style={styles.name}>{props.data.name}</Text>
+                    <Text style={styles.name}>{props.name}</Text>
                 </View>
             </View>
             <View style={styles.right}>
                 <View style={styles.rightTop}>
                     <Text style={styles.typeLabel}>Type </Text>
-                    <Text style={styles.type}>{props.data.type}</Text>
+                    <Text style={styles.type}>{props.type}</Text>
                     <View style={styles.stars}>
                         <Ionicons name="star" size={12} color='white'/>
                         <Ionicons name="star" size={12} color='white'/>
@@ -55,7 +55,7 @@ export default function ProductThumbnail(props) {
                         <View style={styles.usedByPedestals}>
                             <FlatList
                                 horizontal={true}
-                                data={props.data.usedBy}
+                                data={props.usedBy}
                                 renderItem={({item}) =>
                                     <Pedestal
                                         url={item}

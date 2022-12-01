@@ -149,7 +149,13 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View style={styles.resultsContainer}>
-                    <ProductThumbnail data={productDataObj}>
+                    <ProductThumbnail 
+                        name={productDataObj.name}
+                        image={productDataObj.image}
+                        type={productDataObj.type}
+                        rating={productDataObj.rating}
+                        usedBy={productDataObj.usedBy}
+                    >
                     </ProductThumbnail>                    
                 </View>
             );
@@ -163,7 +169,14 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View style={styles.resultsContainer}>
-                    <PersonThumbnail data={personDataObj}>
+                    <PersonThumbnail 
+                        name={personDataObj.name}
+                        username={personDataObj.username}
+                        image={personDataObj.image}
+                        age={personDataObj.age}
+                        level={personDataObj.level}
+                        mutuals={personDataObj.mutuals}
+                    >
                     </PersonThumbnail>                    
                 </View>
             );
@@ -171,7 +184,7 @@ export default function BrowseContent(props) {
     } else if (props.screen3Prop) {
         if (props.filterProp) {
             return (
-                <View>
+                <View style={styles.filterPageContainer}>
                 </View>
             );        
         } else {

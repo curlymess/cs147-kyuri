@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         flex: 3,
         marginTop: 10,
         fontFamily: 'Monda',
+        fontSize: 12,
     },
     expandButton: {
         flex: 1,
