@@ -361,6 +361,6 @@ const styles = StyleSheet.create({
         top: -15,
     },
     postsScroll: {
-        marginBottom: 30, 
+        marginBottom: 144,
     }
 });
