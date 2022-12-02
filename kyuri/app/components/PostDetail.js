@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import CommentCard from './CommentCard';
 const PostDetail = ({navigation, route}) => 
 {
-   console.log(route.params); // issue with passing 
+   console.log(route.params);
    const {postAuthor} = route.params;
    const {postTitle} = route.params;
    const {blogText} = route.params;
@@ -65,10 +65,10 @@ const PostDetail = ({navigation, route}) =>
             </View>
           </View>
           <Text style={styles.title}>{postTitle.title}</Text>
-          <View style={styles.tag}>
+          {!showCommentBttn && <View style={styles.tag}>
             <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>Tag</Text></View>
             <View style={styles.blueTag}><Text style={styles.tagTxt}>Other-Tag</Text></View>
-          </View>
+          </View>}
           <PersonThumbnail 
             name={personDataObj.name}
             username={personDataObj.username}
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: '700',
       marginTop: 15,
+      marginBottom: 3,
       fontFamily: 'MondaBold',
     },
     tag: {
