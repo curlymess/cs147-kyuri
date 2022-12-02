@@ -175,10 +175,10 @@ function Profile( {navigation} ){
       alignItems: 'center',
     },
     postsCard: {
-      flex: 1,
       marginHorizontal: 10,
       marginVertical: 10,
       flexDirection: 'row',
+      flex: 1,
     },
     heading: {
       marginLeft: 10,

@@ -97,12 +97,7 @@ const PostDetail = ({navigation, route}) =>
             </View>}
 
           </ScrollView>
-
-         
-
-      </View>
-      
-        
+      </View>   
     </View>
   );
 };
@@ -124,7 +119,7 @@ const styles = StyleSheet.create({
     },
     postsCard: {
       marginVertical: 10,
-      
+      marginBottom: 0,
     },
     headerImg: {
       borderRadius: 8,
