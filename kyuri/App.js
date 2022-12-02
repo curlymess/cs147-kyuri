@@ -81,7 +81,7 @@ function Feed({ navigation }) {
       </View>
       <ScrollView> 
         <Post style={feedStyles.post} navigation={navigation} postTime={'1 hour'}
-          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests we have some recommendations!'} userImg={Icons.logo} userAge={'0'} userLevel={'Master'} username={'@kyuri'} postType={'Recommendation'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={true}/>
+          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests we have some recommendations!'} userImg={Icons.logo} userAge={'0'} userLevel={'Master'} username={'@kyuri'} postType={'Recommendation'} yellowTagTxt={'y'} blueTagTxt={'b'} hideTags={true}/>
         <Post style={feedStyles.post} navigation={navigation} postTime={'2 hours'}
           title={'Consider coral reef-safe sunscreen'} author={'Benjamin W.'} userImg={Icons.p1} userAge={'36'} userLevel={'Expert'} username={'@EnviroBen'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={'While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow us to soak up rays without harming the precious marine environments we are out to enjoy. Check out these alternative products!'}/>
         <Post style={feedStyles.post} navigation={navigation} postTime={'5 hours'}

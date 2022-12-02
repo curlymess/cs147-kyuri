@@ -8,7 +8,7 @@ import MedPedestal from './MedPedestal';
 
 const Post = ({ navigation, title, author, postText, userImg, userAge, userLevel, username, postTime, postType, blueTagTxt, yellowTagTxt, hideTags }) => 
 {
-    console.log(username)
+    console.log(hideTags)
   return (
 
 <View style={styles.container}>
