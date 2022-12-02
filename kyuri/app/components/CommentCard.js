@@ -4,6 +4,8 @@ import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Pedestal from './Pedestal';
+import MedPedestal from './MedPedestal';
+
 
 const CommentCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge }) => 
 {
@@ -11,10 +13,13 @@ const CommentCard = ({ navigation, title, author, postText, userImg, productImg,
 // fix the comment button showing in post detail using showCommentBttn
         <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: true  })}>
           <View style={styles.postTop}>
-            <Pedestal
-              size={100}
-              url={productImg}>
-            </Pedestal>
+            <View style={styles.pedestalWrapper}>
+              <Pedestal
+                url={productImg}
+                nonGreen={true}
+              >
+              </Pedestal>
+            </View>
           </View>
           <View style={styles.postBottom}>
             <Text style={styles.postTitle}>{title}</Text>
@@ -30,22 +35,22 @@ const styles = StyleSheet.create({
     posts: {
         backgroundColor: palette.cream,
         borderRadius: 8,
-        justifyContent: 'space-between',
-        marginHorizontal: 5,
-        maxWidth: '30%',
-        width: '30%',
+        marginBottom: 10,
+        flexDirection: 'row',
+        minHeight: 100,
       },
       postTop: {
-        height: '40%',
         backgroundColor: palette.lightGreen,
-        borderTopRightRadius: 8,
         borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingHorizontal: 5,
       },
       postBottom: {
-        height: '60%',
+        height: '100%',
         padding: 5,
+        marginLeft: 5,
       },
       postTitle: {
         fontFamily: 'MondaBold',

@@ -10,7 +10,7 @@ export default function Pedestal(props) {
             width: 46,
             height: 46,
         }]}>
-            <View style={styles.base}></View>
+            <View style={props.nonGreen ? styles.nonGreenBase : styles.base}></View>
             <View
                 style={props.light ? styles.lightPlatform : styles.platform}
             ></View>
@@ -66,6 +66,15 @@ const styles = StyleSheet.create({
 
     base: {
         backgroundColor: palette.green,
+        width: '60%',
+        height: '10%',
+        position: 'absolute',
+        bottom: 0,
+        borderBottomLeftRadius: 4,
+        borderBottomRightRadius: 4,
+    },
+    nonGreenBase: {
+        backgroundColor: palette.lightBrown,
         width: '60%',
         height: '10%',
         position: 'absolute',

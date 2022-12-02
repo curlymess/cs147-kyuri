@@ -69,20 +69,20 @@ const PostDetail = ({navigation, route}) =>
             <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>Tag</Text></View>
             <View style={styles.blueTag}><Text style={styles.tagTxt}>Other-Tag</Text></View>
           </View>
-          <PersonThumbnail 
-            name={personDataObj.name}
-            username={personDataObj.username}
-            image={personDataObj.image}
-            age={personDataObj.age}
-            level={personDataObj.level}
-            mutuals={personDataObj.mutuals}
-          >
-          </PersonThumbnail>
-          <ScrollView>
+          <ScrollView style={styles.commentCardContainer}>
+            <PersonThumbnail 
+              name={personDataObj.name}
+              username={personDataObj.username}
+              image={personDataObj.image}
+              age={personDataObj.age}
+              level={personDataObj.level}
+              mutuals={personDataObj.mutuals}
+            >
+            </PersonThumbnail>
             <Text style={styles.text}>{blogText.postText}</Text>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
-            {!showCommentBttn && <ScrollView style={styles.postsCard}   horizontal={true}>
+            {!showCommentBttn && <ScrollView style={styles.postsCard}>
                 <CommentCard navigation={navigation} title={'I agree!'}         author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
     },
     postsCard: {
       marginVertical: 10,
-      flexDirection: 'row',
       
     },
     headerImg: {
@@ -177,8 +176,7 @@ const styles = StyleSheet.create({
       padding: 3,
     },
     commentTxt: {
-      padding: 5,
-      paddingHorizontal: 15,
+      paddingTop: 5,
       borderRadius: 20,
       marginRight: 5,
       fontFamily: 'MondaBold',
@@ -190,5 +188,5 @@ const styles = StyleSheet.create({
     pedestalWrapper: {
       position: 'relative',
       bottom: -8,
-    }
+    },
 });
