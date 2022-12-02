@@ -20,7 +20,7 @@ const PostCard = ({ navigation, title, author, postText, userImg, productImg, us
           <View style={styles.postBottom}>
             <Text style={styles.postType}>Review</Text>
             <Text style={styles.postTitle}>{title}</Text>
-            <Text style={styles.postTitle}>{postText}</Text>
+            <Text style={styles.postText}>{postText}</Text>
 
           </View>
         </Pressable>
@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
       },
       postTitle: {
         fontFamily: 'MondaBold',
+      },
+      postText: {
+        width: 100,
       },
       postType: {
         fontFamily: 'Monda',
