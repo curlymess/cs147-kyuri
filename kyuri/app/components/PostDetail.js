@@ -8,7 +8,7 @@ import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
 import { ScrollView } from 'react-native-gesture-handler';
 import PostComment from './PostComment';
-
+import CommentCard from './CommentCard';
 const PostDetail = ({navigation, route}) => 
 {
    console.log(route.params); // issue with passing 
@@ -81,18 +81,20 @@ const PostDetail = ({navigation, route}) =>
           </PersonThumbnail>
           <ScrollView>
             <Text style={styles.text}>{blogText.postText}</Text>
+            <Text style={styles.commentTxt}>Comments</Text>
+
+            <ScrollView style={styles.postsCard}   horizontal={true}>
+                <CommentCard navigation={navigation} title={'I Loved It!'}      author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Wish I could give it 6 stars'}  author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+            </ScrollView>
+
           </ScrollView>
 
-          {showCommentBttn && 
-            <View style={styles.comment}>
-            <Pressable onPress={() => navigation.navigate('PostComment', { postAuthor: postAuthor, postTitle: postTitle, blogText: blogText, profileImg: profileImg, age: age, level: level, username: username })}>
-              <View style={styles.commentTxt}><Text style={styles.whiteTxt}>View Comments</Text></View>
-            </Pressable>
-            <Pressable>
-              <Ionicons name={'chatbubble-ellipses-outline'} size={30} color={palette.darkBrown} />
-            </Pressable>
-          </View>
-          }
+         
+
       </View>
       
         
@@ -115,6 +117,11 @@ const styles = StyleSheet.create({
       position: 'relative',
       top: -23,
     },
+    postsCard: {
+      marginVertical: 10,
+      flexDirection: 'row',
+      
+    },
     headerImg: {
       borderRadius: 8,
       backgroundColor: palette.cream,
@@ -126,7 +133,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 24,
       fontWeight: '700',
-      marginTop: 40,
+      marginTop: 15,
       fontFamily: 'MondaBold',
     },
     tag: {
@@ -171,11 +178,11 @@ const styles = StyleSheet.create({
       padding: 3,
     },
     commentTxt: {
-      backgroundColor: palette.green,
       padding: 5,
       paddingHorizontal: 15,
       borderRadius: 20,
       marginRight: 5,
+      fontFamily: 'MondaBold',
     },
     whiteTxt: {
       color: palette.white,
