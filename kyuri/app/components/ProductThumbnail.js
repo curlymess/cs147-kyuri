@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 64,
         borderRadius: 12,
+        marginBottom: 20,
     },
     pedestalWrapper: {
         width: '50%',
