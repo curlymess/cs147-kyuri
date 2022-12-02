@@ -31,6 +31,8 @@ import AppLoading from 'expo-app-loading';
 
 import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
+import PostComment from './app/components/PostComment';
+import CommentCard from './app/components/CommentCard';
 
 function Feed({ navigation }) {
   let personDataObj = {
@@ -191,6 +193,10 @@ function Profile( {navigation} ){
       fontFamily: 'Monda',
       alignSelf: 'center',
       color: palette.green,
+      textDecorationLine: 'underline',
+    },
+    addBttn: {
+      
     },
   });
   return (
@@ -216,20 +222,22 @@ function Profile( {navigation} ){
           <Text style={profileStyles.routineTxt}>Current Routine:</Text>
           <Text style={profileStyles.routineTxt}>Create your first routine!</Text>
         </View>
-        <Pressable onPress={() => navigation.navigate('Routine')}>
+        <Pressable style={profileStyles.addBttn} onPress={() => navigation.navigate('Routine', { navigation: navigation })}>
           <Ionicons name={'add-circle-outline'} size={40} color={palette.green} />
         </Pressable>
       </View>
-      <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
+      <Pressable>
+        <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
+      </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
       <ScrollView style={profileStyles.postsCard}   horizontal={true}>
 
-        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'} author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
-        <PostCard navigation={navigation} title={'Help with my routine?'}     author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I am new to this'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product3} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product4} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'} author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product5} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
+        <PostCard navigation={navigation} title={'Help with my routine?'}             author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I am new to this'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product3} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product4} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
+        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product5} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postText={'I love it!'}/>
       </ScrollView>
 
     </View>  
@@ -278,7 +286,9 @@ function NavContainer(){
         <Tab.Screen name="Browse" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
+        <Tab.Screen name="PostComment" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostComment} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
+        <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
       </Tab.Navigator>
     </NavigationContainer>
   );

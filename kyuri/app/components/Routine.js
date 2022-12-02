@@ -4,12 +4,12 @@ import Top from './Top';
 import { palette } from '../../assets/Themes/palette';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const Routine = () => 
+const Routine = ({navigation}) => 
 {
   return (
 
 <View style={styles.container}>
-    <Top style={styles.head} />
+    <Top style={styles.head} navigation={navigation} />
 
     <Text>Routine! </Text>
 </View>

@@ -6,12 +6,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
+import PostCard from './PostCard';
 import { ScrollView } from 'react-native-gesture-handler';
-import PostComment from './PostComment';
+import CommentCard from './CommentCard';
 
-const PostDetail = ({navigation, route}) => 
+const PostComment = ({navigation, route}) => 
 {
-   console.log(route.params); // issue with passing 
+   console.log(route.params);
    const {postAuthor} = route.params;
    const {postTitle} = route.params;
    const {blogText} = route.params;
@@ -19,7 +20,6 @@ const PostDetail = ({navigation, route}) =>
    const {age} = route.params;
    const {level} = route.params;
    const {username} = route.params;
-   const {showCommentBttn} = route.params;
    
 
    let personDataObj = {
@@ -79,20 +79,14 @@ const PostDetail = ({navigation, route}) =>
             mutuals={personDataObj.mutuals}
           >
           </PersonThumbnail>
-          <ScrollView>
-            <Text style={styles.text}>{blogText.postText}</Text>
-          </ScrollView>
-
-          {showCommentBttn && 
-            <View style={styles.comment}>
-            <Pressable onPress={() => navigation.navigate('PostComment', { postAuthor: postAuthor, postTitle: postTitle, blogText: blogText, profileImg: profileImg, age: age, level: level, username: username })}>
-              <View style={styles.commentTxt}><Text style={styles.whiteTxt}>View Comments</Text></View>
-            </Pressable>
-            <Pressable>
-              <Ionicons name={'chatbubble-ellipses-outline'} size={30} color={palette.darkBrown} />
-            </Pressable>
-          </View>
-          }
+          <Text style={styles.commentTxt}>Comments</Text>
+            <ScrollView style={styles.postsCard}   horizontal={true}>
+                <CommentCard navigation={navigation} title={'I Loved It!'}      author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Wish I could give it 6 stars'}  author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+            </ScrollView>
       </View>
       
         
@@ -100,7 +94,7 @@ const PostDetail = ({navigation, route}) =>
   );
 };
 
-export default PostDetail;
+export default PostComment;
 
 const styles = StyleSheet.create({
     container: {
@@ -171,11 +165,8 @@ const styles = StyleSheet.create({
       padding: 3,
     },
     commentTxt: {
-      backgroundColor: palette.green,
-      padding: 5,
-      paddingHorizontal: 15,
-      borderRadius: 20,
-      marginRight: 5,
+      paddingHorizontal: 10,
+      fontFamily: 'MondaBold',
     },
     whiteTxt: {
       color: palette.white,
@@ -184,5 +175,9 @@ const styles = StyleSheet.create({
     pedestalWrapper: {
       position: 'relative',
       bottom: -8,
-    }
+    },
+    postsCard: {
+        marginVertical: 10,
+        flexDirection: 'row',
+      },
 });
