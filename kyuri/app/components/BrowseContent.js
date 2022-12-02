@@ -303,7 +303,7 @@ export default function BrowseContent(props) {
         } else {
             return(
                 <View style={styles.resultsContainer2}>
-                    <ScrollView> 
+                    <ScrollView style={styles.postsScroll}> 
                         <Post postTime={'1 hour'}
                         title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests we have some recommendations!'} userImg={Icons.logo} userAge={'24'} userLevel={'Novice'} username={'@kyuri'}/>
                         <Post postTime={'2 hours'}
@@ -360,4 +360,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         top: -15,
     },
+    postsScroll: {
+        marginBottom: 30, 
+    }
 });

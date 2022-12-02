@@ -81,15 +81,15 @@ const PostDetail = ({navigation, route}) =>
           </PersonThumbnail>
           <ScrollView>
             <Text style={styles.text}>{blogText.postText}</Text>
-            <Text style={styles.commentTxt}>Comments</Text>
+            {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
-            <ScrollView style={styles.postsCard}   horizontal={true}>
+            {!showCommentBttn && <ScrollView style={styles.postsCard}   horizontal={true}>
                 <CommentCard navigation={navigation} title={'I Loved It!'}      author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Wish I could give it 6 stars'}  author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-            </ScrollView>
+            </ScrollView>}
 
           </ScrollView>
 

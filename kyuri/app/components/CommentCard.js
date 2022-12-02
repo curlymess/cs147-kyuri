@@ -9,7 +9,7 @@ const CommentCard = ({ navigation, title, author, postText, userImg, productImg,
 {
   return (
 // fix the comment button showing in post detail using showCommentBttn
-        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: 'true'  })}>
+        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: true  })}>
           <View style={styles.postTop}>
             <Pedestal
               size={100}
