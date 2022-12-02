@@ -261,7 +261,7 @@ function NavContainer(){
             iconName = focused
               ? 'home'
               : 'home-outline';
-          } else if (route.name === 'Browse') {
+          } else if (route.name === 'Search') {
             iconName = focused ? 'search' : 'search-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
@@ -283,7 +283,7 @@ function NavContainer(){
       })}
       >
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
-        <Tab.Screen name="Browse" options={{headerShown: false}} component={Browse} />
+        <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="PostComment" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostComment} />
