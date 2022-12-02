@@ -69,7 +69,7 @@ const PostDetail = ({navigation, route}) =>
             <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>Tag</Text></View>
             <View style={styles.blueTag}><Text style={styles.tagTxt}>Other-Tag</Text></View>
           </View>
-          <ScrollView style={styles.commentCardContainer}>
+          <ScrollView>
             <PersonThumbnail 
               name={personDataObj.name}
               username={personDataObj.username}
@@ -89,14 +89,8 @@ const PostDetail = ({navigation, route}) =>
                 <CommentCard navigation={navigation} title={'Yes!!!'}           author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
             </ScrollView>}
-
           </ScrollView>
-
-         
-
-      </View>
-      
-        
+      </View>   
     </View>
   );
 };
@@ -118,7 +112,7 @@ const styles = StyleSheet.create({
     },
     postsCard: {
       marginVertical: 10,
-      
+      marginBottom: 0,
     },
     headerImg: {
       borderRadius: 8,

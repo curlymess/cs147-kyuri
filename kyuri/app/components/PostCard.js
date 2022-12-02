@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Pedestal from './Pedestal';
+import MedPedestal from './MedPedestal';
 
 const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge }) => 
 {
@@ -11,14 +11,17 @@ const PostCard = ({ navigation, title, author, postText, userImg, productImg, us
 
         <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}  })}>
           <View style={styles.postTop}>
-            <Pedestal
-              size={56}
-              url={productImg}>
-            </Pedestal>
+            <View style={styles.pedestalWrapper}>
+              <MedPedestal
+                url={productImg}>
+              </MedPedestal>
+            </View>
           </View>
           <View style={styles.postBottom}>
             <Text style={styles.postType}>Review</Text>
             <Text style={styles.postTitle}>{title}</Text>
+            <Text style={styles.postTitle}>{postText}</Text>
+
           </View>
         </Pressable>
   );
@@ -30,21 +33,21 @@ const styles = StyleSheet.create({
     posts: {
         backgroundColor: palette.cream,
         borderRadius: 8,
-        justifyContent: 'space-between',
         marginHorizontal: 5,
-        width: '15%',
+        width: 200,
       },
       postTop: {
-        flex: 1,
         backgroundColor: palette.lightGreen,
         borderTopRightRadius: 8,
         borderTopLeftRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
+        height: 70,
+        position: 'relative',
       },
       postBottom: {
-        flex: 1,
         padding: 5,
+        marginTop: 10,
       },
       postTitle: {
         fontFamily: 'MondaBold',
@@ -52,5 +55,9 @@ const styles = StyleSheet.create({
       postType: {
         fontFamily: 'Monda',
       },
+      pedestalWrapper: {
+        position: 'absolute',
+        bottom: -15,
+      }
 
 });
