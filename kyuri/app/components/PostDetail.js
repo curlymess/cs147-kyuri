@@ -22,6 +22,7 @@ const PostDetail = ({navigation, route}) =>
    const {postType} = route.params;
    const {yellowTagTxt} = route.params;
    const {blueTagTxt} = route.params;
+   const {hideTags} = route.params;
    
 
    let personDataObj = {
@@ -68,11 +69,13 @@ const PostDetail = ({navigation, route}) =>
             </View>
           </View>
           <Text style={styles.title}>{postTitle.title}</Text>
-          {!showCommentBttn && <View style={styles.tag}>
-            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{postType.postType}</Text></View>
-            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{blueTagTxt.blueTagTxt}</Text></View>
-            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{yellowTagTxt.yellowTagTxt}</Text></View>
-          </View>}
+          {hideTags && <View style={styles.tag}>
+              <View style={styles.tagBttn}><Text style={styles.tagTxt}>{postType.postType}</Text></View>
+              <View style={styles.tagBttn}><Text style={styles.tagTxt}>{blueTagTxt.blueTagTxt}</Text></View>
+              <View style={styles.tagBttn}><Text style={styles.tagTxt}>{yellowTagTxt.yellowTagTxt}</Text></View>
+            </View>}
+          
+          <ScrollView style={styles.commentCardContainer}>
           <PersonThumbnail 
             name={personDataObj.name}
             username={personDataObj.username}
@@ -82,16 +85,15 @@ const PostDetail = ({navigation, route}) =>
             mutuals={personDataObj.mutuals}
           >
           </PersonThumbnail>
-          <ScrollView style={styles.commentCardContainer}>
             <Text style={styles.text}>{blogText.postText}</Text>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
             {!showCommentBttn && <View style={styles.postsCard}>
-                <CommentCard navigation={navigation} title={'I agree!'}         author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-                <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-                <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-                <CommentCard navigation={navigation} title={'Yes!!!'}           author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-                <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard title={'I agree!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'reviewwww'}/>
+                <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'reviewwww'}/>
+                <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'reviewwww'}/>
+                <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'reviewwww'}/>
+                <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'reviewwww'}/>
             </View>}
 
           </ScrollView>
@@ -145,7 +147,9 @@ const styles = StyleSheet.create({
       marginTop: 5,
     },
     tagBttn: {
-      backgroundColor: palette.blue,
+      backgroundColor: palette.blueTag,
+      borderColor: palette.blueTagBorder,
+      borderWidth: 1,
       padding: 3,
       paddingHorizontal: 15,
       borderRadius: 20,
@@ -174,7 +178,7 @@ const styles = StyleSheet.create({
     },
     tagTxt: {
       fontSize: 10,
-      color: palette.white,
+      color: palette.black,
       fontFamily: 'MondaBold',
     },
     blackTxt: {
@@ -184,7 +188,7 @@ const styles = StyleSheet.create({
 
     },
     text: {
-      fontSize: 12,
+      fontSize: 16,
       marginBottom: 10,
       marginTop: 20,
       fontFamily: 'Monda',

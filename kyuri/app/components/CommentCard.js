@@ -7,21 +7,21 @@ import Pedestal from './Pedestal';
 import MedPedestal from './MedPedestal';
 
 
-const CommentCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge }) => 
+const CommentCard = ({ title, postText, userImg, username }) => 
 {
   return (
-// fix the comment button showing in post detail using showCommentBttn
-        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: true  })}>
+        <Pressable style={styles.posts} >
           <View style={styles.postTop}>
             <View style={styles.pedestalWrapper}>
               <Pedestal
-                url={productImg}
+                url={userImg}
                 nonGreen={true}
               >
               </Pedestal>
             </View>
           </View>
           <View style={styles.postBottom}>
+            <Text style={styles.postUser}>{username}</Text>
             <Text style={styles.postTitle}>{title}</Text>
             <Text style={styles.postText} numberOfLines={1} ellipsizeMode="tail">{postText}</Text>
           </View>

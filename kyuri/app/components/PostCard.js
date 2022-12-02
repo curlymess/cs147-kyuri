@@ -5,12 +5,12 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Pedestal from './Pedestal';
 
-const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType }) => 
+const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType, blueTagTxt, yellowTagTxt, hideTags  }) => 
 {
   return (
 
-        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, postType: {postType}  })}>
-          <View style={styles.postTop}>
+    <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: false, postType: {postType}, blueTagTxt: {blueTagTxt}, yellowTagTxt: {yellowTagTxt}, hideTags: {hideTags} })}>
+      <View style={styles.postTop}>
             <Pedestal
               size={56}
               url={productImg}>
