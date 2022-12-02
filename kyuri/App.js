@@ -24,6 +24,8 @@ import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
 
+import NewPostsStatus from './app/components/NewPostsStatus.js';
+
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
@@ -67,15 +69,14 @@ function Feed({ navigation }) {
     },
     post: {
       flex: 1,
-      
     }
   });
   return (
     <View style={styles.container}>
       <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
-      <View style={styles.suggestedProductWrapper}>
-
+      <View style={styles.newPostsWrapper}>
+        <NewPostsStatus></NewPostsStatus>
       </View>
       <ScrollView> 
         <Post style={feedStyles.post} navigation={navigation} postTime={'1 hour'}
@@ -330,5 +331,10 @@ const styles = StyleSheet.create({
     maxWidth: 30,
     marginRight: 5,
   },
-
+  newPostsWrapper: {
+    position: 'relative',
+    top: -15,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 });
