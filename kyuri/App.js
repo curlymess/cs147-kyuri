@@ -31,7 +31,6 @@ import AppLoading from 'expo-app-loading';
 
 import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
-import PostComment from './app/components/PostComment';
 import CommentCard from './app/components/CommentCard';
 
 function Feed({ navigation }) {
@@ -261,7 +260,7 @@ function NavContainer(){
             iconName = focused
               ? 'home'
               : 'home-outline';
-          } else if (route.name === 'Browse') {
+          } else if (route.name === 'Search') {
             iconName = focused ? 'search' : 'search-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
@@ -283,10 +282,9 @@ function NavContainer(){
       })}
       >
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
-        <Tab.Screen name="Browse" options={{headerShown: false}} component={Browse} />
+        <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
-        <Tab.Screen name="PostComment" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostComment} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
       </Tab.Navigator>
