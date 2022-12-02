@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const PostDetail = ({navigation, route}) => 
 {
@@ -77,7 +78,9 @@ const PostDetail = ({navigation, route}) =>
             mutuals={personDataObj.mutuals}
           >
           </PersonThumbnail>
-          <Text style={styles.text}>{blogText.postText}</Text>
+          <ScrollView>
+            <Text style={styles.text}>{blogText.postText}</Text>
+          </ScrollView>
 
           <View style={styles.comment}>
             <View style={styles.commentTxt}><Text style={styles.whiteTxt}>View Comments</Text></View>
@@ -153,7 +156,6 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 12,
-      height: '50%',
       marginBottom: 10,
       marginTop: 20,
       fontFamily: 'Monda',
