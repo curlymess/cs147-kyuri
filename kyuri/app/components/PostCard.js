@@ -5,11 +5,11 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MedPedestal from './MedPedestal';
 
-const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge }) => 
+const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType }) => 
 {
   return (
 
-        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}  })}>
+        <Pressable style={styles.posts} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, productImg: {productImg}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, postType: {postType}  })}>
           <View style={styles.postTop}>
             <View style={styles.pedestalWrapper}>
               <MedPedestal

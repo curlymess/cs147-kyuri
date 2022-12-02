@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import CommentCard from './CommentCard';
 const PostDetail = ({navigation, route}) => 
 {
-   console.log(route.params); // issue with passing 
+   console.log(route.params);
    const {postAuthor} = route.params;
    const {postTitle} = route.params;
    const {blogText} = route.params;
@@ -19,6 +19,9 @@ const PostDetail = ({navigation, route}) =>
    const {level} = route.params;
    const {username} = route.params;
    const {showCommentBttn} = route.params;
+   const {postType} = route.params;
+   const {yellowTagTxt} = route.params;
+   const {blueTagTxt} = route.params;
    
 
    let personDataObj = {
@@ -65,30 +68,32 @@ const PostDetail = ({navigation, route}) =>
             </View>
           </View>
           <Text style={styles.title}>{postTitle.title}</Text>
-          <View style={styles.tag}>
-            <View style={styles.creamTag}><Text style={[styles.tagTxt, styles.blackTxt]}>Tag</Text></View>
-            <View style={styles.blueTag}><Text style={styles.tagTxt}>Other-Tag</Text></View>
-          </View>
-          <ScrollView>
-            <PersonThumbnail 
-              name={personDataObj.name}
-              username={personDataObj.username}
-              image={personDataObj.image}
-              age={personDataObj.age}
-              level={personDataObj.level}
-              mutuals={personDataObj.mutuals}
-            >
-            </PersonThumbnail>
+          {!showCommentBttn && <View style={styles.tag}>
+            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{postType.postType}</Text></View>
+            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{blueTagTxt.blueTagTxt}</Text></View>
+            <View style={styles.tagBttn}><Text style={styles.tagTxt}>{yellowTagTxt.yellowTagTxt}</Text></View>
+          </View>}
+          <PersonThumbnail 
+            name={personDataObj.name}
+            username={personDataObj.username}
+            image={personDataObj.image}
+            age={personDataObj.age}
+            level={personDataObj.level}
+            mutuals={personDataObj.mutuals}
+          >
+          </PersonThumbnail>
+          <ScrollView style={styles.commentCardContainer}>
             <Text style={styles.text}>{blogText.postText}</Text>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
-            {!showCommentBttn && <ScrollView style={styles.postsCard}>
+            {!showCommentBttn && <View style={styles.postsCard}>
                 <CommentCard navigation={navigation} title={'I agree!'}         author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Yes!!!'}           author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-            </ScrollView>}
+            </View>}
+
           </ScrollView>
       </View>   
     </View>
@@ -126,12 +131,20 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: '700',
       marginTop: 15,
+      marginBottom: 3,
       fontFamily: 'MondaBold',
     },
     tag: {
       flexDirection: 'row', 
       marginBottom: 15,
       marginTop: 5,
+    },
+    tagBttn: {
+      backgroundColor: palette.blue,
+      padding: 3,
+      paddingHorizontal: 15,
+      borderRadius: 20,
+      marginRight: 3,
     },
     blueTag: {
       backgroundColor: palette.blue,
@@ -141,6 +154,13 @@ const styles = StyleSheet.create({
       marginRight: 3,
     },
     creamTag: {
+      backgroundColor: palette.cream,
+      padding: 3,
+      paddingHorizontal: 15,
+      borderRadius: 20,
+      marginRight: 3,
+    },
+    yellowTag: {
       backgroundColor: palette.yellow,
       padding: 3,
       paddingHorizontal: 15,
