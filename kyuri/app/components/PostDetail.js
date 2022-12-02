@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     },
     tagBttn: {
       backgroundColor: palette.blueTag,
-      borderColor: palette.blueTagBorder,
+      borderColor: palette.blue,
       borderWidth: 1,
       padding: 3,
       paddingHorizontal: 15,
