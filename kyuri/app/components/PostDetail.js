@@ -7,7 +7,6 @@ import Top from './Top';
 import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
 import { ScrollView } from 'react-native-gesture-handler';
-import PostComment from './PostComment';
 import CommentCard from './CommentCard';
 const PostDetail = ({navigation, route}) => 
 {
@@ -84,10 +83,10 @@ const PostDetail = ({navigation, route}) =>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
             {!showCommentBttn && <ScrollView style={styles.postsCard}   horizontal={true}>
-                <CommentCard navigation={navigation} title={'I Loved It!'}      author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'I agree!'}         author={'user'} userImg={Icons.p4} productImg={Icons.p4} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Not For Me...'}    author={'user'} userImg={Icons.p2} productImg={Icons.p2} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Highly Recommend'} author={'user'}   userImg={Icons.p5}   productImg={Icons.p5} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
-                <CommentCard navigation={navigation} title={'Wish I could give it 6 stars'}  author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
+                <CommentCard navigation={navigation} title={'Yes!!!'}           author={'user'}   userImg={Icons.p6}   productImg={Icons.p6} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
                 <CommentCard navigation={navigation} title={'Ehhhh'}            author={'user'}   userImg={Icons.p3}   productImg={Icons.p3} userAge={'22'} userLevel={'Novice'} username={'@user'} postText={'reviewwww'}/>
             </ScrollView>}
 

@@ -17,12 +17,8 @@ const CommentCard = ({ navigation, title, author, postText, userImg, productImg,
             </Pedestal>
           </View>
           <View style={styles.postBottom}>
-            <Text style={styles.postType}>Review</Text>
             <Text style={styles.postTitle}>{title}</Text>
-            <Text style={styles.postText} numberOfLines={3} ellipsizeMode="tail">{postText}</Text>
-            <Pressable style={styles.replyBttn}>
-                <Text style={styles.replyBttnTxt}>Reply</Text>
-            </Pressable>
+            <Text style={styles.postText} numberOfLines={1} ellipsizeMode="tail">{postText}</Text>
           </View>
         </Pressable>
   );
@@ -40,7 +36,7 @@ const styles = StyleSheet.create({
         width: '30%',
       },
       postTop: {
-        height: '50%',
+        height: '40%',
         backgroundColor: palette.lightGreen,
         borderTopRightRadius: 8,
         borderTopLeftRadius: 8,
@@ -48,13 +44,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
       },
       postBottom: {
-        height: '50%',
+        height: '60%',
         padding: 5,
       },
       postTitle: {
         fontFamily: 'MondaBold',
       },
       postType: {
+        fontFamily: 'Monda',
+      },
+      postText: {
         fontFamily: 'Monda',
       },
       replyBttn: {
