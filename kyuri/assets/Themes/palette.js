@@ -10,4 +10,6 @@ export const palette = {
   darkBrown: '#493431',
   mediumBrown: '#63554B',
   lightBrown: '#AA8e80',
+  blueTag: '#F9FAFE',
+  blueTagBorder: '#E1E7FA'
 };

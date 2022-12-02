@@ -82,7 +82,7 @@ const PostDetail = ({navigation, route}) =>
             mutuals={personDataObj.mutuals}
           >
           </PersonThumbnail>
-          <ScrollView>
+          <ScrollView style={styles.commentCardContainer}>
             <Text style={styles.text}>{blogText.postText}</Text>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
     },
     postsCard: {
       marginVertical: 10,
-      flexDirection: 'row',
       
     },
     headerImg: {
@@ -196,8 +195,7 @@ const styles = StyleSheet.create({
       padding: 3,
     },
     commentTxt: {
-      padding: 5,
-      paddingHorizontal: 15,
+      paddingTop: 5,
       borderRadius: 20,
       marginRight: 5,
       fontFamily: 'MondaBold',
@@ -209,5 +207,5 @@ const styles = StyleSheet.create({
     pedestalWrapper: {
       position: 'relative',
       bottom: -8,
-    }
+    },
 });
