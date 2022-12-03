@@ -7,7 +7,7 @@ import { palette } from './assets/Themes/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // Navigation
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // ***** Componets ******* 
 import {Top} from './app/components';
@@ -37,7 +37,10 @@ import CommentCard from './app/components/CommentCard';
 import { supabase } from "./lib/supabase";
 import { SupabaseClient } from '@supabase/supabase-js';
 
-function Feed({ navigation }) {
+function Feed({ navigation, posts }) {
+
+  console.log("pritning in feed");
+  console.log(posts);
   let personDataObj = {
     name: 'Iris B.',
     username: '@purplelove',
@@ -262,15 +265,16 @@ function Profile( {navigation} ){
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer( { posts } ){
+function NavContainer( {posts} ){
   const navstyles = StyleSheet.create({
     
   });
-  console.log('all the posts:' );
+  console.log("navcontainer posts");
   console.log(posts);
+
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName={'Feed'}
+      <Tab.Navigator 
         screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
@@ -300,7 +304,9 @@ function NavContainer( { posts } ){
 
       })}
       >
-        <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
+        <Tab.Screen name="Feed" options={{headerShown: false}}>
+          {(props) => <Feed posts={posts}/>}
+        </Tab.Screen>
         <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
