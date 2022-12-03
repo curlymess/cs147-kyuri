@@ -199,6 +199,9 @@ function Profile( {navigation} ){
       color: palette.green,
       textDecorationLine: 'underline',
     },
+    boldLabel: {
+      fontFamily: 'MondaBold',
+    },
     addBttn: {
       
     },
@@ -214,9 +217,18 @@ function Profile( {navigation} ){
           <View style={profileStyles.profileTxt}>
             <Text style={profileStyles.myProfileTxtName}>Tom S.</Text>
             <Text style={profileStyles.myProfileTxt}>@TaheeShahee</Text>
-            <Text style={profileStyles.myProfileTxt}>Age 22</Text>
-            <Text style={profileStyles.myProfileTxt}>Ethnicity W</Text>
-            <Text style={profileStyles.myProfileTxt}>Level Novice</Text>
+            <Text style={profileStyles.myProfileTxt}>
+              <Text style={styles.boldLabel}>Age</Text>
+              22
+            </Text>
+            <Text style={profileStyles.myProfileTxt}>              
+              <Text style={styles.boldLabel}>Ethnicity</Text>
+              W
+            </Text>
+            <Text style={profileStyles.myProfileTxt}>              
+              <Text style={styles.boldLabel}>Level</Text>
+              Novice
+            </Text>
           </View>
         </View>
       </View>
