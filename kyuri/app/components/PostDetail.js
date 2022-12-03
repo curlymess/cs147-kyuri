@@ -10,7 +10,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import CommentCard from './CommentCard';
 const PostDetail = ({navigation, route}) => 
 {
-   console.log(route.params);
    const {postAuthor} = route.params;
    const {postTitle} = route.params;
    const {blogText} = route.params;
@@ -23,7 +22,6 @@ const PostDetail = ({navigation, route}) =>
    const {yellowTagTxt} = route.params;
    const {blueTagTxt} = route.params;
    const {hideTags} = route.params;
-   
 
    let personDataObj = {
     name: postAuthor.author,
