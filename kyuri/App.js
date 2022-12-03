@@ -12,9 +12,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // ***** Componets ******* 
 import {Top} from './app/components';
 import { Post } from './app/components';
-//Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
+
 import Auth from './app/components/Auth.js';
+import Account from './app/components/Account.js';
+import { Session } from '@supabase/supabase-js'
+import { supabase } from './lib/supabase'
+
 import { useState } from 'react';
 
 import BrowseContent from './app/components/BrowseContent.js';
@@ -32,6 +36,30 @@ import AppLoading from 'expo-app-loading';
 import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
 import CommentCard from './app/components/CommentCard';
+
+
+
+function SupaProfile() {
+  const [session, setSession] = useState<Session | null>(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
+  return (
+    <View>
+      {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
+    </View>
+  )
+}
+
+
 
 function Feed({ navigation }) {
   let personDataObj = {
@@ -295,7 +323,7 @@ function NavContainer(){
       >
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
         <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
-        <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
+        <Tab.Screen name="Profile" options={{headerShown: false}} component={SupaProfile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
