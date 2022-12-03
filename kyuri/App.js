@@ -230,7 +230,7 @@ function Profile( {navigation} ){
       </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
-      <ScrollView style={profileStyles.postsCard}   horizontal={true}>
+      <ScrollView style={profileStyles.postsCard} horizontal={true}>
 
         <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
         <PostCard navigation={navigation} title={'Help with my routine?'}             author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I am new to this'}/>
@@ -329,7 +329,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.green,
   },
-
   head: {
     flex: 1,
   },

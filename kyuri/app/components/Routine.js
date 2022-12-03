@@ -39,9 +39,9 @@ const Routine = ({navigation}) =>
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
       </ScrollView>
-        
-      
-
+      <Pressable style={styles.makeRoutineBttn}>
+        <Text style={styles.makeRoutineTxt}>Make Routine!</Text>
+      </Pressable>
 
     </View>
 </View>
@@ -72,12 +72,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
       },
       instructionTxt: {
-        fontFamily: 'Monda',
-        padding: 10,
+        fontFamily: 'MondaBold',
+        alignSelf: 'center',
+        fontSize: 16,
+
       },
       inputBox: {
         marginTop: 10,
         fontFamily: 'Monda',
+      },
+      makeRoutineTxt: {
+        fontFamily: 'MondaBold',
+        alignSelf: 'center',
+      },
+      makeRoutineBttn: {
+        backgroundColor: palette.green,
+        borderRadius: 20,
       },
       
     
