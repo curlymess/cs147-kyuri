@@ -19,7 +19,7 @@ import Account from './app/components/Account.js';
 import { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import BrowseContent from './app/components/BrowseContent.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
@@ -40,7 +40,7 @@ import CommentCard from './app/components/CommentCard';
 
 
 function SupaProfile() {
-  const [session, setSession] = useState<Session | null>(null)
+  const {session, setSession} = useState<Session | null>(null)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -323,7 +323,7 @@ function NavContainer(){
       >
         <Tab.Screen name="Feed" options={{headerShown: false}} component={Feed} />
         <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
-        <Tab.Screen name="Profile" options={{headerShown: false}} component={SupaProfile} />
+        <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
