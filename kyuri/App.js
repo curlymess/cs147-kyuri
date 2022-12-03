@@ -15,11 +15,7 @@ import { Post } from './app/components';
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 
 import Auth from './app/components/Auth.js';
-import Account from './app/components/Account.js';
-import { Session } from '@supabase/supabase-js'
-import { supabase } from './lib/supabase'
-
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import BrowseContent from './app/components/BrowseContent.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
@@ -37,29 +33,9 @@ import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
 import CommentCard from './app/components/CommentCard';
 
-
-
-function SupaProfile() {
-  const {session, setSession} = useState<Session | null>(null)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-
-  return (
-    <View>
-      {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
-    </View>
-  )
-}
-
-
+// supabase
+import { supabase } from "./lib/supabase";
+import { SupabaseClient } from '@supabase/supabase-js';
 
 function Feed({ navigation }) {
   let personDataObj = {
@@ -169,6 +145,7 @@ function Profile( {navigation} ){
   const author = "author";
   const title = "title";
   const postText = "postText";
+
   const profileStyles = StyleSheet.create({
     myProfileCard: {
       flex: 1,
@@ -270,7 +247,7 @@ function Profile( {navigation} ){
       </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
-      <ScrollView style={profileStyles.postsCard}   horizontal={true}>
+      <ScrollView style={profileStyles.postsCard} horizontal={true}>
 
         <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
         <PostCard navigation={navigation} title={'Help with my routine?'}             author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I am new to this'}/>
@@ -332,6 +309,15 @@ function NavContainer(){
   );
 }
 
+type PostPost = {
+  id: number,
+  created_at: string,
+  username: string,
+  title: string,
+  postText: string,
+  postType: string,
+  tags: string,
+}
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -349,7 +335,48 @@ export default function App() {
     contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
   }
 
-  if (!fontsLoaded) return <AppLoading />;
+  let sub;
+  const listenToChanges = async () => {
+    console.log('in')
+    sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
+      console.log('Recieved a change!: ', payload);
+      console.log('innnnnnnn')
+    }).subscribe();
+    getPosts();
+
+    console.log('inn')
+  }
+  React.useEffect(() => {
+    listenToChanges();
+    console.log('innn')
+    return () => sub?.unsubscribe();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('before posts');
+  //   // getPosts()
+  //   listenToChanges()
+  // }, [])
+
+
+  const addPost = async ( username, title, postText, postType, tags) => {
+    const {data, error} = await supabase 
+      .from('posts')
+      .insert([
+        { username, title, postText, postType, tags},
+      ]);
+    console.log(data, error);
+  }
+
+  const getPosts = async () => {
+    console.log('hi')
+    const {data, error} = await supabase 
+      .from('posts')
+      .select('username');
+    
+    console.log(data, error);
+  }
+  if (!fontsLoaded) return <AppLoading />;if (!fontsLoaded) return <AppLoading />;
 
 return (
   <SafeAreaView style={styles.greenbg}>
@@ -369,7 +396,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.green,
   },
-
   head: {
     flex: 1,
   },
