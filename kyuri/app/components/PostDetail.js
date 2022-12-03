@@ -34,6 +34,8 @@ const PostDetail = ({navigation, route}) =>
         require('../../assets/Icons/tom.png'),
     ],
 }
+
+  console.log(hideTags.hideTags)
   return (
     
     <View style={styles.container}>
@@ -67,7 +69,7 @@ const PostDetail = ({navigation, route}) =>
             </View>
           </View>
           <Text style={styles.title}>{postTitle.title}</Text>
-          {hideTags && <View style={styles.tag}>
+          {!hideTags.hideTags && <View style={styles.tag}>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{postType.postType}</Text></View>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{blueTagTxt.blueTagTxt}</Text></View>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{yellowTagTxt.yellowTagTxt}</Text></View>
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
     },
     tagBttn: {
       backgroundColor: palette.blueTag,
-      borderColor: palette.blueTagBorder,
+      borderColor: palette.blue,
       borderWidth: 1,
       padding: 3,
       paddingHorizontal: 15,
