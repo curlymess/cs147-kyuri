@@ -262,10 +262,12 @@ function Profile( {navigation} ){
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer(){
+function NavContainer( { posts } ){
   const navstyles = StyleSheet.create({
     
   });
+  console.log('all the posts:' );
+  console.log(posts);
   return (
     <NavigationContainer>
       <Tab.Navigator initialRouteName={'Feed'}
@@ -326,38 +328,18 @@ export default function App() {
     MondaBold: require('./assets/Fonts/Monda-Bold.ttf'),
 });
 
-  let contentDisplayed = null;
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  if ( isLoggedIn ){
-    contentDisplayed = <NavContainer/>
-  } else {
-    contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
-  }
-
   let sub;
+  const [allPosts, setAllPosts] = useState([]);
   const listenToChanges = async () => {
-    console.log('in')
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
       console.log('Recieved a change!: ', payload);
-      console.log('innnnnnnn')
     }).subscribe();
-    getPosts();
-
-    console.log('inn')
+  getPosts();
   }
   React.useEffect(() => {
     listenToChanges();
-    console.log('innn')
     return () => sub?.unsubscribe();
   }, []);
-
-  // useEffect(() => {
-  //   console.log('before posts');
-  //   // getPosts()
-  //   listenToChanges()
-  // }, [])
-
 
   const addPost = async ( username, title, postText, postType, tags) => {
     const {data, error} = await supabase 
@@ -368,20 +350,29 @@ export default function App() {
     console.log(data, error);
   }
 
-  const getPosts = async () => {
-    console.log('hi')
+  const getPosts = async ( ) => {
     const {data, error} = await supabase 
       .from('posts')
-      .select('username');
-    
+      .select('*');
     console.log(data, error);
+    setAllPosts(data);
   }
-  if (!fontsLoaded) return <AppLoading />;if (!fontsLoaded) return <AppLoading />;
+
+  let contentDisplayed = null;
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  if ( isLoggedIn ){
+    contentDisplayed = <NavContainer posts={allPosts}/>
+  } else {
+    // contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
+    contentDisplayed = <NavContainer posts={allPosts}/>
+  }
+
+  if (!fontsLoaded) return <AppLoading />;
 
 return (
   <SafeAreaView style={styles.greenbg}>
-   {/* {contentDisplayed} */}
-   <NavContainer/>
+   {contentDisplayed}
   </SafeAreaView>
 
   );
