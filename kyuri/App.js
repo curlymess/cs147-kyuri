@@ -15,7 +15,7 @@ import { Post } from './app/components';
 //Browse page components
 import BrowseSearchBar from './app/components/BrowseSearchBar.js';
 import Auth from './app/components/Auth.js';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import BrowseContent from './app/components/BrowseContent.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
@@ -32,6 +32,10 @@ import AppLoading from 'expo-app-loading';
 import 'react-native-url-polyfill/auto'
 import { Icon } from 'react-native-elements';
 import CommentCard from './app/components/CommentCard';
+
+// supabase
+import { supabase } from "./lib/supabase";
+import { SupabaseClient } from '@supabase/supabase-js';
 
 function Feed({ navigation }) {
   let personDataObj = {
@@ -141,6 +145,7 @@ function Profile( {navigation} ){
   const author = "author";
   const title = "title";
   const postText = "postText";
+
   const profileStyles = StyleSheet.create({
     myProfileCard: {
       flex: 1,
@@ -292,6 +297,15 @@ function NavContainer(){
   );
 }
 
+type PostPost = {
+  id: number,
+  created_at: string,
+  username: string,
+  title: string,
+  postText: string,
+  postType: string,
+  tags: string,
+}
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -309,7 +323,48 @@ export default function App() {
     contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
   }
 
-  if (!fontsLoaded) return <AppLoading />;
+  let sub;
+  const listenToChanges = async () => {
+    console.log('in')
+    sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
+      console.log('Recieved a change!: ', payload);
+      console.log('innnnnnnn')
+    }).subscribe();
+    getPosts();
+
+    console.log('inn')
+  }
+  React.useEffect(() => {
+    listenToChanges();
+    console.log('innn')
+    return () => sub?.unsubscribe();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('before posts');
+  //   // getPosts()
+  //   listenToChanges()
+  // }, [])
+
+
+  const addPost = async ( username, title, postText, postType, tags) => {
+    const {data, error} = await supabase 
+      .from('posts')
+      .insert([
+        { username, title, postText, postType, tags},
+      ]);
+    console.log(data, error);
+  }
+
+  const getPosts = async () => {
+    console.log('hi')
+    const {data, error} = await supabase 
+      .from('posts')
+      .select('username');
+    
+    console.log(data, error);
+  }
+  if (!fontsLoaded) return <AppLoading />;if (!fontsLoaded) return <AppLoading />;
 
 return (
   <SafeAreaView style={styles.greenbg}>
