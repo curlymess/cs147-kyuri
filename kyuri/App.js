@@ -37,8 +37,9 @@ import CommentCard from './app/components/CommentCard';
 
 // supabase
 import { supabase } from "./lib/supabase";
-import { SupabaseClient } from '@supabase/supabase-js';
+
 import ProfileContent from './app/components/ProfileContent';
+import DraftPost from './app/components/DraftPost';
 
 function Feed({ navigation, posts }) {
 
@@ -261,6 +262,7 @@ function NavContainer( {posts, tomPosts} ){
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
+        <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
       </Tab.Navigator>
     </NavigationContainer>
   );

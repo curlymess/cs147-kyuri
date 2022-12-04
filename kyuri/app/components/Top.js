@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, Pressable, Image, PlatformColor } from 'react-n
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { palette } from '../../assets/Themes/palette';
 import Icons from '../../assets/Icons';
+
+import DraftPost from './DraftPost';
 // supabase
 import { supabase } from "./../../lib/supabase";
 
@@ -34,10 +36,15 @@ const addPost = async ( username, title, postText, postType, userAge, userImg, u
                 <Text style={styles.kyuritxt}>Kyuri</Text>
             </View>
             <View style={styles.row}>
-                <Pressable style={styles.plus} onPress={() => addPost("test", "test","test","test","0","test","test","test","test","test","test",false)}>
+                <Pressable style={styles.plus} onPress={() => props.navigation.navigate(DraftPost)} >
                     <Ionicons name="add-circle-outline" size={33} color='white'/>
                 </Pressable>
             </View>
+            {/* <View style={styles.row}>
+                <Pressable style={styles.plus} onPress={() => addPost("test", "test","test","test","0","test","test","test","test","test","test",false)}>
+                    <Ionicons name="add-circle-outline" size={33} color='white'/>
+                </Pressable>
+            </View> */}
         </View>
     );
 }

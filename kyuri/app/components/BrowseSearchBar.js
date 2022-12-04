@@ -40,7 +40,6 @@ const browseStyles = StyleSheet.create({
     searchContainer: {
       width: '100%',
       height: 46,
-
     },
     searchBar: {
       height: 46,
@@ -53,6 +52,11 @@ const browseStyles = StyleSheet.create({
       alignItems: 'center',
       overflow: 'hidden',
 
+    },
+    input: {
+      fontSize: 16,
+      marginLeft: 10,
+      fontFamily: 'Monda',
     },
     searchBarButton: {
       marginLeft: 'auto',
@@ -83,9 +87,5 @@ const browseStyles = StyleSheet.create({
       borderTopRightRadius: 6,
       borderBottomRightRadius: 6,
     },
-    input: {
-      fontSize: 16,
-      marginLeft: 10,
-      fontFamily: 'Monda',
-    },
+
 });
