@@ -24,6 +24,8 @@ import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
 import EmptyRoutineCard from './app/components/EmptyRoutineCard';
+import RoutineCard from './app/components/RoutineCard';
+
 
 
 import NewPostsStatus from './app/components/NewPostsStatus.js';
@@ -208,10 +210,10 @@ function Profile( {navigation, posts} ){
             </Text>
           </View>
         </View>
-      <EmptyRoutineCard
+      <RoutineCard
         navigation={navigation}
       >
-      </EmptyRoutineCard>
+      </RoutineCard>
       <Pressable style={profileStyles.linkWrapperMargin}>
         <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
       </Pressable>
