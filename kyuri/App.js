@@ -61,7 +61,7 @@ function Feed({ navigation, posts }) {
   )
 }
 
-function Browse() {
+function Browse({navigation}) {
   const [screen1, toggleScreen1] = useState(true);
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
@@ -69,7 +69,7 @@ function Browse() {
   console.log(screen1);
   return (
   <View style={styles.container}>
-    <Top style={styles.head} noBack="true"/>
+    <Top style={styles.head} noBack="true" navigation={navigation}/>
     <StatusBar style="auto"/>
     <BrowseSearchBar 
       filterProp={filter} 
@@ -159,7 +159,7 @@ function Profile( {navigation, posts} ){
   });
   return (
     <View style={styles.container}>
-      <Top style={styles.head} noBack="true"/>
+      <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
 
       <View style ={styles.container}>

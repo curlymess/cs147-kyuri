@@ -75,8 +75,6 @@ const DraftPost = ({navigation, route}) =>
             <Text style={styles.makePostBttnTxt}>Post!</Text>
         </Pressable>
 
-
-
     </View>
   );
 };
