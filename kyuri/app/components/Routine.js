@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 const Routine = ({navigation}) => 
 {
-  const [routineName, setRoutineName] = useState('')
+  const [routineName, setRoutineName] = useState('');
   return (
 
 <View style={styles.container}>
@@ -18,28 +18,28 @@ const Routine = ({navigation}) =>
     <View>
         <Input
           // label="Routine Name"
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={(text) => setRoutineName(text)}
           value={routineName}
           placeholder="give your routine a name!"
           autoCapitalize={'words'}
           style={styles.inputBox}
         />
       <Text style={styles.instructionTxt}>Add some products to your routine!</Text>
-      <ScrollView>
+      <ScrollView style={styles.routine}>
         <View style={styles.routineCard}>
-          <Image source={Icons.product1} />
+          <Image style={styles.productImg} source={Icons.product1} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
         <View style={styles.routineCard}>
-          <Image source={Icons.product1} />
+          <Image style={styles.productImg} source={Icons.product1} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
         <View style={styles.routineCard}>
-          <Image source={Icons.product1} />
+          <Image style={styles.productImg} source={Icons.product1} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
       </ScrollView>
-      <Pressable style={styles.makeRoutineBttn}>
+      <Pressable style={styles.makeRoutineBttn} onPress={() => navigation.navigate('Profile')} >
         <Text style={styles.makeRoutineTxt}>Make Routine!</Text>
       </Pressable>
 
@@ -52,11 +52,16 @@ export default Routine;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: palette.white,
+        height: '100%',
       },
       head: {
         flex: 1,
+      },
+      routine: {
+        height: '70%',
+        width: '100%',
+        marginBottom: 5,
       },
       routineCard: {
         backgroundColor: palette.cream,
@@ -65,6 +70,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         margin: 10,
+        maxHeight: '30%',
       },
       routineCardTxt: {
         padding: 10,
@@ -75,7 +81,6 @@ const styles = StyleSheet.create({
         fontFamily: 'MondaBold',
         alignSelf: 'center',
         fontSize: 16,
-
       },
       inputBox: {
         marginTop: 10,
@@ -89,7 +94,11 @@ const styles = StyleSheet.create({
         backgroundColor: palette.green,
         borderRadius: 20,
       },
-      
+      productImg: {
+        resizeMode: 'contain',
+        maxHeight: 100,
+        width: 100,
+      },
     
 
 });

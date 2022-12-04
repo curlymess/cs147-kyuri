@@ -276,6 +276,7 @@ export default function App() {
   let sub;
   const [allPosts, setAllPosts] = useState([]);
   const [tomPosts, setTomPosts] = useState([]);
+  
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
       console.log('Recieved a change!: ', payload);
@@ -288,11 +289,12 @@ export default function App() {
     return () => sub?.unsubscribe();
   }, []);
 
-  const addPost = async ( username, title, postText, postType, tags) => {
+  const addPost = async ( username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags ) => {
     const {data, error} = await supabase 
       .from('posts')
       .insert([
-        { username, title, postText, postType, tags},
+        // { username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags },
+        { username: username, title:title, postText:postText, postType:postType, userAge:userAge, userImg:userImg, userLevel:userLevel, productImg:productImg, author:author, yellowTagTxt:yellowTagTxt, blueTagText:blueTagTxt, hideTags:hideTags },
       ]);
     console.log(data, error);
   }
