@@ -14,7 +14,7 @@ const renderPost = (item, navigation ) => {
     <Post 
       // style={feedStyles.post}
       navigation={navigation}
-      postTime={"1hour ago"}
+      postTime={"1 hour ago"}
       title={item.title}
       postText={item.postText}
       userImg={Icons.logo}
