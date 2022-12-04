@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // Navigation
 import 'react-native-gesture-handler';
 import { NavigationContainer, useRoute } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // ***** Componets ******* 
 import {Top} from './app/components';
 import { Post } from './app/components';
@@ -23,6 +23,8 @@ import BrowseSlider from './app/components/BrowseSlider.js';
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
+import EmptyRoutineCard from './app/components/EmptyRoutineCard';
+
 
 import NewPostsStatus from './app/components/NewPostsStatus.js';
 
@@ -98,15 +100,17 @@ function Browse() {
 function Profile( {navigation, posts} ){
   const profileStyles = StyleSheet.create({
     myProfileCard: {
-      flex: 1,
       flexDirection: 'row',
       marginHorizontal: 10,
-      marginVertical: 10,
+      marginBottom: 10,
       alignItems: 'center',
       borderRadius: 8,
       backgroundColor: palette.darkBrown,
       justifyContent:'space-around',
-      
+      position: 'relative',
+      top: -23,
+      paddingTop: 5,
+      paddingBottom: 15,
     },
     profileTxt: {
       width: '50%',
@@ -137,7 +141,9 @@ function Profile( {navigation, posts} ){
     },
     heading: {
       marginLeft: 10,
+      marginBottom: 10,
       fontFamily: 'MondaBold',
+      fontSize: 16,
     },  
     routineTxt: {
       fontFamily: 'MondaBold',
@@ -146,53 +152,66 @@ function Profile( {navigation, posts} ){
     viewRoutineTxt: {
       fontFamily: 'Monda',
       alignSelf: 'center',
-      color: palette.green,
+      color: palette.blue,
       textDecorationLine: 'underline',
     },
     boldLabel: {
       fontFamily: 'MondaBold',
     },
-    addBttn: {
-      
+    myProfileUsername: {
+      marginTop: 0,
+      position: 'relative',
+      top: -5,
+      marginBottom: 10,
     },
+    myProfilePic: {
+      height: 150,
+      width: 150,
+      position: 'relative',
+    },
+    myProfilePicWrapper: {
+      position: 'relative',
+      overflow: 'visible',
+      bottom: -26,
+    },
+    linkWrapperMargin: {
+      marginBottom: 30,
+    }
   });
   return (
     <View style={styles.container}>
       <Top style={styles.head} noBack="true"/>
       <StatusBar style="auto" />
-
-      <View style ={styles.container}>
         <View style={profileStyles.myProfileCard}>
-          <Image source={Icons.tom}/>
+          <View style={profileStyles.myProfilePicWrapper}>
+            <Image 
+              style={profileStyles.myProfilePic}
+              resizeMode="contain"
+              source={Icons.tom}
+            />
+          </View>
           <View style={profileStyles.profileTxt}>
-            <Text style={profileStyles.myProfileTxtName}>Tom S.</Text>
-            <Text style={profileStyles.myProfileTxt}>@TaheeShahee</Text>
+            <Text style={[profileStyles.myProfileTxtName, profileStyles.myProfileName]}>Tom S.</Text>
+            <Text style={[profileStyles.myProfileTxt, profileStyles.myProfileUsername]}>@TaheeShahee</Text>
             <Text style={profileStyles.myProfileTxt}>
-              <Text style={styles.boldLabel}>Age</Text>
+              <Text style={profileStyles.boldLabel}>Age </Text>
               22
             </Text>
             <Text style={profileStyles.myProfileTxt}>              
-              <Text style={styles.boldLabel}>Ethnicity</Text>
+              <Text style={profileStyles.boldLabel}>Ethnicity </Text>
               W
             </Text>
             <Text style={profileStyles.myProfileTxt}>              
-              <Text style={styles.boldLabel}>Level</Text>
+              <Text style={profileStyles.boldLabel}>Level </Text>
               Novice
             </Text>
           </View>
         </View>
-      </View>
-
-      <View style={profileStyles.routineCard}>
-        <View>
-          <Text style={profileStyles.routineTxt}>Current Routine:</Text>
-          <Text style={profileStyles.routineTxt}>Create your first routine!</Text>
-        </View>
-        <Pressable style={profileStyles.addBttn} onPress={() => navigation.navigate('Routine', { navigation: navigation })}>
-          <Ionicons name={'add-circle-outline'} size={40} color={palette.green} />
-        </Pressable>
-      </View>
-      <Pressable>
+      <EmptyRoutineCard
+        navigation={navigation}
+      >
+      </EmptyRoutineCard>
+      <Pressable style={profileStyles.linkWrapperMargin}>
         <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
       </Pressable>
 
@@ -355,5 +374,5 @@ const styles = StyleSheet.create({
     top: -15,
     flexDirection: 'row',
     justifyContent: 'center'
-  }
+  },
 });

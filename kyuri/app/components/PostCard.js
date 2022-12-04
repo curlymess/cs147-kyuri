@@ -30,11 +30,11 @@ const PostCard = ({ navigation, title, author, postText, userImg, productImg, us
 export default PostCard;
 
 const styles = StyleSheet.create({
-    posts: {
+    post: {
         backgroundColor: palette.cream,
         borderRadius: 8,
-        marginHorizontal: 5,
-        width: 200,
+        marginLeft: 10,
+        width: 150,
       },
       postTop: {
         backgroundColor: palette.lightGreen,
