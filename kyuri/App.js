@@ -39,8 +39,9 @@ import CommentCard from './app/components/CommentCard';
 
 // supabase
 import { supabase } from "./lib/supabase";
-import { SupabaseClient } from '@supabase/supabase-js';
+
 import ProfileContent from './app/components/ProfileContent';
+import DraftPost from './app/components/DraftPost';
 
 function Feed({ navigation, posts }) {
 
@@ -62,7 +63,7 @@ function Feed({ navigation, posts }) {
   )
 }
 
-function Browse() {
+function Browse({navigation}) {
   const [screen1, toggleScreen1] = useState(true);
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
@@ -70,7 +71,7 @@ function Browse() {
   console.log(screen1);
   return (
   <View style={styles.container}>
-    <Top style={styles.head} noBack="true"/>
+    <Top style={styles.head} noBack="true" navigation={navigation}/>
     <StatusBar style="auto"/>
     <BrowseSearchBar 
       filterProp={filter} 
@@ -180,7 +181,7 @@ function Profile( {navigation, posts} ){
   });
   return (
     <View style={styles.container}>
-      <Top style={styles.head} noBack="true"/>
+      <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
         <View style={profileStyles.myProfileCard}>
           <View style={profileStyles.myProfilePicWrapper}>
@@ -280,6 +281,7 @@ function NavContainer( {posts, tomPosts} ){
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
+        <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -295,6 +297,7 @@ export default function App() {
   let sub;
   const [allPosts, setAllPosts] = useState([]);
   const [tomPosts, setTomPosts] = useState([]);
+  
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
       console.log('Recieved a change!: ', payload);
@@ -307,11 +310,12 @@ export default function App() {
     return () => sub?.unsubscribe();
   }, []);
 
-  const addPost = async ( username, title, postText, postType, tags) => {
+  const addPost = async ( username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags ) => {
     const {data, error} = await supabase 
       .from('posts')
       .insert([
-        { username, title, postText, postType, tags},
+        // { username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags },
+        { username: username, title:title, postText:postText, postType:postType, userAge:userAge, userImg:userImg, userLevel:userLevel, productImg:productImg, author:author, yellowTagTxt:yellowTagTxt, blueTagText:blueTagTxt, hideTags:hideTags },
       ]);
     console.log(data, error);
   }
