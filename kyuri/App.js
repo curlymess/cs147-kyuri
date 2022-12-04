@@ -54,7 +54,7 @@ function Feed({ navigation, posts }) {
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <FeedContent navigation={navigation} posts={posts}></FeedContent>
+      <FeedContent navigation={navigation} posts={posts} />
 
       {/* <ScrollView> 
         <Post style={feedStyles.post} navigation={navigation} postTime={'1 hour'}
