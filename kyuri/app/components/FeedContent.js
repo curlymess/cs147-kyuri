@@ -15,16 +15,17 @@ const renderPost = (item, navigation ) => {
       // style={feedStyles.post}
       navigation={navigation}
       postTime={"1hour ago"}
-      title={"hi"}
+      title={item.title}
       postText={item.postText}
       userImg={Icons.logo}
-      userAge={"22"}
-      userLevel={"22"}
+      userAge={item.userAge}
+      userLevel={item.userLevel}
       username={item.username}
       postType={item.postType}
-      yellowTagTxt={"22"}
-      blueTagTxt={"22"}
-      hideTags={false}
+      yellowTagTxt={item.yellowTagTxt}
+      blueTagTxt={item.blueTagTxt}
+      hideTags={item.hideTags}
+      author={item.author}
     />
   );
 };
@@ -37,8 +38,6 @@ const FeedContent = ( { navigation, posts } ) =>
     
     return (
           <View>
-            <Text>hi</Text>
-
             <FlatList 
             data={posts}
             renderItem={({item}) => renderPost(item, navigation)}/>
