@@ -38,6 +38,7 @@ import CommentCard from './app/components/CommentCard';
 // supabase
 import { supabase } from "./lib/supabase";
 import { SupabaseClient } from '@supabase/supabase-js';
+import ProfileContent from './app/components/ProfileContent';
 
 function Feed({ navigation, posts }) {
 
@@ -94,11 +95,7 @@ function Browse() {
   );
 }
 
-function Profile( {navigation} ){
-  const author = "author";
-  const title = "title";
-  const postText = "postText";
-
+function Profile( {navigation, posts} ){
   const profileStyles = StyleSheet.create({
     myProfileCard: {
       flex: 1,
@@ -200,14 +197,16 @@ function Profile( {navigation} ){
       </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
-      <ScrollView style={profileStyles.postsCard} horizontal={true}>
+      <ProfileContent style={profileStyles.postsCard} navigation={navigation} posts={posts}/>
+     
+      {/* <ScrollView style={profileStyles.postsCard} horizontal={true}>
 
-        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={'We bought this as scuba divers and snorkellers concerned that regular sun creams have ingredients that are poisonous to aquatic creatures. After reading reviews about alternative, non-harmful creams - and looking to see which are available in the UK - we went for this one. I can certainly say it works as a factor 50 cream. Would recommend to anyone doing watersports with a conscience.'}/>
+        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={''}/>
         <PostCard navigation={navigation} title={'Help with my routine?'}             author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I am new to this'}/>
         <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product3} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
         <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product4} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
         <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product5} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
-      </ScrollView>
+      </ScrollView> */}
 
     </View>  
     );
@@ -215,12 +214,10 @@ function Profile( {navigation} ){
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer( {posts} ){
+function NavContainer( {posts, tomPosts} ){
   const navstyles = StyleSheet.create({
     
   });
-  console.log("navcontainer posts");
-  console.log(posts);
 
   return (
     <NavigationContainer>
@@ -258,23 +255,15 @@ function NavContainer( {posts} ){
           {(props) => <Feed posts={posts} {...props} />}
         </Tab.Screen>
         <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
-        <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
+        <Tab.Screen name="Profile" options={{headerShown: false}}>
+          {(props) => <Profile posts={tomPosts} {...props} />}
+        </Tab.Screen>
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
-
-type PostPost = {
-  id: number,
-  created_at: string,
-  username: string,
-  title: string,
-  postText: string,
-  postType: string,
-  tags: string,
 }
 
 export default function App() {
@@ -286,11 +275,13 @@ export default function App() {
 
   let sub;
   const [allPosts, setAllPosts] = useState([]);
+  const [tomPosts, setTomPosts] = useState([]);
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
       console.log('Recieved a change!: ', payload);
     }).subscribe();
   getPosts();
+  getTomPosts();
   }
   React.useEffect(() => {
     listenToChanges();
@@ -313,15 +304,22 @@ export default function App() {
     console.log(data, error);
     setAllPosts(data);
   }
-
+  const getTomPosts = async ( ) => {
+    const {data, error} = await supabase 
+      .from('posts')
+      .select('*')
+      .eq('username', '@TaheeShahee');
+    console.log(data, error);
+    setTomPosts(data);
+  }
   let contentDisplayed = null;
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   if ( isLoggedIn ){
-    contentDisplayed = <NavContainer posts={allPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
   } else {
     // contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
-    contentDisplayed = <NavContainer posts={allPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
   }
 
   if (!fontsLoaded) return <AppLoading />;

@@ -3,19 +3,20 @@ import { StyleSheet, ScrollView, Text, FlatList, View } from 'react-native';
 import Icons from '../../assets/Icons';
 import { palette } from '../../assets/Themes/palette';
 import 'react-native-gesture-handler';
-import Post from './Post';
+import PostCard from './PostCard';
 
 import React from 'react';
 
-const renderPost = (item, navigation ) => {
+const renderPostCard = (item, navigation ) => {
   return (
-    <Post 
+    <PostCard
       // style={feedStyles.post}
       navigation={navigation}
       postTime={"1 hour ago"}
       title={item.title}
       postText={item.postText}
       userImg={Icons.logo}
+      productImg={Icons.logo}
       userAge={item.userAge}
       userLevel={item.userLevel}
       username={item.username}
@@ -28,22 +29,23 @@ const renderPost = (item, navigation ) => {
   );
 };
 
-const FeedContent = ( { navigation, posts } ) =>
+const ProfileContent = ( { navigation, posts } ) =>
 {
+    console.log('in profilecontent');
+    console.log(posts);
     return (
       <View>
         <FlatList 
-          data={posts}
-          renderItem={({item}) => renderPost(item, navigation)}
+            horizontal={true}
+            data={posts}
+            renderItem={({item}) => renderPostCard(item, navigation)}
         />
       </View>       
   );
 };
 
-export default FeedContent;
+export default ProfileContent;
 
-const feedStyles = StyleSheet.create({
-  post: {
-    flex: 1,
-  }
+const styles = StyleSheet.create({
+
 });
