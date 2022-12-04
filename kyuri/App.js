@@ -26,6 +26,8 @@ import Routine from './app/components/Routine';
 
 import NewPostsStatus from './app/components/NewPostsStatus.js';
 
+import FeedContent from './app/components/FeedContent';
+
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
@@ -39,42 +41,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 
 function Feed({ navigation, posts }) {
 
-  console.log("pritning in feed");
-  console.log(posts);
-  let personDataObj = {
-    name: 'Iris B.',
-    username: '@purplelove',
-    image: Icons.iris,
-    age: '76',
-    level: 'Novice',
-    mutuals: [
-        Icons.iris,
-        Icons.tom,
-    ],
-  }
-
   const feedStyles = StyleSheet.create({
-    myProfileCard: {
-      flex: 1,
-      flexDirection: 'row',
-      maxHeight: 100,
-      marginHorizontal: 10,
-      marginVertical: 10,
-      backgroundColor: palette.darkBrown,
-      justifyContent:'space-around',
-      alignItems: 'center',
-      borderRadius: 8,
-    },
-    myProfileTxt: {
-      color: palette.white,
-    },
-    myprofileBttn: {
-      backgroundColor: palette.green,
-      alignSelf: 'flex-end',
-      paddingBottom: 10,
-      padding: 5,
-      borderRadius: 8,
-    },
     post: {
       flex: 1,
     }
@@ -83,12 +50,15 @@ function Feed({ navigation, posts }) {
     <View style={styles.container}>
       <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
+
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <ScrollView> 
+      <FeedContent navigation={navigation} posts={posts}></FeedContent>
+
+      {/* <ScrollView> 
         <Post style={feedStyles.post} navigation={navigation} postTime={'1 hour'}
-          title={'Top new products for you!'} author={'Kyuri'} postText={'Based on your interests we have some recommendations!'} userImg={Icons.logo} userAge={'0'} userLevel={'Master'} username={'@kyuri'} postType={'Recommendation'} yellowTagTxt={'y'} blueTagTxt={'b'} hideTags={true}/>
+          title={'Top new products for you!'} author={'Kyuri'} postText={posts[0].postText} userImg={Icons.logo} userAge={'0'} userLevel={'Master'} username={'@kyuri'} postType={'Recommendation'} yellowTagTxt={'y'} blueTagTxt={'b'} hideTags={true}/>
         <Post style={feedStyles.post} navigation={navigation} postTime={'2 hours'}
           title={'Consider coral reef-safe sunscreen'} author={'Benjamin W.'} userImg={Icons.p1} userAge={'36'} userLevel={'Expert'} username={'@EnviroBen'} postType={'Article'} yellowTagTxt={'Eco-friendly'} blueTagTxt={'Sunscreen'} hideTags={false} postText={'While traditional sunscreens contain ocean-damaging chemicals, reef-friendly products allow us to soak up rays without harming the precious marine environments we are out to enjoy. Check out these alternative products!'}/>
         <Post style={feedStyles.post} navigation={navigation} postTime={'5 hours'}
@@ -103,7 +73,7 @@ function Feed({ navigation, posts }) {
           title={'How to Switch to a Natural Skin Care Routine'} author={'Julia M.'} userImg={Icons.p6} userAge={'22'} userLevel={'Intermediate'} username={'@meltz'} yellowTagTxt={'Eco-friendly'} blueTagTxt={'Clean'} hideTags={false} postType={'Article'} postText={'Going the natural beauty route means saving your skin from being exposed to harsh chemicals that are harmful to your body and leave a significant impact on the environment. By switching to natural beauty products, you are choosing cleaner and gentler products with superior quality ingredients containing vitamins and minerals that the body recognizes and absorbs as nutrients. Much like eating a diet of non-GMO food, natural skin care and beauty products feed and nourish your skin in a way that leaves it healthier over time. The use of organic and natural ingredients means these products are less likely to cause unwanted side effects or skin damage with long-term use while still being just as potent and effective as their synthetic counterparts. And because they don’t contain artificial colors, fragrances and synthetic preservatives, your skin is also less susceptible to irritations and allergic reactions. “People are beginning to understand the negative short- and long-term effects harsh, synthetic chemicals have on their bodies. Those who have already made the switch to natural skin care and beauty products are loving the results,” adds Dermstore beauty buyer for Natural and Spa categories, Ashley Vandyke.'}/>
         <Post style={feedStyles.post} navigation={navigation} postTime={'2 days'}
           title={'Adaptogens and Your Skin'} author={'Phillip I.'} userImg={Icons.p2} userAge={'19'} userLevel={'Novice'} username={'@lilTexas'} postType={'Article'} yellowTagTxt={'Adaptogens'} blueTagTxt={'Advice'} hideTags={false} postText={'What are Adaptogens?\n Adaptogens are herbs that reduce fatigue and the toxic effects of stress. They’re called adaptogens because they adapt to what the body needs, “regulating the body rather than pushing it in one direction or the other,” explains Alan Dattner, MD, a holistic dermatologist in New Rochelle, New York. For example, Dr. Dattner continues, “some people need ginseng because their energy is down, while others need it because they’re too fired up to go to sleep.” \nThe term “adaptogen” was coined way back in 1947 by N.V. Lazarev, a Soviet pharmacologist. According to Lazarev, an adaptogen must not only regulate the body’s response to stress, but its effects must also be beneficial to the body’s overall well being, as well as nontoxic even with long-term use.\n\nHow do adaptogens work?\nSince the 1940s, thousands of studies have been done on adaptogens, primarily in the Soviet Union, Korea and China. Eleuthero (a.k.a Siberian ginseng), for example, has been found to increase the lifespan of single-cell animals, while rhodiola (a.k.a Arctic root) has been shown to reduce perceived fatigue in humans.\nThat said, adaptogens have not been approved for use by the FDA, and some question the methodology of the studies that have been done on the subject. However, others point to the long history of using adaptogenic remedies in the Chinese and Ayurvedic traditions and argue that the studies, if not definitively conclusive, are strongly suggestive.'}/>
-      </ScrollView>
+      </ScrollView> */}
           
     </View>    
   )
@@ -305,7 +275,7 @@ function NavContainer( {posts} ){
       })}
       >
         <Tab.Screen name="Feed" options={{headerShown: false}}>
-          {(props) => <Feed posts={posts}/>}
+          {(props) => <Feed posts={posts} {...props} />}
         </Tab.Screen>
         <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
         <Tab.Screen name="Profile" options={{headerShown: false}} component={Profile} />
