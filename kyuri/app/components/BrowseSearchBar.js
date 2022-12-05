@@ -23,7 +23,7 @@ export default function BrowseSearchBar(props) {
                 onPress={() => {props.filterCallback(!props.filterProp)}}
               >
                 <Ionicons 
-                  name='options-outline' size={28} color='black'
+                  name='filter-outline' size={28} color='black'
                 ></Ionicons>
               </Pressable>
             </View>
@@ -34,8 +34,9 @@ export default function BrowseSearchBar(props) {
 const browseStyles = StyleSheet.create({
     container: {
       width: '100%',
-      position: 'relative',
-      top: -23,
+      position: 'absolute',
+      top: 50,
+      zIndex: 3,
     },
     searchContainer: {
       width: '100%',
