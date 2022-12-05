@@ -6,6 +6,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 import { supabase } from '../../lib/supabase';
 import { useState } from 'react';
+import Checkbox from '../../app/components/Checkbox.js';
+
 
 const DraftPost = ({navigation, route}) => 
 {
@@ -23,6 +25,7 @@ const DraftPost = ({navigation, route}) =>
     const [postText, setPostText] = useState('');
     const [postProducts, setPostProducts] = useState('');
     const [postType, setPostType] = useState('');
+    const [isSelected, setSelection] = useState(false);
 
   return (
     
@@ -73,8 +76,15 @@ const DraftPost = ({navigation, route}) =>
 
         <View style={styles.bottom}>
             <View style={styles.privacy}>
-                <Text style={styles.privacyTxt}>Public</Text>
-                <Text style={styles.privacyTxt}>Private</Text>
+                <View>
+                    
+                    <Text style={styles.privacyTxt}>Public</Text>
+                </View>
+                <View>
+                    
+                    <Text style={styles.privacyTxt}>Private</Text>
+                </View>
+                
             </View>
 
             <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>

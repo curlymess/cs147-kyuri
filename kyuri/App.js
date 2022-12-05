@@ -36,7 +36,6 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 import 'react-native-url-polyfill/auto'
-import { Icon } from 'react-native-elements';
 import CommentCard from './app/components/CommentCard';
 
 // supabase
@@ -100,7 +99,8 @@ function Browse({navigation}) {
   );
 }
 
-function Profile( {navigation, posts} ){
+function Profile( {navigation, posts} )
+{
   const profileStyles = StyleSheet.create({
     myProfileCard: {
       flexDirection: 'row',
@@ -212,7 +212,7 @@ function Profile( {navigation, posts} ){
         </View>
 
       <RoutineCard navigation={navigation}></RoutineCard>
-      
+
       <Pressable style={profileStyles.linkWrapperMargin}>
         <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
       </Pressable>

@@ -7,7 +7,27 @@ import Post from './Post';
 
 import React from 'react';
 
+const imageSelect = (inputImg) => {
+  if (inputImg === null){
+    return Icons.tom;
+  }
+  const outputImg = {
+    'tom': Icons.tom,
+    'iris': Icons.iris,
+    'p1': Icons.p1,
+    'p2': Icons.p2,
+    'p3': Icons.p3,
+    'p4': Icons.p4,
+    'p5': Icons.p5,
+    'p6': Icons.p6,
+    'p7': Icons.p7,
+    'p8': Icons.p8,
+  };
+  return outputImg[inputImg];
+}
+
 const renderPost = (item, navigation ) => {
+  console.log(item.userImg);
   return (
     <Post 
       // style={feedStyles.post}
@@ -15,7 +35,7 @@ const renderPost = (item, navigation ) => {
       postTime={"1 hour ago"}
       title={item.title}
       postText={item.postText}
-      userImg={Icons.logo}
+      userImg={imageSelect(item.userImg)}
       userAge={item.userAge}
       userLevel={item.userLevel}
       username={item.username}
