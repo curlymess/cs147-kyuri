@@ -4,6 +4,7 @@ import Icons from '../../assets/Icons';
 import { palette } from '../../assets/Themes/palette';
 import 'react-native-gesture-handler';
 import Post from './Post';
+import RecommendedProductsCard from './RecommendedProductsCard';
 
 import React from 'react';
 
@@ -31,12 +32,14 @@ const renderPost = (item, navigation ) => {
 const FeedContent = ( { navigation, posts } ) =>
 {
     return (
-      <View>
+      <ScrollView>
+        <View style={feedStyles.spacer}></View>
+        <RecommendedProductsCard></RecommendedProductsCard>
         <FlatList 
           data={posts}
           renderItem={({item}) => renderPost(item, navigation)}
         />
-      </View>       
+      </ScrollView>       
   );
 };
 
@@ -45,5 +48,8 @@ export default FeedContent;
 const feedStyles = StyleSheet.create({
   post: {
     flex: 1,
+  },
+  spacer: {
+    height: 30,
   }
 });

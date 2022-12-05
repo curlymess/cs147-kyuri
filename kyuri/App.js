@@ -25,6 +25,7 @@ import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
 import EmptyRoutineCard from './app/components/EmptyRoutineCard';
 import RoutineCard from './app/components/RoutineCard';
+import RecommendedProductsCard from './app/components/RecommendedProductsCard';
 
 
 
@@ -56,7 +57,6 @@ function Feed({ navigation, posts }) {
     <View style={styles.container}>
       <Top style={styles.head} noBack="true" navigation={navigation}/>
       <StatusBar style="auto" />
-
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
@@ -268,7 +268,7 @@ function NavContainer( {posts, tomPosts} ){
         tabBarInactiveBackgroundColor: palette.green,
            style: {
                  backgroundColor: palette.cream,
-                 paddingBottom: 3
+                 paddingBottom: 3,
            }
 
       })}
@@ -376,9 +376,12 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   newPostsWrapper: {
-    position: 'relative',
-    top: -15,
+    position: 'absolute',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
+    top:60,
+    zIndex: 3,
+    elevation: 3,
   },
 });

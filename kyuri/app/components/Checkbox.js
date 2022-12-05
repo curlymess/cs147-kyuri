@@ -9,8 +9,8 @@ import { useState } from 'react';
 export default function Checkbox(props) {
     let cloneState = {...props.fullState};
     function onPressFunc() {
-        cloneState.list[props.outer].content[props.inner].active = !cloneState.list[props.outer].content[props.inner].active
-        props.callback(cloneState)
+        cloneState.list[props.outer].content[props.inner].active = !cloneState.list[props.outer].content[props.inner].active;
+        props.callback(cloneState);
     }
     return (
         <View style={styles.container}>

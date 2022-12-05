@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
     sliderContainer: {
         width: '100%',
         height: 28,
-        position: 'relative',
-        top: -23,
-        marginTop: 10,
+        marginTop: 32,     
+        zIndex: 2,
+        elevation: 2,   
     },
     wrapper: {
         height: 24,
