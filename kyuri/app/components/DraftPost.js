@@ -32,35 +32,36 @@ const DraftPost = ({navigation, route}) =>
         <Text style={styles.title}>Make a Post</Text>
 
         <View style={styles.searchContainer}>
-            <View style={styles.searchBar}>
+            <View style={styles.inputBar}>
                 <TextInput 
                 placeholder = "Title your post"
                 style={styles.input}
                 onChangeText={(text) => setPostTitle(text)}
                 ></TextInput>
             </View>
-            <View style={styles.searchBar}>
+            <View style={styles.inputBar}>
                 <TextInput 
                 placeholder = "Add post type"
                 style={styles.input}
                 onChangeText={(text) => setPostType(text)}
                 ></TextInput>
             </View>
-            <View style={styles.searchBar}>
+            <View style={styles.inputBar}>
                 <TextInput 
                 placeholder = "Add tags"
                 style={styles.input}
                 onChangeText={(text) => setPostTags(text)}
                 ></TextInput>
             </View>
-            <View style={styles.searchBar}>
+            <View style={styles.inputPostBar}>
                 <TextInput 
                 placeholder = "Write your post"
                 style={styles.input}
                 onChangeText={(text) => setPostText(text)}
+                // multiline={true}
                 ></TextInput>
             </View>
-            <View style={styles.searchBar}>
+            <View style={styles.inputBar}>
                 <TextInput 
                 placeholder = "Tag related products"
                 style={styles.input}
@@ -70,10 +71,18 @@ const DraftPost = ({navigation, route}) =>
 
         </View>
 
-        <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>
-            <Ionicons name="add-circle-outline" size={33} color={palette.green}/>
-            <Text style={styles.makePostBttnTxt}>Post!</Text>
-        </Pressable>
+        <View style={styles.bottom}>
+            <View style={styles.privacy}>
+                <Text style={styles.privacyTxt}>Public</Text>
+                <Text style={styles.privacyTxt}>Private</Text>
+            </View>
+
+            <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>
+                <Ionicons name="add-circle-outline" size={33} color={palette.green}/>
+                <Text style={styles.makePostBttnTxt}>Post!</Text>
+            </Pressable>
+        </View>
+        
 
     </View>
   );
@@ -96,14 +105,16 @@ const styles = StyleSheet.create({
     makePostBttn: {
         backgroundColor: palette.green,
         borderRadius: 20,
+        alignItems: 'center',
+        flex: 1,
     },
     makePostBttnTxt: {
-
+        fontFamily: 'MondaBold',
     },
     searchContainer: {
         width: '100%',
     },
-    searchBar: {
+    inputBar: {
         height: 46,
         backgroundColor: 'white',
         borderRadius: 8,
@@ -115,11 +126,36 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         marginVertical: 5,
     },
+    inputPostBar: {
+        height: 300,
+        backgroundColor: 'white',
+        borderRadius: 8,
+        marginHorizontal: 10,
+        borderWidth: 3,
+        borderColor: palette.darkBrown,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        paddingTop: 5,
+        overflow: 'hidden',
+        marginVertical: 5,
+    },
     input: {
         fontSize: 16,
         marginLeft: 10,
         fontFamily: 'Monda',
     },
+    bottom: {
+        flexDirection: 'row',
+    },
+    privacy: {
+        flexDirection: 'row',
+        flex: 2,
+        alignItems: 'center',
+    },
+    privacyTxt: {
+        fontFamily: 'Monda',
+        flex: 1,
+    }
 });
 
 

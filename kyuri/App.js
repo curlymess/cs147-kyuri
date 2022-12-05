@@ -210,25 +210,15 @@ function Profile( {navigation, posts} ){
             </Text>
           </View>
         </View>
-      <RoutineCard
-        navigation={navigation}
-      >
-      </RoutineCard>
+
+      <RoutineCard navigation={navigation}></RoutineCard>
+      
       <Pressable style={profileStyles.linkWrapperMargin}>
         <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
       </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
       <ProfileContent style={profileStyles.postsCard} navigation={navigation} posts={posts}/>
-     
-      {/* <ScrollView style={profileStyles.postsCard} horizontal={true}>
-
-        <PostCard navigation={navigation} title={'Coral-Reef Safe Sunscreen Review'}  author={'Tom S.'} userImg={Icons.tom} productImg={Icons.product1} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} postType={'Review'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} hideTags={false} postText={''}/>
-        <PostCard navigation={navigation} title={'Help with my routine?'}             author={'Tom S.'} userImg={Icons.tom} productImg={Icons.tom} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I am new to this'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product3} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product4} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
-        <PostCard navigation={navigation} title={'Zucchini Sunscreen Review'}         author={'Tom S.'}   userImg={Icons.tom}   productImg={Icons.product5} userAge={'22'} userLevel={'Novice'} username={'@TaheeShahee'} yellowTagTxt={'yellow'} blueTagTxt={'blue'} postType={'Review'} hideTags={false} postText={'I love it!'}/>
-      </ScrollView> */}
 
     </View>  
     );
