@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
+import { View, StyleSheet, Text, Pressable, Image, CheckPost } from 'react-native';
 import { Input } from 'react-native-elements';
 import Top from './Top';
 import { palette } from '../../assets/Themes/palette';
@@ -11,6 +11,8 @@ import { useState } from 'react';
 const Routine = ({navigation}) => 
 {
   const [routineName, setRoutineName] = useState('');
+  const [isSelected, setSelection] = useState(false);
+
   return (
 
 <View style={styles.container}>
