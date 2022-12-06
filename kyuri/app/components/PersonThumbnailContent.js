@@ -5,6 +5,8 @@ import { palette } from '../../assets/Themes/palette';
 import 'react-native-gesture-handler';
 import PersonThumbnail from './PersonThumbnail';
 import React from 'react';
+import { supabase } from "../../lib/supabase";
+import { useState } from 'react';
 
 const imageSelect = (inputImg) => {
   if (inputImg === null){
@@ -60,13 +62,27 @@ const renderPost = (item, navigation ) => {
   );
 };
 
-const PersonThumbnailContent = ( { navigation, allUsers } ) =>
+const PersonThumbnailContent = ( { navigation, allUsers, terms } ) =>
 {
+    let [listData, setListData] = useState(allUsers)
+    const getUsers = async (t) => {
+      const {data, error} = await supabase 
+        .from('users')
+        .select('*')
+        .textSearch('full_name', t)
+      if (data.length == 0) {
+        setListData(allUsers);
+      } else {
+        setListData(data)
+      }
+    }
+    if (terms != '') {
+      getUsers(terms);
+    }  
     return (
       <ScrollView>
-        <View style={styles.spacer}></View>
         <FlatList 
-          data={allUsers}
+          data={listData}
           renderItem={({item}) => renderPost(item, navigation)}
         />
       </ScrollView>       
@@ -79,7 +95,4 @@ const styles = StyleSheet.create({
   post: {
     flex: 1,
   },
-  spacer: {
-    height: 30,
-  }
 });

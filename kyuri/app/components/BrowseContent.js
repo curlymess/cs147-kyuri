@@ -211,7 +211,11 @@ export default function BrowseContent(props) {
                             mutuals={personDataObj.mutuals}
                         >
                         </PersonThumbnail>                     */}
-                        <PersonThumbnailContent navigation={props.navigation} allUsers={props.allUsers}/>
+                        <PersonThumbnailContent 
+                            navigation={props.navigation} 
+                            allUsers={props.allUsers}
+                            terms={props.terms}
+                        />
 
                     </View>
                 </ScrollView>

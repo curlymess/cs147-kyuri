@@ -74,6 +74,7 @@ const FeedContent = ( { navigation, posts } ) =>
 {
     return (
       <ScrollView>
+        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
         <FlatList 
           data={posts}
           renderItem={({item}) => renderPost(item, navigation)}

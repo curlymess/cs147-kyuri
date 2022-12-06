@@ -14,6 +14,7 @@ export default function BrowseSearchBar(props) {
               <TextInput 
                 placeholder = "Search"
                 style={browseStyles.input}
+                onChangeText={text => props.termsCallback(text)}
               ></TextInput>
               <Pressable style={browseStyles.searchBarButton}>
                 <Ionicons name='search' size={28} color='black'></Ionicons>

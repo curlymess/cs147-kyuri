@@ -81,7 +81,9 @@ function Browse({navigation, allUsers, allPosts}) {
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
   const [filter, toggleFilter] = useState(false);
-  console.log(screen1);
+
+  const [searchTerms, setSearchTerms] = useState('');
+
   return (
   <View style={styles.container}>
     <Top style={styles.head} noBack="true" navigation={navigation}/>
@@ -89,6 +91,8 @@ function Browse({navigation, allUsers, allPosts}) {
     <BrowseSearchBar 
       filterProp={filter} 
       filterCallback={toggleFilter}
+      terms={searchTerms}
+      termsCallback={setSearchTerms}
     >
     </BrowseSearchBar>
     <BrowseSlider
@@ -108,6 +112,8 @@ function Browse({navigation, allUsers, allPosts}) {
       allUsers={allUsers}
       allPosts={allPosts}
       navigation={navigation}
+      terms={searchTerms}
+      termsCallback={setSearchTerms}
     >
     </BrowseContent>
   </View>  
