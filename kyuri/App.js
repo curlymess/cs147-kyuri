@@ -28,6 +28,7 @@ import Routine from './app/components/Routine';
 import EmptyRoutineCard from './app/components/EmptyRoutineCard';
 import RoutineCard from './app/components/RoutineCard';
 import RecommendedProductsCard from './app/components/RecommendedProductsCard';
+import RecommendedProductsDetail from './app/components/RecommendedProductsDetail';
 
 import NewPostsStatus from './app/components/NewPostsStatus.js';
 
@@ -443,6 +444,7 @@ function NavContainer( {posts, tomPosts, allUsers} ){
           {(props) => <Profile posts={tomPosts} {...props} />}
         </Tab.Screen>
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
+        <Tab.Screen name="RecommendedProducts" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={RecommendedProductsDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
         <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
@@ -477,7 +479,6 @@ export default function App() {
     listenToChanges();
     return () => sub?.unsubscribe();
   }, []);
-
   const addPost = async ( username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags ) => {
     const {data, error} = await supabase 
       .from('posts')

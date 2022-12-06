@@ -73,12 +73,14 @@ const renderPost = (item, navigation ) => {
 const FeedContent = ( { navigation, posts } ) =>
 {
     return (
-      <View>
+      <ScrollView>
+        <View style={feedStyles.spacer}></View>
+        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
         <FlatList 
           data={posts}
           renderItem={({item}) => renderPost(item, navigation)}
         />
-        </View>
+      </ScrollView>
   );
 };
 
