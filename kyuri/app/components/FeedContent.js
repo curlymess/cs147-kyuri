@@ -54,7 +54,7 @@ const FeedContent = ( { navigation, posts } ) =>
     return (
       <ScrollView>
         <View style={feedStyles.spacer}></View>
-        <RecommendedProductsCard></RecommendedProductsCard>
+        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
         <FlatList 
           data={posts}
           renderItem={({item}) => renderPost(item, navigation)}

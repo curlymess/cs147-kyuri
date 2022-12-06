@@ -8,7 +8,10 @@ import Pedestal from './Pedestal';
 const RecommendedProductsCard = ({ navigation }) => 
 {
   return (
-    <View style={styles.container}>
+    <Pressable 
+      style={styles.container}
+      onPress={() => navigation.navigate('RecommendedProducts', {navigation})}
+    >
         <View style={styles.pedestalContainer}>
             <Pedestal
                 url={require('../../assets/Icons/product1.png')}
@@ -27,7 +30,7 @@ const RecommendedProductsCard = ({ navigation }) =>
             <Text style={styles.title}>Hand picked products for you!</Text>
             <Text style={styles.subtitle}>Based on your interests</Text>
         </View>
-    </View>
+    </Pressable>
   );
 };
 
