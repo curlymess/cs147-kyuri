@@ -11,6 +11,7 @@ import { withTheme } from 'react-native-elements';
 
 export default function ProductThumbnail(props) {
     let data = props;
+    console.log('4:')
     return (
         <Pressable 
             style={styles.container}
