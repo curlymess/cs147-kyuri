@@ -6,16 +6,11 @@ import { useState } from 'react';
 import Top from './Top';
 
 
-const Onboarding2 = ({navigation}) => 
+const Onboarding2 = ({navigation}, props) => 
 {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [age, setAge] = useState('');
-    const [race, setRace] = useState('');
-    const [level, setLevel] = useState('');
-
+    const [profileImg, setProfileImg] = useState('');
+    const [skinType, setSkinType] = useState('');
+    const [skinProblems, setSkinProblems] = useState('');
   return (
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation}/>
@@ -24,39 +19,33 @@ const Onboarding2 = ({navigation}) =>
             <View style={styles.searchContainer}>
                 <View style={styles.inputBar}>
                     <TextInput 
-                    placeholder = "First Name"
+                    placeholder = "Profile Image"
                     style={styles.input}
-                    onChangeText={(text) => setFirstName(text)}
+                    onChangeText={(text) => setProfileImg(text)}
                     ></TextInput>
                 </View>
                 <View style={styles.inputBar}>
                     <TextInput 
-                    placeholder = "Last Name"
+                    placeholder = "Skin Type"
                     style={styles.input}
-                    onChangeText={(text) => setLastName(text)}
+                    onChangeText={(text) => setSkinType(text)}
                     ></TextInput>
                 </View>
                 <View style={styles.inputBar}>
                     <TextInput 
-                    placeholder = "Email"
+                    placeholder = "Skin Problems"
                     style={styles.input}
-                    onChangeText={(text) => setEmail(text)}
+                    onChangeText={(text) => setSkinProblems(text)}
                     ></TextInput>
                 </View>
 
             </View>
         </View>
-        <View>
-            <Text style={styles.privacyTxt}>Default Privacy Setting:</Text>
-            <View style={[styles.row, styles.privacyOpt]}>
-                <Text style={styles.privacyTxt}>Public</Text>
-                <Text style={styles.privacyTxt}>Private</Text>
-            </View>
-        </View>
+
         <View style={styles.row}>
             <View style={styles.flexOne}>
             </View>
-            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('Onboarding2')}}>
+            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('NavContainer')}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>

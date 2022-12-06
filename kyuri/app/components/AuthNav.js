@@ -8,11 +8,13 @@ import { Button, Input } from 'react-native-elements'
 import Auth from './Auth';
 import Onboarding from './Onboarding';
 import Onboarding2 from './Onboarding2';
+import ProfileContent from './ProfileContent';
 
 // Navigation
 import 'react-native-gesture-handler';
 import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import App from '../../App';
 
 const Tab = createBottomTabNavigator();
 

@@ -74,8 +74,6 @@ const FeedContent = ( { navigation, posts } ) =>
 {
     return (
       <ScrollView>
-        <View style={feedStyles.spacer}></View>
-        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
         <FlatList 
           data={posts}
           renderItem={({item}) => renderPost(item, navigation)}
@@ -90,7 +88,5 @@ const feedStyles = StyleSheet.create({
   post: {
     flex: 1,
   },
-  spacer: {
-    height: 30,
-  }
+
 });
