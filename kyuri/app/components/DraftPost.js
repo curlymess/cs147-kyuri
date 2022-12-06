@@ -7,6 +7,8 @@ import Top from './Top';
 import { supabase } from '../../lib/supabase';
 import { useState } from 'react';
 import DropdownScreen from './DropdownScreen';
+import MultiSelect from './Multiselect';
+import MultiSelectScreen from './Multiselect';
 
 
 const DraftPost = ({navigation, route}) => 
@@ -27,6 +29,32 @@ const DraftPost = ({navigation, route}) =>
     const [postType, setPostType] = useState('');
     const [isSelected, setSelection] = useState(false);
 
+    const data = [
+        {label: 'Review', value: '1'},
+        {label: 'Article', value: '2'},
+        {label: 'Routine', value: '3'},
+        {label: 'Request', value: '4'},
+    ];
+
+    const tagData = [
+        {label: 'Sustainability', value: '1'},
+        {label: 'Clean Beauty', value: '2'},
+        {label: 'Anti-Aging', value: '3'},
+        {label: 'Winter', value: '4'},
+        {label: 'Summer', value: '5'},
+        {label: 'Spring', value: '6'},
+        {label: 'Autumn', value: '7'},
+    ];
+
+    const productData = [
+        {label: 'Cilantro Sunscreen', value: '1'},
+        {label: 'Lemon Moisturizer', value: '2'},
+        {label: 'Lavendar Toner', value: '3'},
+        {label: 'Zucchini Moisturizer', value: '4'},
+        {label: 'Sweet Potato Cleanser', value: '5'},
+        {label: 'Asparagus Wash', value: '6'},
+    ];
+
   return (
     
     <View style={styles.container}>
@@ -43,14 +71,10 @@ const DraftPost = ({navigation, route}) =>
                 ></TextInput>
             </View>
             <View style={styles.dd}>
-                <DropdownScreen placeholderTxt={'Select Post Type'}></DropdownScreen>
+                <DropdownScreen placeholderTxt={'Select Post Type'} data={data}></DropdownScreen>
             </View>
-            <View style={styles.inputBar}>
-                <TextInput 
-                placeholder = "Add tags"
-                style={styles.input}
-                onChangeText={(text) => setPostTags(text)}
-                ></TextInput>
+            <View>
+                <MultiSelectScreen data={tagData} placeholderTxt={'Select Tags'}></MultiSelectScreen>
             </View>
             <View style={styles.inputPostBar}>
                 <TextInput 
@@ -60,12 +84,8 @@ const DraftPost = ({navigation, route}) =>
                 // multiline={true}
                 ></TextInput>
             </View>
-            <View style={styles.inputBar}>
-                <TextInput 
-                placeholder = "Tag related products"
-                style={styles.input}
-                onChangeText={(text) => setPostProducts(text)}
-                ></TextInput>
+            <View>
+                <MultiSelectScreen data={productData} placeholderTxt={'Select Products'}></MultiSelectScreen>
             </View>
 
         </View>

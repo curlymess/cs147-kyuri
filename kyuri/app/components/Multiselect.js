@@ -4,16 +4,9 @@ import {Dropdown, MultiSelect} from 'react-native-element-dropdown';
 import Icons from '../../assets/Icons';
 import { palette } from '../../assets/Themes/palette';
 
-const data = [
-    {label: 'Review', value: '1'},
-    {label: 'Article', value: '2'},
-    {label: 'Routine', value: '3'},
-    {label: 'Request', value: '4'},
-];
-
-const DropdownScreen = _props => {
-    const [dropdown, setDropdown] = useState(null);
-    // const [selected, setSelected] = useState([]);
+const MultiSelectScreen = _props => {
+    // const [dropdown, setDropdown] = useState(null);
+    const [selected, setSelected] = useState([]);
 
     const _renderItem = item => {
         return (
@@ -26,10 +19,10 @@ const DropdownScreen = _props => {
 
     return (
         <View style={styles.container}>
-            <Dropdown
+            {/* <Dropdown
                 style={styles.dropdown}
                 containerStyle={styles.shadow}
-                data={_props.data}
+                data={data}
                 search
                 searchPlaceholder="Search"
                 labelField="label"
@@ -50,15 +43,15 @@ const DropdownScreen = _props => {
                 // )}
                 renderItem={item => _renderItem(item)}
                 textError="Error"
-            />
+            /> */}
 
-            {/* <MultiSelect
+            <MultiSelect
                 style={styles.dropdown}
-                data={data}
+                data={_props.data}
                 labelField="label"
                 valueField="value"
                 label="Multi Select"
-                placeholder="Select item"
+                placeholder={_props.placeholderTxt}
                 search
                 searchPlaceholder="Search"
                 value={selected}
@@ -67,12 +60,12 @@ const DropdownScreen = _props => {
                     console.log('selected', item);
                 }}
                 renderItem={item => _renderItem(item)}
-            /> */}
+            /> 
         </View>
     );
 };
 
-export default DropdownScreen;
+export default MultiSelectScreen;
 
 const styles = StyleSheet.create({
     container: {
