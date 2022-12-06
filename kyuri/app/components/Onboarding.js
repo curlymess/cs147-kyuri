@@ -84,7 +84,7 @@ const Onboarding = ({navigation}) =>
         <View style={styles.row}>
             <View style={styles.flexOne}>
             </View>
-            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('Onboarding2')}}>
+            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('Onboarding2', {firstName:{firstName}, lastName:{lastName}, email:{email}, username:{username}, age:{age}, race:{race}, level:{level}})}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
