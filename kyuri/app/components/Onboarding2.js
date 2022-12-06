@@ -4,9 +4,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { palette } from '../../assets/Themes/palette';
 import { useState } from 'react';
 import Top from './Top';
-import Onboarding2 from './Onboarding2';
 
-const Onboarding = ({navigation}) => 
+
+const Onboarding2 = ({navigation}) => 
 {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -20,7 +20,7 @@ const Onboarding = ({navigation}) =>
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation}/>
         <View>
-            <Text style={styles.title}>Onboarding</Text>
+            <Text style={styles.title}>Onboarding 2</Text>
             <View style={styles.searchContainer}>
                 <View style={styles.inputBar}>
                     <TextInput 
@@ -43,35 +43,7 @@ const Onboarding = ({navigation}) =>
                     onChangeText={(text) => setEmail(text)}
                     ></TextInput>
                 </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Username"
-                    style={styles.input}
-                    onChangeText={(text) => setUsername(text)}
-                    // multiline={true}
-                    ></TextInput>
-                </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Age (optional)"
-                    style={styles.input}
-                    onChangeText={(text) => setAge(text)}
-                    ></TextInput>
-                </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Ethnicity/Race (optional)"
-                    style={styles.input}
-                    onChangeText={(text) => setRace(text)}
-                    ></TextInput>
-                </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Skincare Experience Level"
-                    style={styles.input}
-                    onChangeText={(text) => setLevel(text)}
-                    ></TextInput>
-                </View>
+
             </View>
         </View>
         <View>
@@ -94,7 +66,7 @@ const Onboarding = ({navigation}) =>
 };
 
 
-export default Onboarding;
+export default Onboarding2;
 
 const styles = StyleSheet.create({
     container: {
