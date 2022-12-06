@@ -50,8 +50,8 @@ function Feed({ navigation, posts }) {
       flex: 1,
     },
     spacer: {
-      height: 30,
-    }
+      height: 20,
+    },
   });
   return (
     <View style={styles.container}>
@@ -60,7 +60,8 @@ function Feed({ navigation, posts }) {
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <ScrollView style={feedStyles.spacer}>
+      <View style={feedStyles.spacer}></View>
+      <ScrollView>
         <RecommendedProductsCard></RecommendedProductsCard>
         <FeedContent navigation={navigation} posts={posts} />
       </ScrollView>
