@@ -24,7 +24,9 @@ export default function AuthNav( {setIsLoggedIn }){
     return (
       <NavigationContainer>
         <Tab.Navigator>
-            <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Auth} />
+            <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}}>
+            {(props) => <Auth setIsLoggedIn={setIsLoggedIn} {...props} />}
+            </Tab.Screen>
             <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
             <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding2} />
         </Tab.Navigator>
