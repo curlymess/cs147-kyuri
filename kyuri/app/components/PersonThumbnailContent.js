@@ -3,9 +3,7 @@ import { StyleSheet, ScrollView, Text, FlatList, View } from 'react-native';
 import Icons from '../../assets/Icons';
 import { palette } from '../../assets/Themes/palette';
 import 'react-native-gesture-handler';
-import Post from './Post';
-import RecommendedProductsCard from './RecommendedProductsCard';
-
+import PersonThumbnail from './PersonThumbnail';
 import React from 'react';
 
 const imageSelect = (inputImg) => {
@@ -51,42 +49,33 @@ const imageSelect = (inputImg) => {
 
 const renderPost = (item, navigation ) => {
   return (
-    <Post 
-      // style={feedStyles.post}
-      navigation={navigation}
-      postTime={"1 hour ago"}
-      title={item.title}
-      postText={item.postText}
-      userImg={imageSelect(item.userImg)}
-      userAge={item.userAge}
-      userLevel={item.userLevel}
-      username={item.username}
-      postType={item.postType}
-      yellowTagTxt={item.yellowTagTxt}
-      blueTagTxt={item.blueTagTxt}
-      hideTags={item.hideTags}
-      author={item.author}
-    />
+    <PersonThumbnail 
+        name={item.full_name}
+        username={item.username}
+        image={imageSelect(item.userImg)}
+        age={item.userAge}
+        level={item.userLevel}
+        mutuals={[imageSelect(item.mutual1), imageSelect(item.mutual2)]}>
+    </PersonThumbnail> 
   );
 };
 
-const FeedContent = ( { navigation, posts } ) =>
+const PersonThumbnailContent = ( { navigation, allUsers } ) =>
 {
     return (
       <ScrollView>
-        <View style={feedStyles.spacer}></View>
-        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
+        <View style={styles.spacer}></View>
         <FlatList 
-          data={posts}
+          data={allUsers}
           renderItem={({item}) => renderPost(item, navigation)}
         />
-      </ScrollView>
+      </ScrollView>       
   );
 };
 
-export default FeedContent;
+export default PersonThumbnailContent;
 
-const feedStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   post: {
     flex: 1,
   },

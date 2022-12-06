@@ -28,8 +28,6 @@ import RoutineCard from './app/components/RoutineCard';
 import RecommendedProductsCard from './app/components/RecommendedProductsCard';
 import RecommendedProductsDetail from './app/components/RecommendedProductsDetail';
 
-
-
 import NewPostsStatus from './app/components/NewPostsStatus.js';
 
 import FeedContent from './app/components/FeedContent';
@@ -51,7 +49,10 @@ function Feed({ navigation, posts }) {
   const feedStyles = StyleSheet.create({
     post: {
       flex: 1,
-    }
+    },
+    spacer: {
+      height: 20,
+    },
   });
   return (
     <View style={styles.container}>
@@ -60,12 +61,17 @@ function Feed({ navigation, posts }) {
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <FeedContent navigation={navigation} posts={posts} />
+      <View style={feedStyles.spacer}></View>
+      <ScrollView>
+        <RecommendedProductsCard></RecommendedProductsCard>
+        <FeedContent navigation={navigation} posts={posts} />
+      </ScrollView>
+      
     </View>    
   )
 }
 
-function Browse({navigation}) {
+function Browse({navigation, allUsers, allPosts}) {
   const [screen1, toggleScreen1] = useState(true);
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
@@ -94,6 +100,8 @@ function Browse({navigation}) {
       screen2Prop={screen2} 
       screen3Prop={screen3}
       filterProp={filter} 
+      allUsers={allUsers}
+      allPosts={allPosts}
     >
     </BrowseContent>
   </View>  
@@ -102,6 +110,46 @@ function Browse({navigation}) {
 
 function Profile( {navigation, posts} )
 {
+  const imageSelect = (inputImg) => {
+  if (inputImg === null){
+    return Icons.tom;
+  }
+  const outputImg = {
+    'tom': Icons.tom,
+    'iris': Icons.iris,
+    'p1': Icons.p1,
+    'p2': Icons.p2,
+    'p3': Icons.p3,
+    'p4': Icons.p4,
+    'p5': Icons.p5,
+    'p6': Icons.p6,
+    'p7': Icons.p7,
+    'p8': Icons.p8,
+
+    'product1': Icons.product1,
+    'product2': Icons.product2,
+    'product3': Icons.product3,
+    'product4': Icons.product4,
+    'product5': Icons.product5,
+    'product6': Icons.product6,
+    'product7': Icons.product7,
+    'product8': Icons.product8,
+    'product9': Icons.product9,
+    'product10': Icons.product10,
+    'product11': Icons.product11,
+    'product12': Icons.product12,
+    'product13': Icons.product13,
+    'product14': Icons.product14,
+    'product15': Icons.product15,
+    'product16': Icons.product16,
+    'product17': Icons.product17,
+    'product18': Icons.product18,
+    'product19': Icons.product19,
+    'product20': Icons.product20,
+  };
+  return outputImg[inputImg];
+}
+
   const profileStyles = StyleSheet.create({
     myProfileCard: {
       flexDirection: 'row',
@@ -227,7 +275,7 @@ function Profile( {navigation, posts} )
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer( {posts, tomPosts} ){
+function NavContainer( {posts, tomPosts, allUsers} ){
   const navstyles = StyleSheet.create({
     
   });
@@ -267,7 +315,9 @@ function NavContainer( {posts, tomPosts} ){
         <Tab.Screen name="Feed" options={{headerShown: false}}>
           {(props) => <Feed posts={posts} {...props} />}
         </Tab.Screen>
-        <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
+        <Tab.Screen name="Search" options={{headerShown: false}}>
+        {(props) => <Browse allUsers={allUsers} allPosts={posts} {...props} />}
+        </Tab.Screen>
         <Tab.Screen name="Profile" options={{headerShown: false}}>
           {(props) => <Profile posts={tomPosts} {...props} />}
         </Tab.Screen>
@@ -291,6 +341,7 @@ export default function App() {
   let sub;
   const [allPosts, setAllPosts] = useState([]);
   const [tomPosts, setTomPosts] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
@@ -298,6 +349,7 @@ export default function App() {
     }).subscribe();
   getPosts();
   getTomPosts();
+  getUsers();
   }
   React.useEffect(() => {
     listenToChanges();
@@ -320,6 +372,13 @@ export default function App() {
     console.log(data, error);
     setAllPosts(data);
   }
+  const getUsers = async ( ) => {
+    const {data, error} = await supabase 
+      .from('users')
+      .select('*');
+    console.log(data, error);
+    setAllUsers(data);
+  }
   const getTomPosts = async ( ) => {
     const {data, error} = await supabase 
       .from('posts')
@@ -332,10 +391,10 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   if ( isLoggedIn ){
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   } else {
     // contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   }
 
   if (!fontsLoaded) return <AppLoading />;
