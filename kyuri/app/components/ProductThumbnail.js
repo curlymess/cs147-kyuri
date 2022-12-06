@@ -10,12 +10,12 @@ import { withTheme } from 'react-native-elements';
 
 
 export default function ProductThumbnail(props) {
-
+    let data = props;
     return (
         <Pressable 
             style={styles.container}
             onPress={() => {
-                props.navigation.navigate('ProductDetail', {props})
+                props.navigation.navigate('ProductDetail', {data})
             }}
         >
             <View style={styles.left}>

@@ -7,19 +7,30 @@ import Top from './Top';
 import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
 import { ScrollView } from 'react-native-gesture-handler';
-import CommentCard from './CommentCard';
+import { useLinkProps } from '@react-navigation/native';
+
 
 const ProductDetail = ({navigation, route}) => 
 {
-   const {props} = route.params;
-
-
+  const {data} = route.params;
 
   return (
-    
     <View style={styles.container}>
-      <Top navigation={navigation}/>
-
+        <Top navigation={navigation}/>
+        <View style={styles.cardWrapper}>
+            <View style={styles.card}>
+                <Text style={styles.title}>{data.name}</Text>
+                <Text style={styles.brandText}>by 
+                    <Text style={styles.brandName}> BrandName </Text>
+                </Text>
+                <View style={styles.pedestalWrapper}>
+                    <MedPedestal
+                        url={data.image}
+                        light={true}
+                    ></MedPedestal>
+                </View>
+            </View>
+        </View>
     </View>
   );
 };
@@ -33,100 +44,35 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
-    postdetails: {
-      flex: 1,
-      marginHorizontal: 10,
-      position: 'relative',
-      top: -23,
+    cardWrapper: {
+        position: 'absolute',
+        top:50,
+        zIndex: 3,
+        elevation: 3,
+        width: '100%',
     },
-    postsCard: {
-      marginVertical: 10,
-      marginBottom: 0,
-    },
-    headerImg: {
-      borderRadius: 8,
-      backgroundColor: palette.cream,
-      flexDirection: 'row',
-      justifyContent: 'space-evenly',
-      height: '10%',
-      alignItems: 'center',
+    card: {
+        backgroundColor: palette.darkBrown,
+        marginHorizontal: 10,
+        padding: 10,
+        paddingBottom: 12,
+        borderRadius: 12,
+        position: 'relative',
     },
     title: {
-      fontSize: 24,
-      fontWeight: '700',
-      marginTop: 15,
-      marginBottom: 3,
-      fontFamily: 'MondaBold',
+        fontSize: 24,
+        fontFamily: 'MondaBold',
+        color: palette.white,
     },
-    tag: {
-      flexDirection: 'row', 
-      marginBottom: 15,
-      marginTop: 5,
-    },
-    tagBttn: {
-      backgroundColor: palette.blueTag,
-      borderColor: palette.blue,
-      borderWidth: 1,
-      padding: 3,
-      paddingHorizontal: 15,
-      borderRadius: 20,
-      marginRight: 3,
-    },
-    blueTag: {
-      backgroundColor: palette.blue,
-      padding: 3,
-      paddingHorizontal: 15,
-      borderRadius: 20,
-      marginRight: 3,
-    },
-    creamTag: {
-      backgroundColor: palette.cream,
-      padding: 3,
-      paddingHorizontal: 15,
-      borderRadius: 20,
-      marginRight: 3,
-    },
-    yellowTag: {
-      backgroundColor: palette.yellow,
-      padding: 3,
-      paddingHorizontal: 15,
-      borderRadius: 20,
-      marginRight: 3,
-    },
-    tagTxt: {
-      fontSize: 10,
-      color: palette.black,
-      fontFamily: 'MondaBold',
-    },
-    blackTxt: {
-      color: palette.black,
-    },
-    authorProfile: {
-
-    },
-    text: {
-      fontSize: 16,
-      marginBottom: 10,
-      marginTop: 20,
-      fontFamily: 'Monda',
-    },
-    comment: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 3,
-    },
-    commentTxt: {
-      paddingTop: 5,
-      borderRadius: 20,
-      marginRight: 5,
-      fontFamily: 'MondaBold',
-    },
-    whiteTxt: {
-      color: palette.white,
-      fontFamily: 'Monda',
+    brandText: {
+        fontFamily: 'Monda',
+        position: 'relative',
+        top: -5,
+        color: palette.white,
     },
     pedestalWrapper: {
-      position: 'relative',
-      bottom: -8,
+        position: 'absolute',
+        bottom: -15,
+        right: 10,
     },
 });
