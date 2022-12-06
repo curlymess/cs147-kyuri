@@ -48,6 +48,9 @@ function Feed({ navigation, posts }) {
   const feedStyles = StyleSheet.create({
     post: {
       flex: 1,
+    },
+    spacer: {
+      height: 30,
     }
   });
   return (
@@ -57,12 +60,16 @@ function Feed({ navigation, posts }) {
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <FeedContent navigation={navigation} posts={posts} />
+      <ScrollView style={feedStyles.spacer}>
+        <RecommendedProductsCard></RecommendedProductsCard>
+        <FeedContent navigation={navigation} posts={posts} />
+      </ScrollView>
+      
     </View>    
   )
 }
 
-function Browse({navigation}) {
+function Browse({navigation, allUsers, allPosts}) {
   const [screen1, toggleScreen1] = useState(true);
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
@@ -91,6 +98,8 @@ function Browse({navigation}) {
       screen2Prop={screen2} 
       screen3Prop={screen3}
       filterProp={filter} 
+      allUsers={allUsers}
+      allPosts={allPosts}
     >
     </BrowseContent>
   </View>  
@@ -264,7 +273,7 @@ function Profile( {navigation, posts} )
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer( {posts, tomPosts} ){
+function NavContainer( {posts, tomPosts, allUsers} ){
   const navstyles = StyleSheet.create({
     
   });
@@ -304,7 +313,9 @@ function NavContainer( {posts, tomPosts} ){
         <Tab.Screen name="Feed" options={{headerShown: false}}>
           {(props) => <Feed posts={posts} {...props} />}
         </Tab.Screen>
-        <Tab.Screen name="Search" options={{headerShown: false}} component={Browse} />
+        <Tab.Screen name="Search" options={{headerShown: false}}>
+        {(props) => <Browse allUsers={allUsers} allPosts={posts} {...props} />}
+        </Tab.Screen>
         <Tab.Screen name="Profile" options={{headerShown: false}}>
           {(props) => <Profile posts={tomPosts} {...props} />}
         </Tab.Screen>
@@ -327,6 +338,7 @@ export default function App() {
   let sub;
   const [allPosts, setAllPosts] = useState([]);
   const [tomPosts, setTomPosts] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
@@ -334,6 +346,7 @@ export default function App() {
     }).subscribe();
   getPosts();
   getTomPosts();
+  getUsers();
   }
   React.useEffect(() => {
     listenToChanges();
@@ -357,6 +370,13 @@ export default function App() {
     console.log(data, error);
     setAllPosts(data);
   }
+  const getUsers = async ( ) => {
+    const {data, error} = await supabase 
+      .from('users')
+      .select('*');
+    console.log(data, error);
+    setAllUsers(data);
+  }
   const getTomPosts = async ( ) => {
     const {data, error} = await supabase 
       .from('posts')
@@ -369,10 +389,10 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   if ( isLoggedIn ){
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   } else {
     // contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   }
 
   if (!fontsLoaded) return <AppLoading />;
