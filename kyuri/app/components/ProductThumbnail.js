@@ -11,7 +11,6 @@ import { withTheme } from 'react-native-elements';
 
 export default function ProductThumbnail(props) {
     let data = props;
-    console.log('4:')
     return (
         <Pressable 
             style={styles.container}
@@ -103,6 +102,8 @@ const styles = StyleSheet.create({
     },
     name: {
         fontFamily: 'MondaBold',
+        marginBottom: 2,
+        marginRight: 3,
     },
     rightTop: {
         flexDirection: 'row',
@@ -125,9 +126,6 @@ const styles = StyleSheet.create({
     }, 
     usedByContainer: {
         flexDirection: 'row',
-    },
-    rightBottom: {
-
     },
     usedBy: {
         fontFamily: 'MondaBold',

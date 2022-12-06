@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         height: 24,
-        marginHorizontal: 20,
+        marginHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

@@ -5,13 +5,13 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Pedestal from './Pedestal';
 
-const RoutineCard = ({ navigation }) => 
+const RoutineCard = ({ navigation, title, subtitle }) => 
 {
   return (
     <View style={styles.container}>
         <View style={styles.pedestalContainer}>
             <Pedestal
-                url={require('../../assets/Icons/product1.png')}
+                url={require('../../assets/Icons/product2.png')}
             ></Pedestal>
             <Pedestal
                 url={require('../../assets/Icons/product8.png')}
@@ -21,7 +21,7 @@ const RoutineCard = ({ navigation }) =>
             ></Pedestal>
         </View>
         <View style={styles.left}>
-            <Text style={styles.currText}>Current Routine</Text>
+            <Text style={styles.currText}>{title}</Text>
         </View>
         <View style={styles.right}>
             <Text style={styles.infoText}>
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
       currText: {
         fontSize: 16,
         fontFamily: 'MondaBold',
+      },
+      left: {
+        maxWidth: 160,
       },
       infoText: {
         fontSize: 12,

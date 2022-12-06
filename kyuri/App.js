@@ -67,8 +67,8 @@ function Feed({ navigation, posts }) {
       <View style={styles.newPostsWrapper}>
         <NewPostsStatus></NewPostsStatus>
       </View>
-      <View style={feedStyles.spacer}></View>
       <ScrollView>
+        <View style={feedStyles.spacer}></View>
         <FeedContent navigation={navigation} posts={posts} />
       </ScrollView>
       
@@ -266,7 +266,7 @@ function Profile( {navigation, posts} )
           </View>
         </View>
 
-      <RoutineCard navigation={navigation}></RoutineCard>
+      <RoutineCard navigation={navigation} title={'Current Routine'}></RoutineCard>
 
       <Pressable style={profileStyles.linkWrapperMargin}>
         <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>

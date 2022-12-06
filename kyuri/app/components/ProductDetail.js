@@ -8,6 +8,10 @@ import MedPedestal from './MedPedestal';
 import ProductSlider from './ProductSlider';
 import ProductDetailContent from './ProductDetailContent';
 import Pedestal from './Pedestal';
+import CommentCard from './CommentCard';
+import RoutineCard from './RoutineCard';
+
+
 
 
 import PersonThumbnail from './PersonThumbnail';
@@ -43,6 +47,14 @@ const ProductDetail = ({navigation, route}) =>
                     </View>
                 </View>
             <ScrollView style={styles.pageContent}>
+                <View style={styles.tags}>
+                    <View style={styles.tag}><Text style={styles.tagText}>Tag</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Longer Tag</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Another Tag</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Final</Text></View>
+
+
+                </View>
                 <View style={styles.sliderCard}>
                     <View style={styles.sliderCardContent}>
                         <ProductDetailContent
@@ -63,6 +75,21 @@ const ProductDetail = ({navigation, route}) =>
                         ></ProductSlider>
                     </View>
                 </View>
+                <View style={styles.recommendedRoutineContainer}>
+                    <RoutineCard
+                        title={'Sample Routine'}
+                    ></RoutineCard>
+                </View>
+                <View style={styles.commentsContainer}>
+                    <Text style={styles.commentTxt}>Comments</Text>
+                    <View style={styles.postsCard}>
+                        <CommentCard title={'Great Product!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'reviewwww'}/>
+                        <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'reviewwww'}/>
+                        <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'reviewwww'}/>
+                        <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'reviewwww'}/>
+                        <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'reviewwww'}/>
+                    </View>
+                </View>
 
 
             </ScrollView>
@@ -80,7 +107,8 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     sliderCard: {
-        marginTop: 110,   
+        minHeight: 150,
+        marginTop: 40,
     },
     cardWrapper: {
         position: 'absolute',
@@ -121,5 +149,45 @@ const styles = StyleSheet.create({
     },
     sliderCardContent: {
         top: -5,
+    },
+    postsCard: {
+        marginVertical: 10,
+        marginBottom: 0,
+    },  
+    comment: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 3,
+      },
+    commentTxt: {
+        paddingTop: 5,
+        borderRadius: 20,
+        marginRight: 5,
+        fontFamily: 'MondaBold',
+    },
+    commentsContainer: {
+        marginHorizontal: 10,
+    },
+    recommendedRoutineContainer: {
+        marginVertical: 30,
+    },
+    tags: {
+        marginTop: 80,   
+        flexDirection: 'row',
+        marginHorizontal: 20,
+    },
+    tag: {
+        backgroundColor: palette.blueTag,
+        borderColor: palette.blue,
+        borderWidth: 1,
+        padding: 3,
+        paddingHorizontal: 15,
+        borderRadius: 20,
+        marginRight: 3,
+    },
+    tagText: {
+        fontFamily: 'MondaBold',
+        fontSize: 10,
     }
+  
 });

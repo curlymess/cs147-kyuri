@@ -22,7 +22,7 @@ export default function PersonThumbnail(props) {
                     </View>
                 </View>
                 <View style={styles.nameWrapper}>
-                    <Text style={styles.name}>{props.name}</Text>
+                    <Text style={styles.name} numberOfLines={1}>{props.name}</Text>
                     <Text style={styles.username}>{props.username}</Text>
                 </View>
             </View>
@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
     },
     name: {
         fontFamily: 'MondaBold',
+        marginBottom: 2,
+        marginRight: 3,
     },
     rightTop: {
         flexDirection: 'row',

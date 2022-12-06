@@ -5,7 +5,6 @@ import { palette } from '../../assets/Themes/palette';
 import Pedestal from './Pedestal'
 
 export default function ProductDetailContent(props) {  
-    console.log(props.data.usedBy)
     if (props.s1) {
         return (
             <View style={styles.container}>
@@ -47,7 +46,7 @@ export default function ProductDetailContent(props) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: palette.cream,
-        marginHorizontal: 30,
+        marginHorizontal: 20,
         padding: 10,
         paddingTop: 12,
         position: 'relative',

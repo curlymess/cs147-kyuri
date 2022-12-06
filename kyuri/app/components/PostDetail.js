@@ -69,13 +69,14 @@ const PostDetail = ({navigation, route}) =>
             </View>
           </View>
           <Text style={styles.title}>{postTitle.title}</Text>
+          
+          
+          <ScrollView style={styles.commentCardContainer}>
           {!hideTags.hideTags && <View style={styles.tag}>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{postType.postType}</Text></View>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{blueTagTxt.blueTagTxt}</Text></View>
               <View style={styles.tagBttn}><Text style={styles.tagTxt}>{yellowTagTxt.yellowTagTxt}</Text></View>
             </View>}
-          
-          <ScrollView style={styles.commentCardContainer}>
           <PersonThumbnail 
             name={personDataObj.name}
             username={personDataObj.username}
@@ -114,8 +115,6 @@ const styles = StyleSheet.create({
     postdetails: {
       flex: 1,
       marginHorizontal: 10,
-      position: 'relative',
-      top: -23,
     },
     postsCard: {
       marginVertical: 10,
@@ -128,6 +127,8 @@ const styles = StyleSheet.create({
       justifyContent: 'space-evenly',
       height: '10%',
       alignItems: 'center',
+      position: 'relative',
+      top: -23,
     },
     title: {
       fontSize: 24,
