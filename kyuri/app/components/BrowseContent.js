@@ -147,13 +147,13 @@ export default function BrowseContent(props) {
                         screenIndex={0}
                     ></BrowseTagContainer>
                     <View style={styles.resultsContainer}>
-                        
                         <ProductThumbnail 
                             name={productDataObj.name}
                             image={productDataObj.image}
                             type={productDataObj.type}
                             rating={productDataObj.rating}
                             usedBy={productDataObj.usedBy}
+                            navigation={props.navigation}
                         >
                         </ProductThumbnail>                  
                     </View>
