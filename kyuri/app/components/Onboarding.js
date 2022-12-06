@@ -5,6 +5,8 @@ import { palette } from '../../assets/Themes/palette';
 import { useState } from 'react';
 import Top from './Top';
 import Onboarding2 from './Onboarding2';
+import DropdownScreen from './DropdownScreen';
+import MultiSelectScreen from './Multiselect';
 
 const Onboarding = ({navigation}) => 
 {
@@ -15,6 +17,22 @@ const Onboarding = ({navigation}) =>
     const [age, setAge] = useState('');
     const [race, setRace] = useState('');
     const [level, setLevel] = useState('');
+
+    const levelData = [
+        {label: 'Novice', value: '1'},
+        {label: 'Intermediate', value: '2'},
+        {label: 'Expert', value: '3'},
+        {label: 'Master', value: '4'},
+    ];
+
+    const raceData = [
+        {label: 'Asian', value: '1'},
+        {label: 'Black/African American', value: '2'},
+        {label: 'Hispanic', value: '3'},
+        {label: 'North African/Middle Eastern', value: '4'},
+        {label: 'Native Hawaiian/Pacific Islander', value: '5'},
+        {label: 'White', value: '6'},
+    ];
 
   return (
     <View style={styles.container}>
@@ -58,19 +76,11 @@ const Onboarding = ({navigation}) =>
                     onChangeText={(text) => setAge(text)}
                     ></TextInput>
                 </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Ethnicity/Race (optional)"
-                    style={styles.input}
-                    onChangeText={(text) => setRace(text)}
-                    ></TextInput>
+                <View>
+                    <MultiSelectScreen data={raceData} placeholderTxt={'Ethnicity/Race (Optional)'}></MultiSelectScreen>
                 </View>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Skincare Experience Level"
-                    style={styles.input}
-                    onChangeText={(text) => setLevel(text)}
-                    ></TextInput>
+                <View>
+                    <DropdownScreen data={levelData} placeholderTxt={'Set Expertise Level'}></DropdownScreen>
                 </View>
             </View>
         </View>

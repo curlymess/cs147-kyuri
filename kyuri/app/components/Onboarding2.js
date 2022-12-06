@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { palette } from '../../assets/Themes/palette';
 import { useState } from 'react';
 import Top from './Top';
+import MultiSelectScreen from './Multiselect';
 
 
 const Onboarding2 = ({navigation}, props) => 
@@ -11,6 +12,21 @@ const Onboarding2 = ({navigation}, props) =>
     const [profileImg, setProfileImg] = useState('');
     const [skinType, setSkinType] = useState('');
     const [skinProblems, setSkinProblems] = useState('');
+
+    const typeData = [
+        {label: 'Oily', value: '1'},
+        {label: 'Dry', value: '2'},
+        {label: 'Combination', value: '3'},
+    ];
+    const problemsData = [
+        {label: 'Acne-prone', value: '1'},
+        {label: 'Sensitive', value: '2'},
+        {label: 'Dry Skin', value: '3'},
+        {label: 'Aging Skin', value: '4'},
+        {label: 'Sun Protection', value: '5'},
+        {label: 'Specialty', value: '6'},
+    ];
+
   return (
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation}/>
@@ -25,18 +41,10 @@ const Onboarding2 = ({navigation}, props) =>
                     ></TextInput>
                 </View>
                 <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Skin Type"
-                    style={styles.input}
-                    onChangeText={(text) => setSkinType(text)}
-                    ></TextInput>
+                    <MultiSelectScreen data={typeData} placeholderTxt={'Skin Type'}></MultiSelectScreen>
                 </View>
                 <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Skin Problems"
-                    style={styles.input}
-                    onChangeText={(text) => setSkinProblems(text)}
-                    ></TextInput>
+                    <MultiSelectScreen data={problemsData} placeholderTxt={'Skin Problems'}></MultiSelectScreen>
                 </View>
 
             </View>

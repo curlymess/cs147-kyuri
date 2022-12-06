@@ -69,6 +69,7 @@ function Feed({ navigation, posts }) {
       </View>
       <ScrollView>
         <View style={feedStyles.spacer}></View>
+        <RecommendedProductsCard navigation={navigation}></RecommendedProductsCard>
         <FeedContent navigation={navigation} posts={posts} />
       </ScrollView>
       
