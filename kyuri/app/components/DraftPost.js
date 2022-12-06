@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Top from './Top';
 import { supabase } from '../../lib/supabase';
 import { useState } from 'react';
-import Checkbox from '../../app/components/Checkbox.js';
+import DropdownScreen from './DropdownScreen';
 
 
 const DraftPost = ({navigation, route}) => 
@@ -42,12 +42,8 @@ const DraftPost = ({navigation, route}) =>
                 onChangeText={(text) => setPostTitle(text)}
                 ></TextInput>
             </View>
-            <View style={styles.inputBar}>
-                <TextInput 
-                placeholder = "Add post type"
-                style={styles.input}
-                onChangeText={(text) => setPostType(text)}
-                ></TextInput>
+            <View style={styles.dd}>
+                <DropdownScreen placeholderTxt={'Select Post Type'}></DropdownScreen>
             </View>
             <View style={styles.inputBar}>
                 <TextInput 
@@ -135,6 +131,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         overflow: 'hidden',
         marginVertical: 5,
+    },
+    dd: {
+
     },
     inputPostBar: {
         height: 300,
