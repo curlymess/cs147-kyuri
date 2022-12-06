@@ -20,6 +20,8 @@ import React, { useEffect, useState } from 'react';
 import BrowseContent from './app/components/BrowseContent.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
 
+import ProductDetail from './app/components/ProductDetail';
+
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
@@ -63,7 +65,6 @@ function Feed({ navigation, posts }) {
       </View>
       <View style={feedStyles.spacer}></View>
       <ScrollView>
-        <RecommendedProductsCard></RecommendedProductsCard>
         <FeedContent navigation={navigation} posts={posts} />
       </ScrollView>
       
@@ -102,6 +103,7 @@ function Browse({navigation, allUsers, allPosts}) {
       filterProp={filter} 
       allUsers={allUsers}
       allPosts={allPosts}
+      navigation={navigation}
     >
     </BrowseContent>
   </View>  
@@ -322,6 +324,7 @@ function NavContainer( {posts, tomPosts, allUsers} ){
           {(props) => <Profile posts={tomPosts} {...props} />}
         </Tab.Screen>
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
+        <Tab.Screen name="ProductDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={ProductDetail} />
         <Tab.Screen name="RecommendedProducts" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={RecommendedProductsDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
