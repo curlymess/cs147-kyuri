@@ -5,6 +5,8 @@ import Icons from './assets/Icons';
 import themes from './assets/Themes/themes';
 import { palette } from './assets/Themes/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Button, Input } from 'react-native-elements'
+
 // Navigation
 import 'react-native-gesture-handler';
 import { NavigationContainer, useRoute } from '@react-navigation/native';
@@ -45,6 +47,126 @@ import { supabase } from "./lib/supabase";
 
 import ProfileContent from './app/components/ProfileContent';
 import DraftPost from './app/components/DraftPost';
+
+
+function SignInPage({ navigation, setIsLoggedIn }){
+  const authStyles = StyleSheet.create({
+    container: {
+      padding: 12,
+      backgroundColor: palette.white,
+      height: "100%",
+    },
+    verticallySpaced: {
+      paddingTop: 4,
+      paddingBottom: 4,
+      alignSelf: 'stretch',
+    },
+    mt20: {
+      marginTop: 20,
+    },
+    logoContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    logo: {
+        resizeMode: 'contain',
+        maxHeight: 55,
+        maxWidth: 55,
+    },
+    logoTxt: {
+      fontSize: 50,
+      color: palette.green,
+      fontFamily: 'Rosmatika',
+      paddingTop: 10,
+      marginTop: 4,
+      marginLeft: 4,
+    },
+    bttn: {
+      backgroundColor: palette.green,
+      alignItems: 'center',
+      marginVertical: 10,
+    },
+    bttnTxt: {
+      padding: 10,
+      color: palette.white,
+      fontSize: 20,
+      fontFamily: 'MondaBold',
+    },
+    signUpBttn: {
+  
+    },
+    signUpTxt:{
+      fontFamily: 'MondaBold',
+      fontSize: 16,
+      textAlign: 'center',
+      textDecorationLine: 'underline',
+    },
+  
+  });
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function signInWithEmail() {
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+    if(!error) setIsLoggedIn(true)
+    if (error) Alert.alert(error.message)
+    setLoading(false)
+  }
+
+  async function signUpWithEmail() {
+    setLoading(true)
+    const { error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
+    if(!error) setIsLoggedIn(true)
+    if (error) Alert.alert(error.message)
+    setLoading(false)
+  }
+
+return(
+  <View style={authStyles.container}>
+      <View style={authStyles.logoContainer}>
+        <Image style={authStyles.logo} source={Icons.logo} />
+        <Text style={authStyles.logoTxt}>Kyuri</Text>
+      </View>
+      <View style={[authStyles.verticallySpaced, authStyles.mt20]}>
+        <Input
+          label="Email"
+          leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          placeholder="email@address.com"
+          autoCapitalize={'none'}
+        />
+      </View>
+      <View style={authStyles.verticallySpaced}>
+        <Input
+          label="Password"
+          leftIcon={{ type: 'font-awesome', name: 'lock' }}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          secureTextEntry={true}
+          placeholder="Password"
+          autoCapitalize={'none'}
+        />
+      </View>
+      <Pressable style={[authStyles.verticallySpaced, authStyles.mt20, authStyles.bttn]} disabled={loading} onPress={() => signInWithEmail()}>
+        <Text style={authStyles.bttnTxt}>Sign In</Text>
+      </Pressable>
+      <Pressable style={[authStyles.verticallySpaced, authStyles.signUpBttn]} disabled={loading} onPress={() => {navigation.navigate('Onboarding')}}>
+        <Text style={authStyles.signUpTxt}>Don't have an account? Sign Up!</Text>
+      </Pressable>
+    </View>
+)
+}
+
 
 function Feed({ navigation, posts }) {
 
@@ -329,6 +451,8 @@ function NavContainer( {posts, tomPosts, allUsers} ){
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
         <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
+        <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Auth} />
+        <Tab.Screen name="SignInPage" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={SignInPage} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -350,9 +474,9 @@ export default function App() {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
       console.log('Recieved a change!: ', payload);
     }).subscribe();
-  getPosts();
-  getTomPosts();
-  getUsers();
+    getPosts();
+    getTomPosts();
+    getUsers();
   }
   React.useEffect(() => {
     listenToChanges();
@@ -396,8 +520,8 @@ export default function App() {
   if ( isLoggedIn ){
     contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   } else {
-    // contentDisplayed = <Auth setIsLoggedIn={setIsLoggedIn}/>
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
+    contentDisplayed = <SignInPage setIsLoggedIn={setIsLoggedIn} />
+    // contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
   }
 
   if (!fontsLoaded) return <AppLoading />;
