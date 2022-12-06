@@ -5,9 +5,10 @@ import { Button, Input } from 'react-native-elements'
 import { palette } from '../../assets/Themes/palette'
 import Icons from '../../assets/Icons';
 import { Pressable } from 'react-native';
+import Onboarding from './Onboarding'
 
 
-export default function Auth( {setIsLoggedIn} ) {
+export default function Auth( {setIsLoggedIn, navigation} ) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -35,12 +36,12 @@ export default function Auth( {setIsLoggedIn} ) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={Icons.logo} />
-        <Text style={styles.logoTxt}>Kyuri</Text>
+    <View style={authStyles.container}>
+      <View style={authStyles.logoContainer}>
+        <Image style={authStyles.logo} source={Icons.logo} />
+        <Text style={authStyles.logoTxt}>Kyuri</Text>
       </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={[authStyles.verticallySpaced, authStyles.mt20]}>
         <Input
           label="Email"
           leftIcon={{ type: 'font-awesome', name: 'envelope' }}
@@ -50,7 +51,7 @@ export default function Auth( {setIsLoggedIn} ) {
           autoCapitalize={'none'}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={authStyles.verticallySpaced}>
         <Input
           label="Password"
           leftIcon={{ type: 'font-awesome', name: 'lock' }}
@@ -61,17 +62,17 @@ export default function Auth( {setIsLoggedIn} ) {
           autoCapitalize={'none'}
         />
       </View>
-      <Pressable style={[styles.verticallySpaced, styles.mt20, styles.bttn]} disabled={loading} onPress={() => signInWithEmail()}>
-        <Text style={styles.bttnTxt}>Sign In</Text>
+      <Pressable style={[authStyles.verticallySpaced, authStyles.mt20, authStyles.bttn]} disabled={loading} onPress={() => signInWithEmail()}>
+        <Text style={authStyles.bttnTxt}>Sign In</Text>
       </Pressable>
-      <Pressable style={[styles.verticallySpaced, styles.bttn]} disabled={loading} onPress={() => signUpWithEmail()}>
-        <Text style={styles.bttnTxt}>Sign Up</Text>
+      <Pressable style={[authStyles.verticallySpaced, authStyles.signUpBttn]} disabled={loading} onPress={() => {navigation.navigate('Onboarding')}}>
+        <Text style={authStyles.signUpTxt}>Don't have an account? Sign Up!</Text>
       </Pressable>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+const authStyles = StyleSheet.create({
   container: {
     padding: 12,
     backgroundColor: palette.white,
@@ -112,6 +113,16 @@ const styles = StyleSheet.create({
     padding: 10,
     color: palette.white,
     fontSize: 20,
+    fontFamily: 'MondaBold',
+  },
+  signUpBttn: {
+
+  },
+  signUpTxt:{
+    fontFamily: 'MondaBold',
+    fontSize: 16,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
   },
 
 })
