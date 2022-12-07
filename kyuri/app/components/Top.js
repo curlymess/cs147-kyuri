@@ -27,11 +27,20 @@ export default function Top(props) {
                 <Image style={styles.logo} source={Icons.logo} />
                 <Text style={styles.kyuritxt}>Kyuri</Text>
             </View>
+            {!props.hidePostButton && 
             <View style={styles.row}>
                 <Pressable style={styles.plus} onPress={() => props.navigation.navigate(DraftPost)} >
                     <Ionicons name="add-circle-outline" size={33} color='white'/>
                 </Pressable>
             </View>
+            }
+            {props.hidePostButton &&
+            <View style={styles.row}>
+                <Pressable style={styles.plus} >
+                    <Ionicons name="add-circle-outline" size={33} color={palette.green}/>
+                </Pressable>
+            </View>
+            }
 
         </View>
     );

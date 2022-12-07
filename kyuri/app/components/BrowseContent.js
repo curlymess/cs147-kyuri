@@ -252,7 +252,10 @@ export default function BrowseContent(props) {
                         screenIndex={2}
                     ></BrowseTagContainer>
                     <View style={styles.resultsContainer2}>
-                        <FeedContent navigation={props.navigation} posts={props.allPosts}/>
+                        <BrowsePostContent
+                            navigation={props.navigation} 
+                            terms={props.terms}
+                        ></BrowsePostContent>
                     </View>
                 </ScrollView>
             );

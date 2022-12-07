@@ -210,6 +210,7 @@ function Profile( {navigation, posts} )
       marginBottom: 10,
       fontFamily: 'MondaBold',
       fontSize: 16,
+      marginTop: 50,
     },  
     routineTxt: {
       fontFamily: 'MondaBold',
@@ -240,9 +241,6 @@ function Profile( {navigation, posts} )
       overflow: 'visible',
       bottom: -26,
     },
-    linkWrapperMargin: {
-      marginBottom: 30,
-    }
   });
   return (
     <View style={styles.container}>
@@ -274,11 +272,8 @@ function Profile( {navigation, posts} )
           </View>
         </View>
 
-      <RoutineCard navigation={navigation} title={'Current Routine'}></RoutineCard>
+      <EmptyRoutineCard navigation={navigation} title={'Current Routine'}></EmptyRoutineCard>
 
-      <Pressable style={profileStyles.linkWrapperMargin}>
-        <Text style={profileStyles.viewRoutineTxt}>View other routines</Text>
-      </Pressable>
 
       <Text style={profileStyles.heading}>My Posts</Text>
       <ProfileContent style={profileStyles.postsCard} navigation={navigation} posts={posts}/>

@@ -61,7 +61,7 @@ const DraftPost = ({navigation, route}) =>
   return (
     
     <View style={styles.container}>
-        <Top navigation={navigation}/>
+        <Top navigation={navigation} hidePostButton={true}/>
 
         <Text style={styles.title}>Make a Post</Text>
 

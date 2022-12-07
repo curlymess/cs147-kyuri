@@ -39,7 +39,7 @@ const Onboarding = ({navigation}) =>
 
   return (
     <View style={styles.container}>
-        <Top noBack={false} navigation={navigation}/>
+        <Top noBack={false} navigation={navigation} hidePostButton={true}/>
         <Text style={styles.title}>Onboarding</Text>
         <ScrollView>
         <View>

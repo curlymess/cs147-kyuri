@@ -29,7 +29,7 @@ const Onboarding2 = ({navigation}, props) =>
 
   return (
     <View style={styles.container}>
-        <Top noBack={false} navigation={navigation}/>
+        <Top noBack={false} navigation={navigation} hidePostButton={true}/>
         <View>
             <Text style={styles.title}>Onboarding</Text>
             <View style={styles.searchContainer}>
