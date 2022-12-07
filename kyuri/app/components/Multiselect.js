@@ -59,6 +59,8 @@ const MultiSelectScreen = _props => {
                 placeholderStyle={styles.placeholder}
                 searchPlaceholder="Search"
                 value={selected}
+                selectedStyle={styles.selectedTag}
+                selectedTextStyle={styles.selectedText}
                 maxHeight = {300}
                 onChange={item => {
                 setSelected(item);
@@ -77,6 +79,17 @@ const styles = StyleSheet.create({
         backgroundColor: palette.green,
         width: '100%',
         fontFamily: 'Monda',
+    },
+    selectedTag: {
+        backgroundColor: palette.cream,
+        borderRadius: 20,
+        borderColor: palette.mediumBrown,
+        borderWidth: 2,
+        marginLeft: 10,
+    },
+    selectedText: {
+        color: 'black',
+        fontFamily: 'MondaBold',
     },
     dropdown: {
         height: 46,

@@ -119,12 +119,13 @@ const Onboarding = ({navigation}) =>
                 </Pressable>
             </View>
         </View>
-        </ScrollView>
         <View style={styles.buttonWrapper}>
             <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding2', {firstName:{firstName}, lastName:{lastName}, email:{email}, username:{username}, age:{age}, race:{race}, level:{level}})}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
+        </ScrollView>
+        
 
 
     </View>
@@ -243,9 +244,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         marginTop: 30,
-        position: 'absolute',
-        bottom: 105,
         width: '100%',
         flex: 1,
+        marginBottom: 30,
       }
 });
