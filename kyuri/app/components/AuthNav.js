@@ -8,6 +8,7 @@ import { Button, Input } from 'react-native-elements'
 import Auth from './Auth';
 import Onboarding from './Onboarding';
 import Onboarding2 from './Onboarding2';
+import Onboarding3 from './Onboarding3';
 import ProfileContent from './ProfileContent';
 
 // Navigation
@@ -31,6 +32,9 @@ export default function AuthNav( {setIsLoggedIn }){
             </Tab.Screen>
             <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
             <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding2} />
+            <Tab.Screen name="Onboarding3" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} >
+            {(props) => <Onboarding3 setIsLoggedIn={setIsLoggedIn} {...props} />}
+            </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     );
