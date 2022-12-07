@@ -22,9 +22,7 @@ import { useState } from 'react';
 const ProductDetail = ({navigation, route}) => 
 {
     const {data} = route.params;
-    console.log('1:')
 
-    console.log(data.usedBy)
     let [screen1, screen1Callback] = useState(true);
     let [screen2, screen2Callback] = useState(false);
     let [screen3, screen3Callback] = useState(false);
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     sliderCard: {
-        minHeight: 150,
+        minHeight: 50,
         marginTop: 40,
     },
     cardWrapper: {

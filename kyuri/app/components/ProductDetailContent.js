@@ -2,24 +2,23 @@ import * as React from 'react';
 import { View, StyleSheet, Text, Pressable, TextInput, PlatformColor, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { palette } from '../../assets/Themes/palette';
-import Pedestal from './Pedestal'
+import Pedestal from './Pedestal';
+import Icons from '../../assets/Icons';
+
 
 export default function ProductDetailContent(props) {  
+    
     if (props.s1) {
         return (
             <View style={styles.container}>
                 <View style={styles.usedBy}>
-                    <FlatList
-                        horizontal={true}
-                        data={props.data.usedBy}
-                        renderItem={({item}) => {
-                            <View style={styles.pedestalWrapper}>
-                                <Pedestal
-                                    url={item}
-                                ></Pedestal>
-                            </View>
-                        }}
-                    ></FlatList>
+                    <Pedestal
+                        url={props.data.usedBy[0]}
+                    ></Pedestal>
+                    <Pedestal
+                        url={props.data.usedBy[1]}
+                    ></Pedestal>
+
                 </View>
             </View>
         )
@@ -69,6 +68,11 @@ const styles = StyleSheet.create({
     },
     usageText: {
         fontFamily: 'Monda',
+    },
+    usedBy: {
+        flexDirection: 'row',
+        position: 'relative',
     }
+   
 
 });

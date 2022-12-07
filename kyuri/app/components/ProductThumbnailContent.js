@@ -54,11 +54,13 @@ const renderPost = (item, navigation ) => {
     let usedByIcons;
     if (item.usedBy) {
         usedByIcons = item.usedBy.map((name) => imageSelect(name));
-    }
+    }    
+    console.log('test');
+    console.log(usedByIcons);
   return (
     <ProductThumbnail 
         name={item.name}
-        username={item.type}
+        type={item.type}
         image={imageSelect('product' + item.number)}
         usedBy={usedByIcons}
         navigation={navigation}
