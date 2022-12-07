@@ -7,9 +7,9 @@ import Top from './Top';
 import MultiSelectScreen from './Multiselect';
 
 
-const Onboarding2 = ({navigation}, props) => 
+const Onboarding3 = ({navigation, setIsLoggedIn}, props) => 
 {
-    const [profileImg, setProfileImg] = useState('');
+    const [routineName, setRoutineName] = useState('');
     const [skinType, setSkinType] = useState('');
     const [skinProblems, setSkinProblems] = useState('');
 
@@ -31,13 +31,14 @@ const Onboarding2 = ({navigation}, props) =>
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation} hidePostButton={true}/>
         <View>
-            <Text style={styles.title}>Onboarding</Text>
+        <Text style={styles.title}>Onboarding</Text>
+        <Text style={styles.title}>Your Routine</Text>
             <View style={styles.searchContainer}>
                 <View style={styles.inputBar}>
                     <TextInput 
-                    placeholder = "Profile Image"
+                    placeholder = "Routine Name"
                     style={styles.input}
-                    onChangeText={(text) => setProfileImg(text)}
+                    onChangeText={(text) => setRoutineName(text)}
                     ></TextInput>
                 </View>
                 <View>
@@ -51,8 +52,8 @@ const Onboarding2 = ({navigation}, props) =>
         </View>
 
         <View style={styles.buttonWrapper}>
-            <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding3')}}>
-                <Text style={styles.nextBttnTxt}>Next</Text>
+            <Pressable style={styles.nextBttn} onPress={() => {setIsLoggedIn(true)}}>
+                <Text style={styles.nextBttnTxt}>Finish!</Text>
             </Pressable>
         </View>
 
@@ -61,7 +62,7 @@ const Onboarding2 = ({navigation}, props) =>
 };
 
 
-export default Onboarding2;
+export default Onboarding3;
 
 const styles = StyleSheet.create({
     container: {
