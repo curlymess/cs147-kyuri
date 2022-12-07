@@ -43,23 +43,27 @@ export default function Auth( {setIsLoggedIn, navigation} ) {
       </View>
       <View style={[authStyles.verticallySpaced, authStyles.mt20]}>
         <Input
-          label="Email"
-          leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+          rightIcon={{ type: 'font-awesome', name: 'envelope', color: palette.lightBrown, size: 20, marginRight: 15,}}
           onChangeText={(text) => setEmail(text)}
           value={email}
           placeholder="email@address.com"
           autoCapitalize={'none'}
+          style={authStyles.input}
+          inputContainerStyle={authStyles.inputContainer}
+          labelStyle={authStyles.labelStyle}
         />
       </View>
       <View style={authStyles.verticallySpaced}>
         <Input
-          label="Password"
-          leftIcon={{ type: 'font-awesome', name: 'lock' }}
+          rightIcon={{ type: 'font-awesome', name: 'lock', color: palette.lightBrown, size: 26, marginRight: 15, }}
           onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
           placeholder="Password"
           autoCapitalize={'none'}
+          style={authStyles.input}
+          inputContainerStyle={authStyles.inputContainer}
+          labelStyle={authStyles.labelStyle}
         />
       </View>
       <Pressable style={[authStyles.verticallySpaced, authStyles.mt20, authStyles.bttn]} disabled={loading} onPress={() => signInWithEmail()}>
@@ -74,14 +78,16 @@ export default function Auth( {setIsLoggedIn, navigation} ) {
 
 const authStyles = StyleSheet.create({
   container: {
-    padding: 12,
-    backgroundColor: palette.white,
+    backgroundColor: palette.green,
     height: "100%",
+    flex: 1,
+    justifyContent: 'center',
   },
   verticallySpaced: {
     paddingTop: 4,
     paddingBottom: 4,
     alignSelf: 'stretch',
+    borderColor: palette.darkBrown,
   },
   mt20: {
     marginTop: 20,
@@ -98,19 +104,21 @@ const authStyles = StyleSheet.create({
   },
   logoTxt: {
     fontSize: 50,
-    color: palette.green,
+    color: palette.white,
     fontFamily: 'Rosmatika',
     paddingTop: 10,
     marginTop: 4,
     marginLeft: 4,
   },
   bttn: {
-    backgroundColor: palette.green,
+    backgroundColor: palette.darkBrown,
     alignItems: 'center',
-    marginVertical: 10,
+    margin: 10,
+    marginTop: 0,
+    borderRadius: 60,
   },
   bttnTxt: {
-    padding: 10,
+    padding: 5,
     color: palette.white,
     fontSize: 20,
     fontFamily: 'MondaBold',
@@ -123,7 +131,21 @@ const authStyles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     textDecorationLine: 'underline',
+    color: palette.white,
   },
-
+  input: {
+    fontFamily: 'Monda',
+    paddingHorizontal: 10,
+  },
+  inputContainer: {
+    borderBottomWidth: 3,
+    borderWidth: 3,
+    borderColor: palette.darkBrown,
+    borderRadius: 8,
+    backgroundColor: palette.white,
+  },
+  labelStyle: {
+    marginBottom: 5,
+  }
 })
 
