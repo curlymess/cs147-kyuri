@@ -40,10 +40,10 @@ const Onboarding2 = ({navigation}, props) =>
                     onChangeText={(text) => setProfileImg(text)}
                     ></TextInput>
                 </View>
-                <View style={styles.inputBar}>
+                <View>
                     <MultiSelectScreen data={typeData} placeholderTxt={'Skin Type'}></MultiSelectScreen>
                 </View>
-                <View style={styles.inputBar}>
+                <View>
                     <MultiSelectScreen data={problemsData} placeholderTxt={'Skin Problems'}></MultiSelectScreen>
                 </View>
 

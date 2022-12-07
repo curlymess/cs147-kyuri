@@ -90,11 +90,11 @@ const PostDetail = ({navigation, route}) =>
             {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
 
             {!showCommentBttn && <View style={styles.postsCard}>
-                <CommentCard title={'I agree!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'reviewwww'}/>
-                <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'reviewwww'}/>
-                <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'reviewwww'}/>
-                <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'reviewwww'}/>
-                <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'reviewwww'}/>
+                <CommentCard title={'I agree!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'they are so right'}/>
+                <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'I understand why other people like this'}/>
+                <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'Highly recommend this post!!!'}/>
+                <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'everything they said is a YES!'}/>
+                <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'Maybe but I do not believe it'}/>
             </View>}
 
           </ScrollView>
