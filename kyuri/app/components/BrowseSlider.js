@@ -43,6 +43,13 @@ const styles = StyleSheet.create({
         marginTop: 32,     
         zIndex: 2,
         elevation: 2,   
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
     wrapper: {
         height: 24,

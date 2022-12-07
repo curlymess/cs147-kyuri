@@ -177,6 +177,14 @@ function Profile( {navigation, posts} )
       top: -23,
       paddingTop: 5,
       paddingBottom: 15,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 3,
+      },
+      shadowOpacity: 0.30,
+      shadowRadius: 1.61,
+
     },
     profileTxt: {
       width: '50%',
@@ -435,6 +443,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: palette.white,
+
   },
   greenbg: {
     flex: 1,

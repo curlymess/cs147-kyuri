@@ -54,6 +54,14 @@ const styles = StyleSheet.create({
         marginTop: 30,
         paddingHorizontal: 10,
         flexDirection: 'row',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
+
       },
       currText: {
         fontSize: 16,

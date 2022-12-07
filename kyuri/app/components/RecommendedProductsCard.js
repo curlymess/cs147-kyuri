@@ -47,6 +47,14 @@ const styles = StyleSheet.create({
         marginTop: 30,
         paddingHorizontal: 10,
         flexDirection: 'row',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
       },
       textContainer: {
         flexDirection: 'column',

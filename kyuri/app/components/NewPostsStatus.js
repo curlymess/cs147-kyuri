@@ -29,6 +29,13 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 20,
         marginHorizontal: 'auto',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
     text: {
         fontFamily: 'Monda',

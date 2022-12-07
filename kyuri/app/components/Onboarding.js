@@ -39,7 +39,7 @@ const Onboarding = ({navigation}) =>
 
   return (
     <View style={styles.container}>
-        <Top noBack={false} navigation={navigation} hidePostButton={true}/>
+        <Top noBack={false} navigation={navigation} hidePostButton={true} noShadow={true}/>
         <Text style={styles.title}>Onboarding</Text>
         <ScrollView>
         <View>
@@ -150,6 +150,15 @@ const styles = StyleSheet.create({
     searchContainer: {
         
     },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+    },
     inputBar: {
         height: 46,
         backgroundColor: palette.white,
@@ -159,7 +168,6 @@ const styles = StyleSheet.create({
         borderColor: palette.darkBrown,
         flexDirection: 'row',
         alignItems: 'center',
-        overflow: 'hidden',
         marginVertical: 5,
     },
     inputPostBar: {
@@ -194,6 +202,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         width: 200,
         marginRight: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
     privacyTxt: {
         fontFamily: 'MondaBold',

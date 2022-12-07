@@ -47,6 +47,13 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 10,
         paddingTop: 5,  
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
     },
     colFlex: {
         flex: 1,

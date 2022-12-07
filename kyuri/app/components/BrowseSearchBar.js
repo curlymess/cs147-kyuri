@@ -38,6 +38,13 @@ const browseStyles = StyleSheet.create({
       position: 'absolute',
       top: 50,
       zIndex: 3,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 2,
+      },
+      shadowOpacity: 0.20,
+      shadowRadius: 1.41,
     },
     searchContainer: {
       width: '100%',

@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         padding: 5,
         marginVertical: 5,
+
     },
     placeholder: {
         marginLeft: 5,
@@ -129,12 +130,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Monda',
     },
     shadow: {
-        shadowColor: '#000',
+        shadowColor: "#000",
         shadowOffset: {
-        width: 0,
-        height: 1,
+            width: 0,
+            height: 2,
         },
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.20,
         shadowRadius: 1.41,
         elevation: 2,
         borderRadius: 8,
