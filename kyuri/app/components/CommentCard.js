@@ -38,6 +38,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: 'row',
         minHeight: 100,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
       },
       postTop: {
         backgroundColor: palette.lightGreen,

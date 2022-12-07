@@ -88,6 +88,14 @@ const authStyles = StyleSheet.create({
     paddingBottom: 4,
     alignSelf: 'stretch',
     borderColor: palette.darkBrown,
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
   },
   mt20: {
     marginTop: 20,
@@ -116,6 +124,14 @@ const authStyles = StyleSheet.create({
     margin: 10,
     marginTop: 0,
     borderRadius: 60,
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
   },
   bttnTxt: {
     padding: 5,
@@ -136,6 +152,7 @@ const authStyles = StyleSheet.create({
   input: {
     fontFamily: 'Monda',
     paddingHorizontal: 10,
+
   },
   inputContainer: {
     borderBottomWidth: 3,

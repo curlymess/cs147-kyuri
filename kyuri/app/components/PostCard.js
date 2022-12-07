@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginLeft: 10,
         width: 150,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
+
       },
       postTop: {
         backgroundColor: palette.lightGreen,

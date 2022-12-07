@@ -65,6 +65,14 @@ const styles = StyleSheet.create({
         height: 64,
         borderRadius: 12,
         marginBottom: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
+
     },
     pedestalWrapper: {
         width: '50%',

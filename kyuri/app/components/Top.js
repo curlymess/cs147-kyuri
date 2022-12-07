@@ -12,7 +12,7 @@ export default function Top(props) {
     
 
     return (
-        <View style={styles.container}>
+        <View style={props.noShadow ? styles.container : styles.shadow}>
             <View style={styles.row}>
                 {!props.noBack &&
                 <Pressable style={styles.back} onPress={() => props.navigation.goBack()}>
@@ -55,6 +55,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderBottomLeftRadius: 12,
         borderBottomRightRadius: 12,
+    },
+    shadow: {
+        backgroundColor: palette.green,
+        width: '100%',
+        paddingTop: 10,
+        paddingBottom: 30,
+        flexDirection: 'row',
+        paddingHorizontal: 10,
+        borderBottomLeftRadius: 12,
+        borderBottomRightRadius: 12,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
     row: {
         flex: 1,

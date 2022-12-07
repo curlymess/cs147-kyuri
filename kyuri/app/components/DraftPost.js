@@ -61,7 +61,7 @@ const DraftPost = ({navigation, route}) =>
   return (
     
     <View style={styles.container}>
-        <Top navigation={navigation} hidePostButton={true}/>
+        <Top navigation={navigation} hidePostButton={true} noShadow={true}/>
 
         <Text style={styles.title}>Make a Post</Text>
 
@@ -158,6 +158,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'left',
         paddingHorizontal: 5,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
 
     },
 
