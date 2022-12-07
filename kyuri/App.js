@@ -341,7 +341,7 @@ function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
         <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
-        <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Auth} />
+        <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false}} component={Auth} />
         <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
       </Tab.Navigator>
     </NavigationContainer>

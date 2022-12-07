@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Pressable, TextInput } from 'react-native';
+import { View, StyleSheet, Text, Pressable, TextInput, ScrollView } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { palette } from '../../assets/Themes/palette';
 import { useState } from 'react';
@@ -17,6 +17,9 @@ const Onboarding = ({navigation}) =>
     const [age, setAge] = useState('');
     const [race, setRace] = useState('');
     const [level, setLevel] = useState('');
+
+    const [checkedPublic, setCheckedPublic] = useState(false);
+
 
     const levelData = [
         {label: 'Novice', value: '1'},
@@ -37,8 +40,9 @@ const Onboarding = ({navigation}) =>
   return (
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation}/>
+        <Text style={styles.title}>Onboarding</Text>
+        <ScrollView>
         <View>
-            <Text style={styles.title}>Onboarding</Text>
             <View style={styles.searchContainer}>
                 <View style={styles.inputBar}>
                     <TextInput 
@@ -85,19 +89,43 @@ const Onboarding = ({navigation}) =>
             </View>
         </View>
         <View>
-            <Text style={styles.privacyTxt}>Default Privacy Setting:</Text>
+            <Text style={styles.privacyTxt}>Default Privacy Setting</Text>
             <View style={[styles.row, styles.privacyOpt]}>
-                <Text style={styles.privacyTxt}>Public</Text>
-                <Text style={styles.privacyTxt}>Private</Text>
+                <Pressable 
+                    style={styles.checkboxContainer}
+                    onPress={() => {
+                        setCheckedPublic(!checkedPublic);
+                    }}
+                >
+                    <View 
+                        style={checkedPublic ? styles.checkbox : styles.activeCheckbox}
+                    >
+                        <Ionicons name={'checkmark-outline'} size={12} color='#F6F6F6' />
+                    </View>
+                    <Text style={styles.checkboxLabel}>Public</Text>
+                </Pressable>
+                <Pressable 
+                    style={styles.checkboxContainer}
+                    onPress={() => {
+                        setCheckedPublic(!checkedPublic);
+                    }}
+                >
+                    <View 
+                        style={!checkedPublic ? styles.checkbox : styles.activeCheckbox}
+                    >
+                        <Ionicons name={'checkmark-outline'} size={12} color='#F6F6F6' />
+                    </View>
+                    <Text style={styles.checkboxLabel}>Private</Text>
+                </Pressable>
             </View>
         </View>
-        <View style={styles.row}>
-            <View style={styles.flexOne}>
-            </View>
-            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('Onboarding2', {firstName:{firstName}, lastName:{lastName}, email:{email}, username:{username}, age:{age}, race:{race}, level:{level}})}}>
+        </ScrollView>
+        <View style={styles.buttonWrapper}>
+            <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding2', {firstName:{firstName}, lastName:{lastName}, email:{email}, username:{username}, age:{age}, race:{race}, level:{level}})}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
+
 
     </View>
   );
@@ -109,19 +137,21 @@ export default Onboarding;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: palette.white,
+        height: '100%',
+        backgroundColor: palette.green,
     },
     title: {
         fontFamily: 'MondaBold',
         marginHorizontal: 10,
         fontSize: 24,
+        color: palette.white,
     },
     searchContainer: {
         
     },
     inputBar: {
         height: 46,
-        backgroundColor: 'white',
+        backgroundColor: palette.white,
         borderRadius: 8,
         marginHorizontal: 10,
         borderWidth: 3,
@@ -152,19 +182,24 @@ const styles = StyleSheet.create({
     row:{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        
     },
     flexOne: {
         flex: 1,
     },
     nextBttn: {
         alignItems: 'center',
-        backgroundColor: palette.green,
+        backgroundColor: palette.darkBrown,
         borderRadius: 20,
+        width: 200,
+        marginRight: 10,
     },
     privacyTxt: {
-        fontFamily: 'Monda',
-        textAlign: 'center',
+        fontFamily: 'MondaBold',
+        fontSize: 16,
+        marginHorizontal: 10,
+        marginTop: 10,
+        color: palette.white,
     },
     nextBttnTxt: {
         fontFamily: 'MondaBold',
@@ -172,7 +207,45 @@ const styles = StyleSheet.create({
         color: palette.white,
     },
     privacyOpt: {
-        justifyContent: 'space-around',
     },
-
+    checkboxContainer: {
+        marginBottom: 5,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 10,
+      },
+    checkbox: {
+          width: 20,
+          height: 20,
+          borderRadius: 20,
+          backgroundColor: '#F6F6F6',
+          borderColor: '#E8E8E8',
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      activeCheckbox: {
+          width: 20,
+          height: 20,
+          borderRadius: 20,
+          backgroundColor: palette.mediumBrown,
+          borderColor: palette.darkBrown,
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      checkboxLabel: {
+          fontFamily: 'Monda',
+          marginLeft: 5,
+          color: palette.white,
+      },
+      buttonWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 30,
+        position: 'absolute',
+        bottom: 105,
+        width: '100%',
+        flex: 1,
+      }
 });

@@ -30,7 +30,7 @@ const DropdownScreen = _props => {
                 style={styles.dropdown}
                 containerStyle={styles.shadow}
                 data={_props.data}
-                search
+                search={false}
                 searchPlaceholder="Search"
                 labelField="label"
                 valueField="value"
@@ -40,6 +40,11 @@ const DropdownScreen = _props => {
                 itemTextStyle={styles.dropdownTxt}
                 selectedTextStyle={styles.dropdownTxt}
                 placeholder={_props.placeholderTxt}
+                placeholderStyle={styles.placeholder}
+                fontFamily='Monda'
+                itemContainerStyle={styles.itemContainer}
+                iconStyle={styles.icon}
+                maxHeight={200}
                 value={dropdown}
                 onChange={item => {
                 setDropdown(item.value);
@@ -76,7 +81,7 @@ export default DropdownScreen;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: palette.green,
         width: '100%',
         fontFamily: 'Monda',
     },
@@ -91,6 +96,14 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         padding: 5,
         marginVertical: 5,
+        fontFamily: 'Monda',
+    },
+    placeholder: {
+        color: 'lightgrey',
+        marginLeft: 5,
+    },
+    itemContainer: {
+        paddingHorizontal: 5,
     },
     icon: {
         marginRight: 5,
@@ -122,5 +135,10 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 1.41,
         elevation: 2,
+        borderRadius: 8,
+        borderWidth: 3,
+        borderColor: palette.darkBrown,
+        overflow: 'hidden',
+        marginTop: 5,
     },
 });

@@ -49,12 +49,17 @@ const MultiSelectScreen = _props => {
                 style={styles.dropdown}
                 data={_props.data}
                 labelField="label"
+                itemContainerStyle={styles.itemContainer}
+                containerStyle={styles.shadow}
+                search={false}
                 valueField="value"
                 label="Multi Select"
                 placeholder={_props.placeholderTxt}
-                search
+                fontFamily='Monda'
+                placeholderStyle={styles.placeholder}
                 searchPlaceholder="Search"
                 value={selected}
+                maxHeight = {300}
                 onChange={item => {
                 setSelected(item);
                     console.log('selected', item);
@@ -69,7 +74,7 @@ export default MultiSelectScreen;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: palette.green,
         width: '100%',
         fontFamily: 'Monda',
     },
@@ -84,6 +89,10 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         padding: 5,
         marginVertical: 5,
+    },
+    placeholder: {
+        marginLeft: 5,
+        color: 'lightgrey'
     },
     icon: {
         marginRight: 5,
@@ -115,5 +124,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 1.41,
         elevation: 2,
+        borderRadius: 8,
+        borderWidth: 3,
+        borderColor: palette.darkBrown,
+        overflow: 'hidden',
+        marginTop: 5,
     },
+    itemContainer: {
+        paddingHorizontal: 5,
+    }
+
+
 });

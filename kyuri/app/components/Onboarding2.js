@@ -31,7 +31,7 @@ const Onboarding2 = ({navigation}, props) =>
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation}/>
         <View>
-            <Text style={styles.title}>Onboarding 2</Text>
+            <Text style={styles.title}>Onboarding</Text>
             <View style={styles.searchContainer}>
                 <View style={styles.inputBar}>
                     <TextInput 
@@ -50,10 +50,8 @@ const Onboarding2 = ({navigation}, props) =>
             </View>
         </View>
 
-        <View style={styles.row}>
-            <View style={styles.flexOne}>
-            </View>
-            <Pressable style={[styles.flexOne, styles.nextBttn]} onPress={() => {navigation.navigate('NavContainer')}}>
+        <View style={styles.buttonWrapper}>
+            <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('NavContainer')}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
@@ -68,12 +66,14 @@ export default Onboarding2;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: palette.white,
+        height: '100%',
+        backgroundColor: palette.green,
     },
     title: {
         fontFamily: 'MondaBold',
         marginHorizontal: 10,
         fontSize: 24,
+        color: palette.white,
     },
     searchContainer: {
         
@@ -118,8 +118,10 @@ const styles = StyleSheet.create({
     },
     nextBttn: {
         alignItems: 'center',
-        backgroundColor: palette.green,
+        backgroundColor: palette.darkBrown,
         borderRadius: 20,
+        width: 200,
+        marginRight: 10,
     },
     privacyTxt: {
         fontFamily: 'Monda',
@@ -133,5 +135,14 @@ const styles = StyleSheet.create({
     privacyOpt: {
         justifyContent: 'space-around',
     },
+    buttonWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 30,
+        position: 'absolute',
+        bottom: 105,
+        width: '100%',
+        flex: 1,
+      }
 
 });
