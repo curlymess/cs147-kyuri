@@ -42,20 +42,26 @@ const Onboarding3 = ({navigation, setIsLoggedIn}, props) =>
                     ></TextInput>
                 </View>
                 <View>
-                    <MultiSelectScreen data={typeData} placeholderTxt={'Skin Type'}></MultiSelectScreen>
+                    <MultiSelectScreen data={typeData} placeholderTxt={'Product 1'}></MultiSelectScreen>
                 </View>
                 <View>
-                    <MultiSelectScreen data={problemsData} placeholderTxt={'Skin Problems'}></MultiSelectScreen>
+                    <MultiSelectScreen data={problemsData} placeholderTxt={'Product 2 (optional)'}></MultiSelectScreen>
                 </View>
-
+                <View>
+                    <MultiSelectScreen data={problemsData} placeholderTxt={'Product 3 (optional)'}></MultiSelectScreen>
+                </View>
+                <View>
+                    <MultiSelectScreen data={problemsData} placeholderTxt={'Product 4 (optional)'}></MultiSelectScreen>
+                </View>
             </View>
         </View>
 
-        <View style={styles.buttonWrapper}>
-            <Pressable style={styles.nextBttn} onPress={() => {setIsLoggedIn(true)}}>
-                <Text style={styles.nextBttnTxt}>Finish!</Text>
-            </Pressable>
-        </View>
+        <Pressable style={[styles.verticallySpaced, styles.mt20, styles.bttn]} onPress={() => setIsLoggedIn(true)}>
+            <Text style={styles.bttnTxt}>Finish!</Text>
+        </Pressable>
+        <Pressable style={[styles.verticallySpaced, styles.signUpBttn]} onPress={() => setIsLoggedIn(true)}>
+            <Text style={styles.signUpTxt}>Don't currently have a routine? Skip!</Text>
+        </Pressable>
 
     </View>
   );
@@ -117,33 +123,37 @@ const styles = StyleSheet.create({
     flexOne: {
         flex: 1,
     },
-    nextBttn: {
-        alignItems: 'center',
+    verticallySpaced: {
+        paddingTop: 4,
+        paddingBottom: 4,
+        alignSelf: 'stretch',
+        borderColor: palette.darkBrown,
+      },
+      mt20: {
+        marginTop: 20,
+      },
+      bttn: {
         backgroundColor: palette.darkBrown,
-        borderRadius: 20,
-        width: 200,
-        marginRight: 10,
-    },
-    privacyTxt: {
-        fontFamily: 'Monda',
-        textAlign: 'center',
-    },
-    nextBttnTxt: {
-        fontFamily: 'MondaBold',
-        paddingVertical: 5,
+        alignItems: 'center',
+        margin: 10,
+        marginTop: 0,
+        borderRadius: 60,
+      },
+      bttnTxt: {
+        padding: 5,
         color: palette.white,
-    },
-    privacyOpt: {
-        justifyContent: 'space-around',
-    },
-    buttonWrapper: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginTop: 30,
-        position: 'absolute',
-        bottom: 105,
-        width: '100%',
-        flex: 1,
-      }
+        fontSize: 20,
+        fontFamily: 'MondaBold',
+      },
+      signUpBttn: {
+    
+      },
+      signUpTxt:{
+        fontFamily: 'MondaBold',
+        fontSize: 16,
+        textAlign: 'center',
+        textDecorationLine: 'underline',
+        color: palette.white,
+      },
 
 });
