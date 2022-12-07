@@ -29,6 +29,9 @@ const DraftPost = ({navigation, route}) =>
     const [postType, setPostType] = useState('');
     const [isSelected, setSelection] = useState(false);
 
+    const [checkedPublic, setCheckedPublic] = useState(false);
+
+
     const data = [
         {label: 'Review', value: '1'},
         {label: 'Article', value: '2'},
@@ -92,24 +95,41 @@ const DraftPost = ({navigation, route}) =>
 
         <View style={styles.bottom}>
             <View style={styles.privacy}>
-                <View>
-                    
-                    <Text style={styles.privacyTxt}>Public</Text>
-                </View>
-                <View>
-                    
-                    <Text style={styles.privacyTxt}>Private</Text>
-                </View>
-                
+                <Pressable 
+                    style={styles.checkboxContainer}
+                    onPress={() => {
+                        setCheckedPublic(!checkedPublic);
+                    }}
+                >
+                    <View 
+                        style={checkedPublic ? styles.checkbox : styles.activeCheckbox}
+                    >
+                        <Ionicons name={'checkmark-outline'} size={12} color='#F6F6F6' />
+                    </View>
+                    <Text style={styles.checkboxLabel}>Public</Text>
+                </Pressable>
+                <Pressable 
+                    style={styles.checkboxContainer}
+                    onPress={() => {
+                        setCheckedPublic(!checkedPublic);
+                    }}
+                >
+                    <View 
+                        style={!checkedPublic ? styles.checkbox : styles.activeCheckbox}
+                    >
+                        <Ionicons name={'checkmark-outline'} size={12} color='#F6F6F6' />
+                    </View>
+                    <Text style={styles.checkboxLabel}>Private</Text>
+                </Pressable>
             </View>
-
-            <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>
-                <Ionicons name="add-circle-outline" size={33} color={palette.green}/>
-                <Text style={styles.makePostBttnTxt}>Post!</Text>
-            </Pressable>
+            
         </View>
-        
-
+        <View style={styles.buttonWrapper}>
+                <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>
+                    <Text style={styles.makePostBttnTxt}>Post!</Text>
+                    <Ionicons name="add-circle-outline" size={24} color={palette.white}/>
+                </Pressable>
+            </View>
     </View>
   );
 };
@@ -118,7 +138,7 @@ export default DraftPost;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: palette.white,
+        backgroundColor: palette.green,
         flexDirection: 'column',
         flex: 1,
         width: '100%',
@@ -127,15 +147,27 @@ const styles = StyleSheet.create({
         fontFamily: 'MondaBold',
         marginHorizontal: 10,
         fontSize: 24,
+        color: palette.white
     },
     makePostBttn: {
-        backgroundColor: palette.green,
+        backgroundColor: palette.darkBrown,
         borderRadius: 20,
         alignItems: 'center',
-        flex: 1,
+        width: 150,
+        marginRight: 10,    
+        flexDirection: 'row',
+        justifyContent: 'left',
+        paddingHorizontal: 5,
+
     },
+
     makePostBttnTxt: {
         fontFamily: 'MondaBold',
+        paddingVertical: 5,
+        flex: 1,
+        textAlign: 'center',
+        marginLeft: 24,
+        color: 'white'
     },
     searchContainer: {
         width: '100%',
@@ -156,7 +188,7 @@ const styles = StyleSheet.create({
 
     },
     inputPostBar: {
-        height: 300,
+        height: 200,
         backgroundColor: 'white',
         borderRadius: 8,
         marginHorizontal: 10,
@@ -184,7 +216,50 @@ const styles = StyleSheet.create({
     privacyTxt: {
         fontFamily: 'Monda',
         flex: 1,
-    }
+    },
+    checkboxContainer: {
+        marginBottom: 5,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 15,
+        marginTop: 5,
+      },
+    checkbox: {
+          width: 20,
+          height: 20,
+          borderRadius: 20,
+          backgroundColor: '#F6F6F6',
+          borderColor: '#E8E8E8',
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      activeCheckbox: {
+          width: 20,
+          height: 20,
+          borderRadius: 20,
+          backgroundColor: palette.mediumBrown,
+          borderColor: palette.darkBrown,
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      checkboxLabel: {
+          fontFamily: 'Monda',
+          marginLeft: 5,
+          color: palette.white,
+      },
+      buttonWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 30,
+        position: 'absolute',
+        bottom: 105,
+        width: '100%',
+        flex: 1,
+      }
+
+
 });
 
 
