@@ -77,7 +77,7 @@ function Feed({ navigation, posts }) {
   )
 }
 
-function Browse({navigation, allUsers, allPosts}) {
+function Browse({navigation, allUsers, allPosts, allProducts}) {
   const [screen1, toggleScreen1] = useState(true);
   const [screen2, toggleScreen2] = useState(false);
   const [screen3, toggleScreen3] = useState(false);
@@ -115,6 +115,7 @@ function Browse({navigation, allUsers, allPosts}) {
       navigation={navigation}
       terms={searchTerms}
       termsCallback={setSearchTerms}
+      allProducts={allProducts}
     >
     </BrowseContent>
   </View>  
@@ -288,7 +289,7 @@ function Profile( {navigation, posts} )
 
 const Tab = createBottomTabNavigator();
 
-function NavContainer( {posts, tomPosts, allUsers} ){
+function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
   const navstyles = StyleSheet.create({
     
   });
@@ -329,7 +330,7 @@ function NavContainer( {posts, tomPosts, allUsers} ){
           {(props) => <Feed posts={posts} {...props} />}
         </Tab.Screen>
         <Tab.Screen name="Search" options={{headerShown: false}}>
-        {(props) => <Browse allUsers={allUsers} allPosts={posts} {...props} />}
+        {(props) => <Browse allUsers={allUsers} allPosts={posts} allProducts={allProducts} {...props}  />}
         </Tab.Screen>
         <Tab.Screen name="Profile" options={{headerShown: false}}>
           {(props) => <Profile posts={tomPosts} {...props} />}
@@ -358,6 +359,8 @@ export default function App() {
   const [allPosts, setAllPosts] = useState([]);
   const [tomPosts, setTomPosts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+
   
   const listenToChanges = async () => {
     sub = supabase.channel('*').on('postgres_changes', {event: '*', schema: '*', }, (payload) => {
@@ -366,6 +369,7 @@ export default function App() {
     getPosts();
     getTomPosts();
     getUsers();
+    getProducts();
   }
   React.useEffect(() => {
     listenToChanges();
@@ -395,6 +399,12 @@ export default function App() {
     console.log(data, error);
     setAllUsers(data);
   }
+  const getProducts = async ( ) => {
+    const {data, error} = await supabase 
+      .from('products')
+      .select('*');
+    setAllProducts(data);
+  }
   const getTomPosts = async ( ) => {
     const {data, error} = await supabase 
       .from('posts')
@@ -403,11 +413,12 @@ export default function App() {
     console.log(data, error);
     setTomPosts(data);
   }
+
   let contentDisplayed = null;
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   if ( isLoggedIn ){
-    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers}/>
+    contentDisplayed = <NavContainer posts={allPosts} tomPosts={tomPosts} allUsers={allUsers} allProducts={allProducts}/>
   } else {
     
     contentDisplayed = <AuthNav setIsLoggedIn={setIsLoggedIn} />

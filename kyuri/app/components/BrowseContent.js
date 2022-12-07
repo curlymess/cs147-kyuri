@@ -12,9 +12,12 @@ import Icons from '../../assets/Icons';
 
 import { useState } from 'react';
 import PersonThumbnailContent from './PersonThumbnailContent';
+import ProductThumbnailContent from './ProductThumbnailContent';
+
 import FeedContent from './FeedContent';
 
 export default function BrowseContent(props) {
+
     //these checkboxes and the following state variable only work for the product screen, you will need to do it again and duplicate it for the other two screens and change the corresponding props in those components
     let checkboxes = {list: [
         {
@@ -147,15 +150,11 @@ export default function BrowseContent(props) {
                         screenIndex={0}
                     ></BrowseTagContainer>
                     <View style={styles.resultsContainer}>
-                        <ProductThumbnail 
-                            name={productDataObj.name}
-                            image={productDataObj.image}
-                            type={productDataObj.type}
-                            rating={productDataObj.rating}
-                            usedBy={productDataObj.usedBy}
-                            navigation={props.navigation}
-                        >
-                        </ProductThumbnail>                  
+                        <ProductThumbnailContent
+                            navigation={props.navigation} 
+                            terms={props.terms}
+                            allProducts={props.allProducts}
+                        ></ProductThumbnailContent>               
                     </View>
                 </ScrollView>
             );
@@ -202,21 +201,11 @@ export default function BrowseContent(props) {
                         screenIndex={1}
                     ></BrowseTagContainer>
                     <View style={styles.resultsContainer}>
-                        {/* <PersonThumbnail 
-                            name={personDataObj.name}
-                            username={personDataObj.username}
-                            image={personDataObj.image}
-                            age={personDataObj.age}
-                            level={personDataObj.level}
-                            mutuals={personDataObj.mutuals}
-                        >
-                        </PersonThumbnail>                     */}
                         <PersonThumbnailContent 
                             navigation={props.navigation} 
                             allUsers={props.allUsers}
                             terms={props.terms}
                         />
-
                     </View>
                 </ScrollView>
             );

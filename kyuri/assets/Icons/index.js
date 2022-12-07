@@ -10,6 +10,7 @@ export default {
     p6: require('./p6.png'),
     p7: require('./p7.png'),
     p8: require('./p8.png'),
+    product0: require('./product0.png'),
     product1: require('./product1.png'),
     product2: require('./product2.png'),
     product3: require('./product3.png'),

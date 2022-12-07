@@ -11,13 +11,13 @@ const EmptyRoutineCard = ({ navigation }) =>
     <View style={styles.container}>
         <View style={styles.pedestalContainer}>
             <Pedestal
-                url={require('../../assets/Icons/ProductUnknown.png')}
+                url={require('../../assets/Icons/product0.png')}
             ></Pedestal>
             <Pedestal
-                url={require('../../assets/Icons/ProductUnknown.png')}
+                url={require('../../assets/Icons/product0.png')}
             ></Pedestal>
             <Pedestal
-                url={require('../../assets/Icons/ProductUnknown.png')}
+                url={require('../../assets/Icons/product0.png')}
             ></Pedestal>
         </View>
         <Text style={styles.ctaText}>Create your first routine!</Text>
