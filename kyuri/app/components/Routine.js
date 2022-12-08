@@ -52,7 +52,10 @@ const Routine = ({navigation}) =>
               <Text style={[styles.productInfo, styles.boldLabel]}>Cleanse</Text>
             </View>
             <Text style={styles.routineCardTxt}>GoodMorning by Cosex</Text>
-            <Text style={styles.productInfo}>Click to expand for instructions</Text>
+            <View style={styles.row}>
+              <Ionicons name="caret-forward-outline" color={palette.darkBrown} size={20}></Ionicons>
+              <Text style={styles.productInfo}>Click to expand for instructions</Text>
+            </View>
           </View>
         </View>
         <View style={styles.routineCard}>
