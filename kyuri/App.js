@@ -324,7 +324,7 @@ function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
         tabBarActiveBackgroundColor: palette.green,
         tabBarInactiveBackgroundColor: palette.green,
            style: {
-                 backgroundColor: palette.cream,
+                 backgroundColor: palette.green,
                  paddingBottom: 3,
            }
 
@@ -346,7 +346,6 @@ function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
         <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
-        <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false}} component={Auth} />
         <Tab.Screen name="DraftRoutine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftRoutine} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -437,7 +436,6 @@ return (
   <SafeAreaView style={styles.greenbg}>
    {contentDisplayed}
   </SafeAreaView>
-
   );
 }
 

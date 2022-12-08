@@ -8,6 +8,8 @@ import MedPedestal from './MedPedestal';
 import PersonThumbnail from './PersonThumbnail';
 import { ScrollView } from 'react-native-gesture-handler';
 import CommentCard from './CommentCard';
+import { useEffect, useState } from 'react';
+
 const PostDetail = ({navigation, route}) => 
 {
    const {postAuthor} = route.params;
@@ -22,6 +24,8 @@ const PostDetail = ({navigation, route}) =>
    const {yellowTagTxt} = route.params;
    const {blueTagTxt} = route.params;
    const {hideTags} = route.params;
+
+   let [commentsCollapsed, setCommentsCollapsed] = useState(true);
 
    let personDataObj = {
     name: postAuthor.author,
@@ -87,15 +91,43 @@ const PostDetail = ({navigation, route}) =>
           >
           </PersonThumbnail>
             <Text style={styles.text}>{blogText.postText}</Text>
-            {!showCommentBttn && <Text style={styles.commentTxt}>Comments</Text>}
+            {!showCommentBttn && <View style={styles.commentsContainer}>
+                    <View style={styles.commentButtonsContainer}>
+                        <Pressable 
+                            style={styles.commentCollapseWrapper}
+                            onPress={() => {
+                                setCommentsCollapsed(!commentsCollapsed);
+                            }}
+                        >   
+                            <Text style={styles.commentTxt}>Comments</Text>
+                            <Ionicons
+                                size={24}
+                                color={palette.lightBrown}
+                                name={!commentsCollapsed ? 'caret-down-outline' : 'caret-back-outline'}
+                            ></Ionicons>
+                        </Pressable>
+                        <Pressable 
+                            style={styles.commentAddWrapper}
+                        >   
+                            <Text style={styles.commentTxt}>New Comment</Text>
+                            <Ionicons
+                                size={28}
+                                color={palette.white}
+                                name='add'
+                            ></Ionicons>
+                        </Pressable>
 
-            {!showCommentBttn && <View style={styles.postsCard}>
-                <CommentCard title={'I agree!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'they are so right'}/>
-                <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'I understand why other people like this'}/>
-                <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'Highly recommend this post!!!'}/>
-                <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'everything they said is a YES!'}/>
-                <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'Maybe but I do not believe it'}/>
+                    </View>
+                    {!commentsCollapsed && <View style={styles.postsCard}>
+                        <CommentCard title={'I agree!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'they are so right'}/>
+                        <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'I understand why other people like this'}/>
+                        <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'Highly recommend this post!!!'}/>
+                        <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'everything they said is a YES!'}/>
+                        <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'Maybe but I do not believe it'}/>
+                    </View>}
+
             </View>}
+
 
           </ScrollView>
       </View>   
@@ -203,10 +235,11 @@ const styles = StyleSheet.create({
       padding: 3,
     },
     commentTxt: {
-      paddingTop: 5,
       borderRadius: 20,
-      marginRight: 5,
+      marginRight: 2,
       fontFamily: 'MondaBold',
+      color: palette.white,
+      fontSize: 12,
     },
     whiteTxt: {
       color: palette.white,
@@ -216,4 +249,46 @@ const styles = StyleSheet.create({
       position: 'relative',
       bottom: -8,
     },
+    commentButtonsContainer: {
+      flexDirection: 'row',
+      marginTop: 20,
+  },
+  commentCollapseWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 10,
+      paddingVertical: 3,
+      paddingRight: 8,
+      backgroundColor: palette.darkBrown,
+      borderRadius: 30,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 2,
+      },
+      shadowOpacity: 0.20,
+      shadowRadius: 1.41,
+      justifyContent: 'space-between',
+
+  },
+  commentAddWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 10,
+      paddingRight: 3,
+      paddingVertical: 3,
+      backgroundColor: palette.green,
+      borderRadius: 30,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 2,
+      },
+      shadowOpacity: 0.20,
+      shadowRadius: 1.41,
+      justifyContent: 'space-between',
+      marginLeft: 10,
+
+  },
+
 });

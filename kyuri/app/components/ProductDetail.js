@@ -27,6 +27,8 @@ const ProductDetail = ({navigation, route}) =>
     let [screen2, screen2Callback] = useState(false);
     let [screen3, screen3Callback] = useState(false);
 
+    let [commentsCollapsed, setCommentsCollapsed] = useState(true);
+
     return (
         <View style={styles.container}>
             <Top navigation={navigation}/>
@@ -78,14 +80,39 @@ const ProductDetail = ({navigation, route}) =>
                     ></RoutineCard>
                 </View>
                 <View style={styles.commentsContainer}>
-                    <Text style={styles.commentTxt}>Comments</Text>
-                    <View style={styles.postsCard}>
+                    <View style={styles.commentButtonsContainer}>
+                        <Pressable 
+                            style={styles.commentCollapseWrapper}
+                            onPress={() => {
+                                setCommentsCollapsed(!commentsCollapsed);
+                            }}
+                        >   
+                            <Text style={styles.commentTxt}>Comments</Text>
+                            <Ionicons
+                                size={24}
+                                color={palette.lightBrown}
+                                name={!commentsCollapsed ? 'caret-down-outline' : 'caret-back-outline'}
+                            ></Ionicons>
+                        </Pressable>
+                        <Pressable 
+                            style={styles.commentAddWrapper}
+                        >   
+                            <Text style={styles.commentTxt}>New Comment</Text>
+                            <Ionicons
+                                size={28}
+                                color={palette.white}
+                                name='add'
+                            ></Ionicons>
+                        </Pressable>
+
+                    </View>
+                    {!commentsCollapsed && <View style={styles.postsCard}>
                         <CommentCard title={'Great Product!'}         userImg={Icons.p4} userAge={'22'} username={'@alphaBeth'} postText={'reviewwww'}/>
                         <CommentCard title={'Not For Me...'}    userImg={Icons.p2} username={'@loiswee'} postText={'reviewwww'}/>
                         <CommentCard title={'Highly Recommend'} userImg={Icons.p5} username={'@terranimal'} postText={'reviewwww'}/>
                         <CommentCard title={'Yes!!!'}           userImg={Icons.p6} username={'@skinXpert'} postText={'reviewwww'}/>
                         <CommentCard title={'Ehhhh'}            userImg={Icons.p3} username={'@proH8r'} postText={'reviewwww'}/>
-                    </View>
+                    </View>}
                 </View>
 
 
@@ -97,6 +124,47 @@ const ProductDetail = ({navigation, route}) =>
 export default ProductDetail;
 
 const styles = StyleSheet.create({
+    commentButtonsContainer: {
+        flexDirection: 'row',
+    },
+    commentCollapseWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+        paddingVertical: 3,
+        paddingRight: 8,
+        backgroundColor: palette.darkBrown,
+        borderRadius: 30,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+        justifyContent: 'space-between',
+
+    },
+    commentAddWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+        paddingRight: 3,
+        paddingVertical: 3,
+        backgroundColor: palette.green,
+        borderRadius: 30,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+        justifyContent: 'space-between',
+        marginLeft: 10,
+
+    },
+
     container: {
         backgroundColor: palette.white,
         flexDirection: 'column',
@@ -165,10 +233,11 @@ const styles = StyleSheet.create({
         padding: 3,
       },
     commentTxt: {
-        paddingTop: 5,
         borderRadius: 20,
-        marginRight: 5,
+        marginRight: 2,
         fontFamily: 'MondaBold',
+        color: palette.white,
+        fontSize: 12,
     },
     commentsContainer: {
         marginHorizontal: 10,
