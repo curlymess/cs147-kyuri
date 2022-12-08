@@ -18,7 +18,7 @@ const PostCard = ({ navigation, title, author, postText, userImg, productImg, us
             </View>
           </View>
           <View style={styles.postBottom}>
-            <Text style={styles.postType}>Review</Text>
+            <Text style={styles.postType}>{postType}</Text>
             <Text style={styles.postTitle} numberOfLines={2}>{title}</Text>
             <Text style={styles.postText} numberOfLines={2}>{postText}</Text>
 
