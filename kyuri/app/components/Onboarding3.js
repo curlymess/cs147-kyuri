@@ -29,7 +29,7 @@ const Onboarding3 = ({navigation, setIsLoggedIn}, props) =>
 
   return (
     <View style={styles.container}>
-        <Top noBack={false} navigation={navigation} hidePostButton={true}/>
+        <Top noBack={false} navigation={navigation} hidePostButton={true} noShadow={true}/>
         <View>
         <Text style={styles.title}>Onboarding</Text>
         <Text style={styles.title}>Your Routine</Text>
