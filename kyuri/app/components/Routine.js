@@ -21,9 +21,11 @@ const Routine = ({navigation}) =>
 
     <View style={styles.myProfileCard}>
         <View style={styles.profileTxt}>
-          <Text style={[styles.myProfileTxt, styles.myProfileUsername]}>Routine Name</Text>
-          <Text style={[styles.myProfileTxtName, styles.myProfileName]}>Winter Skin Saver</Text>
-
+          <View style={styles.left}>
+            <Text style={[styles.myProfileTxt, styles.myProfileUsername]}>Routine Name</Text>
+            <Text style={[styles.myProfileTxtName, styles.myProfileName]}>Winter Skin Saver</Text>
+          </View>
+          <View style={styles.right}>
           <Text style={styles.myProfileTxt}>
             <Text style={styles.boldLabel}>Treats </Text>
             Acne, Dry Skin
@@ -40,6 +42,7 @@ const Routine = ({navigation}) =>
             <Text style={styles.boldLabel}>Steps </Text>
             3
           </Text>
+          </View>
         </View>
       </View>
 
@@ -100,6 +103,9 @@ const Routine = ({navigation}) =>
 export default Routine;
 
 const styles = StyleSheet.create({
+    left: {
+      marginRight: 20,
+    },
     container: {
         backgroundColor: palette.white,
         height: '100%',
@@ -115,7 +121,6 @@ const styles = StyleSheet.create({
       routineCardTxt: {
         fontFamily: 'MondaBold',
         fontSize: 16,
-        paddingLeft: 10,
       },
       productImg: {
         resizeMode: 'contain',
@@ -136,7 +141,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         position: 'relative',
         top: -23,
-        paddingTop: 5,
+        paddingTop: 10,
         paddingBottom: 15,
         shadowColor: "#000",
         shadowOffset: {
@@ -148,14 +153,19 @@ const styles = StyleSheet.create({
   
       },
       profileTxt: {
-        width: '50%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
       },
+      
       row: {
         flexDirection: 'row',
+        alignItems: 'center',
+        
       },
       productInfo: {
         fontFamily: 'Monda',
-        paddingLeft: 10,
+        paddingRight: 10,
       },
       myProfileTxt: {
         color: palette.white,
@@ -174,6 +184,14 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
+
       },
       postsCard: {
         marginHorizontal: 10,
