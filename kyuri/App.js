@@ -51,6 +51,10 @@ import Onboarding from './app/components/Onboarding';
 import AuthNav from './app/components/AuthNav';
 import DraftRoutine from './app/components/DraftRoutine';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 function Feed({ navigation, posts }) {
 
   const feedStyles = StyleSheet.create({
