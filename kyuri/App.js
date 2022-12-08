@@ -49,6 +49,7 @@ import ProfileContent from './app/components/ProfileContent';
 import DraftPost from './app/components/DraftPost';
 import Onboarding from './app/components/Onboarding';
 import AuthNav from './app/components/AuthNav';
+import DraftRoutine from './app/components/DraftRoutine';
 
 function Feed({ navigation, posts }) {
 
@@ -345,7 +346,7 @@ function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />
         <Tab.Screen name="DraftPost" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftPost} />
         <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false}} component={Auth} />
-        <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
+        <Tab.Screen name="DraftRoutine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={DraftRoutine} />
       </Tab.Navigator>
     </NavigationContainer>
   );
