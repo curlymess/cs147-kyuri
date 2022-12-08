@@ -29,15 +29,15 @@ const DraftRoutine = ({navigation}) =>
       <Text style={styles.instructionTxt}>Add some products to your routine!</Text>
       <ScrollView style={styles.routine}>
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product1} />
+          <Image style={styles.productImg} source={require('../../assets/Icons/product0.png')} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product1} />
+          <Image style={styles.productImg} source={require('../../assets/Icons/product0.png')} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product1} />
+          <Image style={styles.productImg} source={require('../../assets/Icons/product0.png')} />
           <Text style={styles.routineCardTxt}>Product Name</Text>
         </View>
       </ScrollView>
