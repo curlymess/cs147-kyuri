@@ -56,7 +56,7 @@ export default function Profile({navigation, route})
             </Text>
             <Text style={styles.myProfileTxt}>              
               <Text style={styles.boldLabel}>Ethnicity </Text>
-              {data.ethnicity}
+              W
             </Text>
             <Text style={styles.myProfileTxt}>              
               <Text style={styles.boldLabel}>Level </Text>
@@ -65,9 +65,11 @@ export default function Profile({navigation, route})
           </View>
         </View>
 
-        <RoutineCard
-            title="Current Routine"
-        ></RoutineCard>
+        <Pressable onPress={() => { navigation.navigate('Routine') }}>
+          <RoutineCard
+              title="Current Routine"
+          ></RoutineCard>
+        </Pressable>
         <Text style={styles.heading}>Posts by {data.name}</Text>
         <ProfileContent style={styles.postsCard} navigation={navigation} posts={listData}/>
 

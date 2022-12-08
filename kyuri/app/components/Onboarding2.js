@@ -37,8 +37,6 @@ const Onboarding2 = ({navigation, setIsLoggedIn}, props) =>
         {userImg: 'p8', label: 'Brown Short Hair with Beard'},
     ];
 
-    console.log(profilePics[0].userImg);
-
   return (
     <View style={styles.container}>
         <Top noBack={false} navigation={navigation} hidePostButton={true} noShadow={true}/>
@@ -52,7 +50,6 @@ const Onboarding2 = ({navigation, setIsLoggedIn}, props) =>
                     <MultiSelectScreen data={problemsData} placeholderTxt={'Skin Problems'}></MultiSelectScreen>
                 </View>
                 <ImageDropDown data={profilePics} placeholderTxt={'Profile Image'}></ImageDropDown>
-
 
             </View>
         </View>

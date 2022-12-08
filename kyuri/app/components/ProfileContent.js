@@ -6,6 +6,7 @@ import 'react-native-gesture-handler';
 import PostCard from './PostCard';
 
 import React from 'react';
+import EmptyPostCard from './EmptyPostCard';
 
 const imageSelect = (inputImg) => {
   if (inputImg === null){
@@ -52,7 +53,7 @@ const renderPostCard = (item, navigation ) => {
     <PostCard
       // style={feedStyles.post}
       navigation={navigation}
-      postTime={"1 hour ago"}
+      postTime={item.postTime}
       title={item.title}
       postText={item.postText}
       userImg={imageSelect(item.userImg)}
@@ -68,16 +69,21 @@ const renderPostCard = (item, navigation ) => {
     />
   );
 };
+let contentDisplayed = null;
 
 const ProfileContent = ( { navigation, posts } ) =>
 {
+    if( posts.length === 0 ){
+      contentDisplayed = <EmptyPostCard navigation={navigation}/>
+    } else {
+      contentDisplayed = <FlatList 
+                horizontal={true}
+                data={posts}
+                renderItem={({item}) => renderPostCard(item, navigation)} />
+    }
     return (
-      <View style={styles.container}>
-        <FlatList 
-            horizontal={true}
-            data={posts}
-            renderItem={({item}) => renderPostCard(item, navigation)}
-        />
+      <View>
+        {contentDisplayed}
       </View>       
   );
 };

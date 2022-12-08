@@ -5,29 +5,26 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MedPedestal from './MedPedestal';
 
-const PostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType, blueTagTxt, yellowTagTxt, hideTags  }) => 
+const EmptyPostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType, blueTagTxt, yellowTagTxt, hideTags  }) => 
 {
   return (
 
-    <Pressable style={styles.post} onPress={() => navigation.navigate('PostDetail', { postAuthor: {author}, postTitle: {title}, blogText: {postText}, profileImg: {userImg}, age: {userAge}, level: {userLevel}, username: {username}, showCommentBttn: false, postType: {postType}, blueTagTxt: {blueTagTxt}, yellowTagTxt: {yellowTagTxt}, hideTags: {hideTags} })}>
-      <View style={styles.postTop}>
+    <Pressable style={styles.post} onPress={() => navigation.navigate('DraftPost')}>
+        <View style={styles.postTop}>
             <View style={styles.pedestalWrapper}>
               <MedPedestal
-                url={productImg}>
+                url={Icons.product0}>
               </MedPedestal>
             </View>
-          </View>
-          <View style={styles.postBottom}>
-            <Text style={styles.postType}>{postType}</Text>
-            <Text style={styles.postTitle} numberOfLines={2}>{title}</Text>
-            <Text style={styles.postText} numberOfLines={2}>{postText}</Text>
-
-          </View>
-        </Pressable>
+        </View>
+        <View style={styles.postBottom}>
+            <Text style={styles.postTitle}>Make your first post!</Text>
+        </View>
+    </Pressable>
   );
 };
 
-export default PostCard;
+export default EmptyPostCard;
 
 const styles = StyleSheet.create({
     post: {
@@ -59,15 +56,13 @@ const styles = StyleSheet.create({
       },
       postTitle: {
         fontFamily: 'MondaBold',
-        marginBottom: 2,
+        fontSize: 20,
       },
       postText: {
         width: 100,
-        fontFamily: 'Monda',
       },
       postType: {
         fontFamily: 'Monda',
-        color: palette.mediumBrown,
       },
       pedestalWrapper: {
         position: 'absolute',

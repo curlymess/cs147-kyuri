@@ -69,7 +69,7 @@ const ImageDropDown = _props => {
                     console.log(dropdown);
                 }}
                 renderLeftIcon={() => (
-                    <Image style={styles.icon} source={(dropdown === 'p8') ? Icons.tom : Icons.iris} />
+                    <Image style={styles.icon} source={(dropdown === 'p8') ? Icons.tom : Icons.p0} />
                 )}
                 renderSelectedItem={() => (
                     <Image style={styles.icon} source={Icons.tom} />

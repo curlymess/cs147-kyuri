@@ -2,6 +2,7 @@ export default {
     logo: require('./logo.png'),
     tom: require('./tom.png'),
     iris: require('./iris.png'),
+    p0: require('./p0.png'),
     p1: require('./p1.png'),
     p2: require('./p2.png'),
     p3: require('./p3.png'),
@@ -31,5 +32,6 @@ export default {
     product18: require('./product18.png'),
     product19: require('./product19.png'),
     product20: require('./product20.png'),
+    product0: require('./product0.png'),
   };
     
