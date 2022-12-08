@@ -19,7 +19,7 @@ const PostCard = ({ navigation, title, author, postText, userImg, productImg, us
           </View>
           <View style={styles.postBottom}>
             <Text style={styles.postType}>Review</Text>
-            <Text style={styles.postTitle}>{title}</Text>
+            <Text style={styles.postTitle} numberOfLines={2}>{title}</Text>
             <Text style={styles.postText} numberOfLines={2}>{postText}</Text>
 
           </View>
@@ -59,12 +59,15 @@ const styles = StyleSheet.create({
       },
       postTitle: {
         fontFamily: 'MondaBold',
+        marginBottom: 2,
       },
       postText: {
         width: 100,
+        fontFamily: 'Monda',
       },
       postType: {
         fontFamily: 'Monda',
+        color: palette.mediumBrown,
       },
       pedestalWrapper: {
         position: 'absolute',

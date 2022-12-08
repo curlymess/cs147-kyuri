@@ -9,6 +9,11 @@ import Top from './Top';
 
 
 export default function RecommendedProductsDetail({navigation, route}) {
+    let data = {
+        name: 'Cilantro Sunscreen',
+        image: require('../../assets/Icons/product1.png'),
+        usedBy: [require('../../assets/Icons/p2.png'), require('../../assets/Icons/p4.png')]
+    }
     return (
         <View style={styles.container}>
             <Top navigation={navigation}/>
@@ -51,7 +56,10 @@ export default function RecommendedProductsDetail({navigation, route}) {
                     This is a bit of sample text about this product. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit molestie tellus, in luctus est aliquet a. Nam id turpis eu lorem lobortis ultrices. 
                 </Text>
                 <View style={styles.ctaWrapper}>
-                    <Pressable style={styles.cta}>
+                    <Pressable 
+                        style={styles.cta}
+                        onPress={() => {navigation.navigate('ProductDetail', {data})}}
+                    >
                         <Text style={styles.ctaText}>View Product</Text>
                     </Pressable>
                 </View>

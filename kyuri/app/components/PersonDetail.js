@@ -8,25 +8,45 @@ import Top from './Top.js';
 import { StatusBar } from 'expo-status-bar';
 import CommentCard from './CommentCard';
 import ProfileContent from './ProfileContent';
+import RoutineCard from './RoutineCard';
+import { useEffect, useState } from 'react';
+import { supabase } from "../../lib/supabase";
+
 
 
 
 export default function Profile({navigation, route})
 {
     const {data} = route.params;
-    const {allPosts} = route.params;
 
+    const [added, setAdded] = useState(false);
+    const [listData, setListData] = useState([]);
+    let user = data.username;
+    async function getPosts(u) {
+        const {data, error} = await supabase 
+          .from('posts')
+          .select('*')
+          .eq('username', u)
+        setListData(data);
+    }
+    getPosts(user);
+    
+    
+    
   return (
     <View style={styles.container}>
       <Top style={styles.head} noBack="true" navigation={navigation}/>
         <View style={styles.myProfileCard}>
+        
+            
           <View style={styles.myProfilePicWrapper}>
             <Image 
               style={styles.myProfilePic}
               resizeMode="contain"
               source={data.image}
             />
-          </View>
+          </View>          
+          <View style={styles.spacer}></View>
           <View style={styles.profileTxt}>
             <Text style={[styles.myProfileTxtName, styles.myProfileName]}>{data.name}</Text>
             <Text style={[styles.myProfileTxt, styles.myProfileUsername]}>{data.username}</Text>
@@ -45,16 +65,23 @@ export default function Profile({navigation, route})
           </View>
         </View>
 
-
-      <Text style={styles.heading}>Posts by {data.name}</Text>
-      <ProfileContent style={styles.postsCard} navigation={navigation} posts={[]}/>
+        <RoutineCard
+            title="Current Routine"
+        ></RoutineCard>
+        <Text style={styles.heading}>Posts by {data.name}</Text>
+        <ProfileContent style={styles.postsCard} navigation={navigation} posts={listData}/>
 
     </View>  
     );
 }
 
 const styles = StyleSheet.create({
-    myProfileCard: {
+    container: {
+        flex: 1,
+        backgroundColor: palette.white,
+        height: '100%',
+      },
+        myProfileCard: {
       flexDirection: 'row',
       marginHorizontal: 10,
       marginBottom: 10,
@@ -107,7 +134,7 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       fontFamily: 'MondaBold',
       fontSize: 16,
-      marginTop: 50,
+      marginTop: 40,
     },  
     routineTxt: {
       fontFamily: 'MondaBold',
@@ -133,9 +160,51 @@ const styles = StyleSheet.create({
       width: 150,
       position: 'relative',
     },
-    myProfilePicWrapper: {
-      position: 'relative',
-      overflow: 'visible',
-      bottom: -26,
+    spacer: {
+        height: 150,
+        width: 150,  
     },
+    myProfilePicWrapper: {
+      position: 'absolute',
+      overflow: 'visible',
+      bottom: -6,
+    },
+    checkboxContainer: {
+        marginBottom: 5,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 10,
+        position: 'absolute',
+        height: 28,
+        width: 28,
+      },
+      checkBoxInner: {
+        height: 28,
+        width: 28,
+      },
+    checkbox: {
+          width: 20,
+          height: 20,
+          borderRadius: 20,
+          backgroundColor: '#F6F6F6',
+          borderColor: '#E8E8E8',
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      activeCheckbox: {
+      },
+      checkboxLabel: {
+          fontFamily: 'Monda',
+          marginLeft: 5,
+          color: palette.white,
+      },
+      buttonWrapper: {
+        marginTop: 30,
+        marginBottom: 30,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        width: '100%',
+        flex: 1,
+      }
   });

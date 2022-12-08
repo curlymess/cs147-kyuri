@@ -53,6 +53,14 @@ const styles = StyleSheet.create({
         elevation: 1,
         borderBottomRightRadius: 12,
         borderBottomLeftRadius: 12,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.61,
+  
     },
     detailLabel: {
         fontFamily: 'MondaBold',

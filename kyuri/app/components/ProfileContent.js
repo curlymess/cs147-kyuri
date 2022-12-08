@@ -91,5 +91,10 @@ const ProfileContent = ( { navigation, posts } ) =>
 export default ProfileContent;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginBottom: 20,
+  },
+  
 
 });
