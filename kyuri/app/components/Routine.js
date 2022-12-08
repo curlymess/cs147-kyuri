@@ -38,7 +38,7 @@ const Routine = ({navigation}) =>
           </Text>
           <Text style={styles.myProfileTxt}>              
             <Text style={styles.boldLabel}>Steps </Text>
-            4
+            3
           </Text>
         </View>
       </View>
@@ -58,14 +58,38 @@ const Routine = ({navigation}) =>
             </View>
           </View>
         </View>
+
         <View style={styles.routineCard}>
           <Image style={styles.productImg} source={Icons.product8} />
-          <Text style={styles.routineCardTxt}>Product Name</Text>
+          <View>
+            <View style={styles.row}>
+              <Text style={styles.productInfo}>Step 2</Text>
+              <Text style={[styles.productInfo, styles.boldLabel]}>Moisturize</Text>
+            </View>
+            <Text style={styles.routineCardTxt}>Ultra Moisturize by Cosex</Text>
+            <View style={styles.row}>
+              <Ionicons name="caret-forward-outline" color={palette.darkBrown} size={20}></Ionicons>
+              <Text style={styles.productInfo}>Click to expand for instructions</Text>
+            </View>
+          </View>
         </View>
+
         <View style={styles.routineCard}>
           <Image style={styles.productImg} source={Icons.product13} />
-          <Text style={styles.routineCardTxt}>Product Name</Text>
+          <View>
+            <View style={styles.row}>
+              <Text style={styles.productInfo}>Step 3</Text>
+              <Text style={[styles.productInfo, styles.boldLabel]}>SPF</Text>
+            </View>
+            <Text style={styles.routineCardTxt}>Daylight Protection by Neogen</Text>
+            <View style={styles.row}>
+              <Ionicons name="caret-forward-outline" color={palette.darkBrown} size={20}></Ionicons>
+              <Text style={styles.productInfo}>Click to expand for instructions</Text>
+            </View>
+          </View>
         </View>
+
+        
       </ScrollView>
 
     </View>
@@ -90,7 +114,7 @@ const styles = StyleSheet.create({
       },
       routineCardTxt: {
         fontFamily: 'MondaBold',
-        fontSize: 20,
+        fontSize: 16,
         paddingLeft: 10,
       },
       productImg: {
