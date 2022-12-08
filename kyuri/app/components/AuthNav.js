@@ -31,9 +31,8 @@ export default function AuthNav( {setIsLoggedIn }){
             {(props) => <Auth setIsLoggedIn={setIsLoggedIn} {...props} />}
             </Tab.Screen>
             <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
-            <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding2} />
-            <Tab.Screen name="Onboarding3" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} >
-            {(props) => <Onboarding3 setIsLoggedIn={setIsLoggedIn} {...props} />}
+            <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} >
+            {(props) => <Onboarding2 setIsLoggedIn={setIsLoggedIn} {...props} />}
             </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>

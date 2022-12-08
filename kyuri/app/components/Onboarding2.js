@@ -7,7 +7,7 @@ import Top from './Top';
 import MultiSelectScreen from './Multiselect';
 
 
-const Onboarding2 = ({navigation}, props) => 
+const Onboarding2 = ({navigation, setIsLoggedIn}, props) => 
 {
     const [profileImg, setProfileImg] = useState('');
     const [skinType, setSkinType] = useState('');
@@ -51,7 +51,7 @@ const Onboarding2 = ({navigation}, props) =>
         </View>
 
         <View style={styles.buttonWrapper}>
-            <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding3')}}>
+            <Pressable style={styles.nextBttn} onPress={() => setIsLoggedIn(true)}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
