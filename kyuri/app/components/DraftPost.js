@@ -124,7 +124,7 @@ const DraftPost = ({navigation, route}) =>
             
         </View>
         <View style={styles.buttonWrapper}>
-                <Pressable style={styles.makePostBttn} onPress={() => {addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice", "test","Tom S.","test","test",false); navigation.navigate('Profile')}}>
+                <Pressable style={styles.makePostBttn} onPress={() => {addPost("@TaheeShahee", postTitle, postText, postType, "22","tom","Novice", "tom","Tom S.","Review","Review",false); navigation.navigate('Profile')}}>
                     <Text style={styles.makePostBttnTxt}>Post!</Text>
                     <Ionicons name="add-circle-outline" size={24} color={palette.white}/>
                 </Pressable>
