@@ -118,11 +118,12 @@ const Onboarding = ({navigation}) =>
                     <Text style={styles.checkboxLabel}>Private</Text>
                 </Pressable>
             </View>
-        </View>
-        <View style={styles.buttonWrapper}>
+            <View style={styles.buttonWrapper}>
             <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding2', {firstName:{firstName}, lastName:{lastName}, email:{email}, username:{username}, age:{age}, race:{race}, level:{level}})}}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
+        </View>
+
         </View>
         </ScrollView>
         
@@ -256,11 +257,11 @@ const styles = StyleSheet.create({
           color: palette.white,
       },
       buttonWrapper: {
+        marginTop: 30,
+        marginBottom: 30,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginTop: 30,
         width: '100%',
         flex: 1,
-        marginBottom: 30,
       }
 });
