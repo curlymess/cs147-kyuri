@@ -7,6 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Icons from '../../assets/Icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react';
+import MedPedestal from './MedPedestal'
 
 const Routine = ({navigation}) => 
 {
@@ -48,7 +49,13 @@ const Routine = ({navigation}) =>
 
       <ScrollView style={styles.routine}>
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product2} />
+          <View style={styles.productImg}>
+            <MedPedestal
+              url = {Icons.product2}
+            ></MedPedestal>
+
+          </View>
+
           <View>
             <View style={styles.row}>
               <Text style={styles.productInfo}>Step 1</Text>
@@ -63,7 +70,13 @@ const Routine = ({navigation}) =>
         </View>
 
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product8} />
+          <View style={styles.productImg}>
+            <MedPedestal
+              url = {Icons.product8}
+            ></MedPedestal>
+
+          </View>
+
           <View>
             <View style={styles.row}>
               <Text style={styles.productInfo}>Step 2</Text>
@@ -78,7 +91,12 @@ const Routine = ({navigation}) =>
         </View>
 
         <View style={styles.routineCard}>
-          <Image style={styles.productImg} source={Icons.product13} />
+          <View style={styles.productImg}>
+            <MedPedestal
+              url = {Icons.product13}
+            ></MedPedestal>
+
+          </View>
           <View>
             <View style={styles.row}>
               <Text style={styles.productInfo}>Step 3</Text>
