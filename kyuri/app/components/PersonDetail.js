@@ -56,7 +56,7 @@ export default function Profile({navigation, route})
             </Text>
             <Text style={styles.myProfileTxt}>              
               <Text style={styles.boldLabel}>Ethnicity </Text>
-              {data.ethnicity}
+              W
             </Text>
             <Text style={styles.myProfileTxt}>              
               <Text style={styles.boldLabel}>Level </Text>
