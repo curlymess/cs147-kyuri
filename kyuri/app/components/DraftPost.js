@@ -17,7 +17,6 @@ const DraftPost = ({navigation, route}) =>
         const {data, error} = await supabase 
             .from('posts')
             .insert([
-            // { username, title, postText, postType, userAge, userImg, userLevel, productImg, author, yellowTagTxt, blueTagTxt, hideTags },
             { username: username, title:title, postText:postText, postType:postType, userAge:userAge, userImg:userImg, userLevel:userLevel, productImg:productImg, author:author, yellowTagTxt:yellowTagTxt, blueTagTxt:blueTagTxt, hideTags:hideTags },
             ]);
         console.log(data, error);
@@ -125,7 +124,7 @@ const DraftPost = ({navigation, route}) =>
             
         </View>
         <View style={styles.buttonWrapper}>
-                <Pressable style={styles.makePostBttn} onPress={() => addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice","test","Tom S.","test","test",false)}>
+                <Pressable style={styles.makePostBttn} onPress={() => {addPost("@TaheeShahee", postTitle, postText, postType, "22","test","Novice", "test","Tom S.","test","test",false); navigation.navigate('Profile')}}>
                     <Text style={styles.makePostBttnTxt}>Post!</Text>
                     <Ionicons name="add-circle-outline" size={24} color={palette.white}/>
                 </Pressable>

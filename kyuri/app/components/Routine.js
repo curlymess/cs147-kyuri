@@ -26,7 +26,7 @@ const Routine = ({navigation}) =>
 
           <Text style={styles.myProfileTxt}>
             <Text style={styles.boldLabel}>Treats </Text>
-            Acne, Dry Skin
+            Dry Skin
           </Text>
           <Text style={styles.myProfileTxt}>              
             <Text style={styles.boldLabel}>Created </Text>
