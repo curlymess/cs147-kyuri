@@ -65,9 +65,11 @@ export default function Profile({navigation, route})
           </View>
         </View>
 
-        <RoutineCard
-            title="Current Routine"
-        ></RoutineCard>
+        <Pressable onPress={() => { navigation.navigate('Routine') }}>
+          <RoutineCard
+              title="Current Routine"
+          ></RoutineCard>
+        </Pressable>
         <Text style={styles.heading}>Posts by {data.name}</Text>
         <ProfileContent style={styles.postsCard} navigation={navigation} posts={listData}/>
 
