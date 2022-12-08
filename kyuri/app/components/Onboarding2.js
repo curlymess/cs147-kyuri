@@ -5,9 +5,9 @@ import { palette } from '../../assets/Themes/palette';
 import { useState } from 'react';
 import Top from './Top';
 import MultiSelectScreen from './Multiselect';
+import ImageDropDown from './ImageDropDown';
 
-
-const Onboarding2 = ({navigation}, props) => 
+const Onboarding2 = ({navigation, setIsLoggedIn}, props) => 
 {
     const [profileImg, setProfileImg] = useState('');
     const [skinType, setSkinType] = useState('');
@@ -26,6 +26,18 @@ const Onboarding2 = ({navigation}, props) =>
         {label: 'Sun Protection', value: '5'},
         {label: 'Specialty', value: '6'},
     ];
+    const profilePics = [
+        {userImg: 'p1', label: 'White Short Hair with Beard'},
+        {userImg: 'p2', label: 'Brown Short Hair'},
+        {userImg: 'p3', label: 'Brown Short Hair'},
+        {userImg: 'p4', label: 'Blonde Hair in a Bun'},
+        {userImg: 'p5', label: 'Brown Long Hair'},
+        {userImg: 'p6', label: 'Ginger Long Hair and Glasses'},
+        {userImg: 'p7', label: 'White Medium Hair with Glasses'},
+        {userImg: 'p8', label: 'Brown Short Hair with Beard'},
+    ];
+
+    console.log(profilePics[0].userImg);
 
   return (
     <View style={styles.container}>
@@ -33,6 +45,7 @@ const Onboarding2 = ({navigation}, props) =>
         <View>
             <Text style={styles.title}>Onboarding</Text>
             <View style={styles.searchContainer}>
+                <ImageDropDown data={profilePics} placeholderTxt={'Profile Image'}></ImageDropDown>
                 <View style={styles.inputBar}>
                     <TextInput 
                     placeholder = "Profile Image"
@@ -51,7 +64,7 @@ const Onboarding2 = ({navigation}, props) =>
         </View>
 
         <View style={styles.buttonWrapper}>
-            <Pressable style={styles.nextBttn} onPress={() => {navigation.navigate('Onboarding3')}}>
+            <Pressable style={styles.nextBttn} onPress={() => setIsLoggedIn(true)}>
                 <Text style={styles.nextBttnTxt}>Next</Text>
             </Pressable>
         </View>
