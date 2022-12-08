@@ -19,22 +19,59 @@ import App from '../../App';
 
 const Tab = createBottomTabNavigator();
 
+
+
 export default function AuthNav( {setIsLoggedIn }){
     const navstyles = StyleSheet.create({
       
     });
+    const screenOptions = {
+      tabBarStyle:{
+        backgroundColor:palette.green,
+        height: 400,
+      },
+      tabBarItemStyle:{
+        backgroundColor:palette.green,
+        margin:5,
+      },
+      tabBarActiveBackgroundColor: palette.green,
+      tabBarInactiveBackgroundColor: palette.green,
+    };
+  
   
     return (
-      <NavigationContainer>
-        <Tab.Navigator>
-            <Tab.Screen name="Auth" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}}>
+      <NavigationContainer style={styles.container}>
+        <Tab.Navigator
+            tabBarOptions={{
+              style:{
+                backgroundColor: palette.green,
+                height: 0,
+              }
+            }}
+            screenOptions={{
+              tabBarActiveBackgroundColor: palette.green,
+              tabBarInactiveBackgroundColor: palette.green,   
+              tabBarInactiveTintColor: palette.green,
+              tabBarActiveTintColor: palette.green 
+            }}      
+
+
+
+        >
+            <Tab.Screen name="Auth" options={{headerShown: false, tabBarVisible: true,}}>
             {(props) => <Auth setIsLoggedIn={setIsLoggedIn} {...props} />}
             </Tab.Screen>
-            <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Onboarding} />
-            <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} >
+            <Tab.Screen name="Onboarding" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: true,}} component={Onboarding} />
+            <Tab.Screen name="Onboarding2" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: true,}} >
             {(props) => <Onboarding2 setIsLoggedIn={setIsLoggedIn} {...props} />}
             </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     );
   }
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: palette.green,
+    }
+  })

@@ -79,7 +79,7 @@ export default function Auth( {setIsLoggedIn, navigation} ) {
 const authStyles = StyleSheet.create({
   container: {
     backgroundColor: palette.green,
-    height: "100%",
+    height: '100%',
     flex: 1,
     justifyContent: 'center',
   },
