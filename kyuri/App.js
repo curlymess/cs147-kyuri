@@ -23,7 +23,7 @@ import BrowseContent from './app/components/BrowseContent.js';
 import BrowseSlider from './app/components/BrowseSlider.js';
 
 import ProductDetail from './app/components/ProductDetail';
-
+import PersonDetail from './app/components/PersonDetail';
 import PostDetail from './app/components/PostDetail';
 import PostCard from './app/components/PostCard';
 import Routine from './app/components/Routine';
@@ -341,6 +341,7 @@ function NavContainer( {posts, tomPosts, allUsers, allProducts} ){
         </Tab.Screen>
         <Tab.Screen name="PostDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PostDetail} />
         <Tab.Screen name="ProductDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={ProductDetail} />
+        <Tab.Screen name="PersonDetail" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={PersonDetail} />
         <Tab.Screen name="RecommendedProducts" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={RecommendedProductsDetail} />
         <Tab.Screen name="Routine" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={Routine} />
         <Tab.Screen name="CommentCard" options={{headerShown: false, tabBarButton: () => null, tabBarVisible: false,}} component={CommentCard} />

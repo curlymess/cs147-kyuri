@@ -10,8 +10,14 @@ import { AuthError } from '@supabase/supabase-js';
 
 
 export default function PersonThumbnail(props) {
+    let data=props;
     return (
-        <View style={styles.container}>
+        <Pressable 
+            style={styles.container}
+            onPress={() => {
+                props.navigation.navigate('PersonDetail', {data})
+            }}
+        >
             <View style={styles.left}>
                 <View style={styles.pedestalWrapper}>
                     <View style={styles.pedestalWrapperInner}>
@@ -54,7 +60,7 @@ export default function PersonThumbnail(props) {
                     </View>
                 </View>
             </View>
-        </View>
+        </Pressable>
     );
 }
 

@@ -57,8 +57,10 @@ const renderPost = (item, navigation ) => {
         image={imageSelect(item.userImg)}
         age={item.userAge}
         level={item.userLevel}
-        mutuals={[imageSelect(item.mutual1), imageSelect(item.mutual2)]}>
-    </PersonThumbnail> 
+        mutuals={[imageSelect(item.mutual1), imageSelect(item.mutual2)]}
+        navigation={navigation}
+        
+    ></PersonThumbnail> 
   );
 };
 
