@@ -80,7 +80,7 @@ const PersonThumbnailContent = ( { navigation, allUsers, terms } ) =>
     }
     if (terms != '') {
       getUsers(terms);
-    }  
+    }
     return (
       <ScrollView>
         <FlatList 

@@ -46,10 +46,9 @@ const ProductDetail = ({navigation, route}) =>
                 </View>
             <ScrollView style={styles.pageContent}>
                 <View style={styles.tags}>
-                    <View style={styles.tag}><Text style={styles.tagText}>Tag</Text></View>
-                    <View style={styles.tag}><Text style={styles.tagText}>Longer Tag</Text></View>
-                    <View style={styles.tag}><Text style={styles.tagText}>Another Tag</Text></View>
-                    <View style={styles.tag}><Text style={styles.tagText}>Final</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Sunscreen</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Sunstainable</Text></View>
+                    <View style={styles.tag}><Text style={styles.tagText}>Cruelty-Free</Text></View>
 
 
                 </View>
@@ -122,6 +121,14 @@ const styles = StyleSheet.create({
         paddingBottom: 12,
         borderRadius: 12,
         position: 'relative',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.61,
+  
     },
     title: {
         fontSize: 24,

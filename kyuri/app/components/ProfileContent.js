@@ -72,7 +72,7 @@ const renderPostCard = (item, navigation ) => {
 const ProfileContent = ( { navigation, posts } ) =>
 {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList 
             horizontal={true}
             data={posts}
@@ -85,5 +85,10 @@ const ProfileContent = ( { navigation, posts } ) =>
 export default ProfileContent;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginBottom: 20,
+  },
+  
 
 });

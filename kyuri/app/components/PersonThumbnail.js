@@ -6,7 +6,8 @@ import MedPedestal from './MedPedestal.js';
 
 import { withTheme } from 'react-native-elements';
 import { AuthError } from '@supabase/supabase-js';
-
+import { supabase } from "../../lib/supabase";
+import { useState } from 'react';
 
 
 export default function PersonThumbnail(props) {

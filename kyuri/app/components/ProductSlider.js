@@ -43,6 +43,14 @@ const styles = StyleSheet.create({
         marginTop: 32,     
         zIndex: 3,
         elevation: 3,  
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 1.41,
+  
     },
     wrapper: {
         height: 24,
@@ -52,6 +60,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: palette.darkBrown,
         borderRadius: 24,
+        
     },
     button: {
         width: '33.3%',
