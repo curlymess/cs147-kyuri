@@ -21,7 +21,7 @@ const EmptyRoutineCard = ({ navigation }) =>
             ></Pedestal>
         </View>
         <Text style={styles.ctaText}>Create your first routine!</Text>
-        <Pressable style={styles.addBttn} onPress={() => navigation.navigate('Routine', { navigation: navigation })}>
+        <Pressable style={styles.addBttn} onPress={() => navigation.navigate('DraftRoutine', { navigation: navigation })}>
           <Ionicons name={'add-circle-outline'} size={40} color={palette.green} />
         </Pressable>
     </View>
