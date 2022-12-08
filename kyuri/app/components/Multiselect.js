@@ -19,32 +19,6 @@ const MultiSelectScreen = _props => {
 
     return (
         <View style={styles.container}>
-            {/* <Dropdown
-                style={styles.dropdown}
-                containerStyle={styles.shadow}
-                data={data}
-                search
-                searchPlaceholder="Search"
-                labelField="label"
-                valueField="value"
-                label="Dropdown"
-                labelStyle={styles.dropdownTxt}
-                inputSearchStyle={styles.dropdownTxt}
-                itemTextStyle={styles.dropdownTxt}
-                selectedTextStyle={styles.dropdownTxt}
-                placeholder={_props.placeholderTxt}
-                value={dropdown}
-                onChange={item => {
-                setDropdown(item.value);
-                    console.log('selected', item);
-                }}
-                // renderLeftIcon={() => (
-                //     <Image style={styles.icon} source={Icons.iris} />
-                // )}
-                renderItem={item => _renderItem(item)}
-                textError="Error"
-            /> */}
-
             <MultiSelect
                 style={styles.dropdown}
                 data={_props.data}
