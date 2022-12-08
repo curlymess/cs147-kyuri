@@ -54,7 +54,7 @@ const renderPost = (item, navigation ) => {
     <Post 
       // style={feedStyles.post}
       navigation={navigation}
-      postTime={"1 hour ago"}
+      postTime={item.postTime}
       title={item.title}
       postText={item.postText}
       userImg={imageSelect(item.userImg)}

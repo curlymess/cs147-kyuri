@@ -53,7 +53,6 @@ const Onboarding2 = ({navigation, setIsLoggedIn}, props) =>
                 </View>
                 <ImageDropDown data={profilePics} placeholderTxt={'Profile Image'}></ImageDropDown>
 
-
             </View>
         </View>
 

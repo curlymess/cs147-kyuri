@@ -31,5 +31,6 @@ export default {
     product18: require('./product18.png'),
     product19: require('./product19.png'),
     product20: require('./product20.png'),
+    product0: require('./product0.png'),
   };
     
