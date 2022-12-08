@@ -45,20 +45,14 @@ const Onboarding2 = ({navigation, setIsLoggedIn}, props) =>
         <View>
             <Text style={styles.title}>Onboarding</Text>
             <View style={styles.searchContainer}>
-                <ImageDropDown data={profilePics} placeholderTxt={'Profile Image'}></ImageDropDown>
-                <View style={styles.inputBar}>
-                    <TextInput 
-                    placeholder = "Profile Image"
-                    style={styles.input}
-                    onChangeText={(text) => setProfileImg(text)}
-                    ></TextInput>
-                </View>
                 <View>
                     <MultiSelectScreen data={typeData} placeholderTxt={'Skin Type'}></MultiSelectScreen>
                 </View>
                 <View>
                     <MultiSelectScreen data={problemsData} placeholderTxt={'Skin Problems'}></MultiSelectScreen>
                 </View>
+                <ImageDropDown data={profilePics} placeholderTxt={'Profile Image'}></ImageDropDown>
+
 
             </View>
         </View>

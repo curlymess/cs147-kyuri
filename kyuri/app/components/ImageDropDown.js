@@ -38,11 +38,11 @@ const ImageDropDown = _props => {
         return (
         <View style={styles.item}>
             <Image style={styles.icon} source={imageSelect(item.userImg)} />
-            {/* <Text style={styles.textItem}>{item.label}</Text> */}
+            <Text style={styles.textItem}>{item.label}</Text>
         </View>
         );
     };
-
+    
     return (
         <View style={styles.container}>
             <Dropdown
@@ -64,12 +64,16 @@ const ImageDropDown = _props => {
                 maxHeight={200}
                 value={dropdown}
                 onChange={item => {
-                setDropdown(item.value);
+                setDropdown(item.userImg);
                     console.log('selected', item);
+                    console.log(dropdown);
                 }}
-                // renderLeftIcon={() => (
-                //     <Image style={styles.icon} source={Icons.iris} />
-                // )}
+                renderLeftIcon={() => (
+                    <Image style={styles.icon} source={(dropdown === 'p8') ? Icons.tom : Icons.iris} />
+                )}
+                renderSelectedItem={() => (
+                    <Image style={styles.icon} source={Icons.tom} />
+                )}
                 renderItem={item => _renderItem(item)}
                 textError="Error"
             />
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Monda',
     },
     dropdown: {
-        height: 46,
+        height: 150,
         backgroundColor: 'white',
         borderRadius: 8,
         marginHorizontal: 10,
