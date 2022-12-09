@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
       postText: {
         width: 100,
         fontFamily: 'Monda',
+        paddingBottom: 10,
       },
       postType: {
         fontFamily: 'Monda',
