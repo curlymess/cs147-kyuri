@@ -151,6 +151,9 @@ const styles = StyleSheet.create({
     searchContainer: {
         
     },
+    input: {
+        width: '100%',
+    },
     shadow: {
         shadowColor: "#000",
         shadowOffset: {
