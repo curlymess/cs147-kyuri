@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 10,
         fontFamily: 'Monda',
+        width: '100%',
     },
     row:{
         flexDirection: 'row',
