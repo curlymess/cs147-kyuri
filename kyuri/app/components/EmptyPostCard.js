@@ -5,6 +5,7 @@ import Icons from '../../assets/Icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MedPedestal from './MedPedestal';
 
+
 const EmptyPostCard = ({ navigation, title, author, postText, userImg, productImg, username, userLevel, userAge, postType, blueTagTxt, yellowTagTxt, hideTags  }) => 
 {
   return (
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.10,
         shadowRadius: 1.41,
+        height: 200,
 
       },
       postTop: {
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
       },
       postTitle: {
         fontFamily: 'MondaBold',
-        fontSize: 20,
+        fontSize: 16,
       },
       postText: {
         width: 100,
